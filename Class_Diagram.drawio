@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-04-21T18:34:24.590Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="tgZeETXUOahpzmgccGFX" version="17.4.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-21T20:31:56.385Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36 Edg/100.0.1185.44" etag="eKxhe2wodml_rwEQV35-" version="17.4.6" type="github">
   <diagram name="Page-1" id="42789a77-a242-8287-6e28-9cd8cfd52e62">
-    <mxGraphModel dx="1422" dy="763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1038" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -138,6 +138,15 @@
         </mxCell>
         <mxCell id="-pM-HTgVDpuhf9tNbvXT-3" value="List" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1000" y="90" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="qFc7p6ZR1PxSnkgHKNbJ-2" value="EqException" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=1;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="887.5" y="20" width="75" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="qFc7p6ZR1PxSnkgHKNbJ-3" value="Postfix" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=1;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="890" y="90" width="75" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="qFc7p6ZR1PxSnkgHKNbJ-4" value="TextLink" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=1;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="940" y="160" width="75" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-04-21T18:33:31.343Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="ZvIAE3uXYg7cF-tUi_kN" version="17.4.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-21T18:33:54.094Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="tIeavpw22fj3Mvl1Zm73" version="17.4.6" type="github">
   <diagram name="Page-1" id="42789a77-a242-8287-6e28-9cd8cfd52e62">
     <mxGraphModel dx="1422" dy="763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" background="none" math="0" shadow="0">
       <root>
@@ -93,9 +93,6 @@
         </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-49" value="Колесников Денис" style="swimlane;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="652.5" y="560" width="200" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="QDhcmR1CKFuJx_21nFgG-1" value="main()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-49">
-          <mxGeometry x="46.5" y="40" width="110" height="40" as="geometry" />
         </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-50" value="Цветков Алексей" style="swimlane;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="875" y="560" width="200" height="200" as="geometry" />

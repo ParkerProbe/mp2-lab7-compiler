@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-04-20T15:17:07.613Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="aIgehi5W9w77x8i9WJdi" version="17.4.5" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-21T18:32:57.756Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="jSlLXWlWwr2FQ33JasPP" version="17.4.6" type="github">
   <diagram name="Page-1" id="42789a77-a242-8287-6e28-9cd8cfd52e62">
-    <mxGraphModel dx="1422" dy="766" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1422" dy="763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -76,12 +76,6 @@
         <mxCell id="-pM-HTgVDpuhf9tNbvXT-10" value="Алексей" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="iuW7hz9HEa-le5su57v6-1" vertex="1">
           <mxGeometry x="115" y="410" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="-pM-HTgVDpuhf9tNbvXT-12" value="" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=1;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;fillColor=#f8cecc;strokeColor=#b85450;" parent="iuW7hz9HEa-le5su57v6-1" vertex="1">
-          <mxGeometry x="20" y="440" width="75" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="-pM-HTgVDpuhf9tNbvXT-13" value="ПРИМЕР" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="iuW7hz9HEa-le5su57v6-1" vertex="1">
-          <mxGeometry x="115" y="450" width="60" height="30" as="geometry" />
-        </mxCell>
         <mxCell id="pSLm4igQXvGaD_Qqo5TO-2" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="109.99" y="510" width="238.13" height="110" as="geometry" />
         </mxCell>
@@ -100,37 +94,37 @@
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-49" value="Колесников Денис" style="swimlane;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="652.5" y="560" width="200" height="200" as="geometry" />
         </mxCell>
+        <mxCell id="0fknKg0I96SZaBarsdJD-10" value="main()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="lb1J8IbFt9z_0kmrgKfr-49" vertex="1">
+          <mxGeometry x="45" y="40" width="110" height="40" as="geometry" />
+        </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-50" value="Цветков Алексей" style="swimlane;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="875" y="560" width="200" height="200" as="geometry" />
         </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-58" value="Блоки" style="swimlane;" parent="1" vertex="1">
           <mxGeometry x="20" y="650" width="370" height="410" as="geometry" />
         </mxCell>
-        <mxCell id="0fknKg0I96SZaBarsdJD-8" value="Семантический&lt;br&gt;анализатор&lt;br&gt;(SemanticAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-58">
+        <mxCell id="0fknKg0I96SZaBarsdJD-8" value="Семантический&lt;br&gt;анализатор&lt;br&gt;(SemanticAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1">
           <mxGeometry x="42.5" y="210" width="110" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0fknKg0I96SZaBarsdJD-9" value="Исполнитель кода&lt;br&gt;&lt;div&gt;&lt;span&gt;&amp;nbsp; &amp;nbsp;(&lt;/span&gt;&lt;font color=&quot;#202122&quot; face=&quot;sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px ; background-color: rgb(255 , 255 , 255)&quot;&gt;Interpretator&lt;/span&gt;&lt;/font&gt;&lt;span&gt;)&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-58">
+        <mxCell id="0fknKg0I96SZaBarsdJD-9" value="Исполнитель кода&lt;br&gt;&lt;div&gt;&lt;span&gt;&amp;nbsp; &amp;nbsp;(&lt;/span&gt;&lt;font color=&quot;#202122&quot; face=&quot;sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px ; background-color: rgb(255 , 255 , 255)&quot;&gt;Interpretator&lt;/span&gt;&lt;/font&gt;&lt;span&gt;)&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1">
           <mxGeometry x="40" y="300" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0fknKg0I96SZaBarsdJD-10" value="main()" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-58">
-          <mxGeometry x="200" y="40" width="110" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="lb1J8IbFt9z_0kmrgKfr-75" value="Класс коллектор ошибок&lt;br&gt;(Error)" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1">
+        <mxCell id="lb1J8IbFt9z_0kmrgKfr-75" value="Класс коллектор ошибок&lt;br&gt;(ErrorHandler)" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1">
           <mxGeometry x="200" y="120" width="110" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="0fknKg0I96SZaBarsdJD-11" value="" style="group" vertex="1" connectable="0" parent="lb1J8IbFt9z_0kmrgKfr-58">
+        <mxCell id="0fknKg0I96SZaBarsdJD-11" value="" style="group" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1" connectable="0">
           <mxGeometry x="47.5" y="40" width="105" height="140" as="geometry" />
         </mxCell>
-        <mxCell id="0fknKg0I96SZaBarsdJD-1" value="Лексический анализатор&lt;br&gt;(LexicalAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="0fknKg0I96SZaBarsdJD-11">
+        <mxCell id="0fknKg0I96SZaBarsdJD-1" value="Лексический анализатор&lt;br&gt;(LexicalAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" parent="0fknKg0I96SZaBarsdJD-11" vertex="1">
           <mxGeometry x="5" width="95" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="0fknKg0I96SZaBarsdJD-6" value="" style="group" vertex="1" connectable="0" parent="0fknKg0I96SZaBarsdJD-11">
+        <mxCell id="0fknKg0I96SZaBarsdJD-6" value="" style="group" parent="0fknKg0I96SZaBarsdJD-11" vertex="1" connectable="0">
           <mxGeometry y="40" width="105" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="0fknKg0I96SZaBarsdJD-2" value="Синтакскический&lt;br&gt;анализатор&lt;br&gt;(SyntaxAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="0fknKg0I96SZaBarsdJD-6">
+        <mxCell id="0fknKg0I96SZaBarsdJD-2" value="Синтакскический&lt;br&gt;анализатор&lt;br&gt;(SyntaxAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" parent="0fknKg0I96SZaBarsdJD-6" vertex="1">
           <mxGeometry width="105" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="0fknKg0I96SZaBarsdJD-5" value="Иерархически&lt;br&gt;список&lt;br&gt;(TextLink)" style="rounded=0;whiteSpace=wrap;html=1;points=[[0,0,0,0,0],[0,0.23,0,0,0],[0,0.5,0,0,0],[0,0.77,0,0,0],[0,1,0,0,0],[0.25,0,0,0,0],[0.25,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.75,0,0,0,0],[0.75,1,0,0,0],[1,0,0,0,0],[1,0.27,0,0,0],[1,0.5,0,0,0],[1,0.77,0,0,0],[1,1,0,0,0]];" vertex="1" parent="0fknKg0I96SZaBarsdJD-6">
+        <mxCell id="0fknKg0I96SZaBarsdJD-5" value="Иерархически&lt;br&gt;список&lt;br&gt;(TextLink)" style="rounded=0;whiteSpace=wrap;html=1;points=[[0,0,0,0,0],[0,0.23,0,0,0],[0,0.5,0,0,0],[0,0.77,0,0,0],[0,1,0,0,0],[0.25,0,0,0,0],[0.25,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.75,0,0,0,0],[0.75,1,0,0,0],[1,0,0,0,0],[1,0.27,0,0,0],[1,0.5,0,0,0],[1,0.77,0,0,0],[1,1,0,0,0]];" parent="0fknKg0I96SZaBarsdJD-6" vertex="1">
           <mxGeometry x="10" y="50" width="80" height="50" as="geometry" />
         </mxCell>
         <mxCell id="ob3So-rM5bVcGHjbNZR2-1" value="Полезные команды Git" style="swimlane;" parent="1" vertex="1">

@@ -1,3 +1,5 @@
+#pragma once
+
 struct compiler_parameters
 {
     bool lexer_only = false;
@@ -6,7 +8,9 @@ struct compiler_parameters
 
 
     /*  Print */
+    
     bool pr_version = false;
     bool pr_help = false;
+    bool pr_path_dlg = false;
 
 };

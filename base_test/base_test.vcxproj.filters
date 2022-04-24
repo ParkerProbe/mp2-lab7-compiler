@@ -57,6 +57,9 @@
     <ClCompile Include="..\base\table_string.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="test_error_handler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\base\list_table.h">

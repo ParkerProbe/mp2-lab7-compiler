@@ -4,15 +4,15 @@
 const int MaxStackSize = 100;
 
 template <class T>
-class TStack
+class Stack
 {
     T* pMem;
     int size;
     int top;
 public:
-    TStack(int _size = 10);
-    TStack(const TStack<T>& s);
-    ~TStack();
+    Stack(int _size = 10);
+    Stack(const Stack<T>& s);
+    ~Stack();
     void add(T tmp);
 
     //Changed in accordance with the coding rules
@@ -25,7 +25,7 @@ public:
     int get_size();
 };
 template <class T>
-TStack<T>::TStack(const TStack<T>& s)
+Stack<T>::Stack(const Stack<T>& s)
 {
     size = s.size;
     pMem = new T[size];
@@ -34,7 +34,7 @@ TStack<T>::TStack(const TStack<T>& s)
         pMem[i] = s.pMem[i];
 }
 template <class T>
-TStack<T>::TStack(int _size = 1)
+Stack<T>::Stack(int _size = 1)
 {
     size = _size;
     top = -1;
@@ -43,19 +43,19 @@ TStack<T>::TStack(int _size = 1)
     pMem = new T[size];
 }
 template <class T>
-TStack<T>:: ~TStack()
+Stack<T>:: ~Stack()
 {
     delete[] pMem;
 }
 template <class T>
-void TStack<T>::add(T tmp)
+void Stack<T>::add(T tmp)
 {
     if (top + 1 >= size)
         throw size;
     pMem[++top] = tmp;
 }
 template <class T>
-T TStack<T>::get_top()
+T Stack<T>::get_top()
 {
     if (is_empty() == true)
     {
@@ -64,7 +64,7 @@ T TStack<T>::get_top()
     return (pMem[top--]);
 }
 template <class T>
-T TStack<T>::info_top()
+T Stack<T>::info_top()
 {
     if (is_empty() == true)
     {
@@ -73,7 +73,7 @@ T TStack<T>::info_top()
     return (pMem[top]);
 }
 template <class T>
-bool TStack<T>::is_empty()
+bool Stack<T>::is_empty()
 {
     if (top == -1)
         return true;
@@ -82,7 +82,7 @@ bool TStack<T>::is_empty()
     }
 }
 template <class T>
-bool TStack<T>::is_full()
+bool Stack<T>::is_full()
 {
     if (top == size - 1) {
         return true;
@@ -92,7 +92,7 @@ bool TStack<T>::is_full()
     }
 }
 template <class T>
-void TStack<T>::set_size(int s)
+void Stack<T>::set_size(int s)
 {
     size = s;
     top = -1;
@@ -102,7 +102,7 @@ void TStack<T>::set_size(int s)
     pMem = new T[size];
 }
 template <class T>
-int TStack<T>::get_size()
+int Stack<T>::get_size()
 {
     return size;
 }

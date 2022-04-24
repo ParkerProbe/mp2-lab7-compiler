@@ -94,6 +94,7 @@
     <ClCompile Include="..\base\sorted_array_table.cpp" />
     <ClCompile Include="..\base\table_string.cpp" />
     <ClCompile Include="test_eq_exception.cpp" />
+    <ClCompile Include="test_error_handler.cpp" />
     <ClCompile Include="test_main.cpp" />
     <ClCompile Include="test_postfix.cpp" />
     <ClCompile Include="test_stack.cpp" />

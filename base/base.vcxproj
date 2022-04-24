@@ -82,13 +82,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="error_handler.cpp" />
+    <ClCompile Include="error_handler.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="postfix.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="compiler_data.h" />
     <ClInclude Include="eq_exception.h" />
     <ClInclude Include="postfix.h" />
+    <ClInclude Include="printer.h" />
     <ClInclude Include="stack.h" />
+    <ClInclude Include="text_link.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

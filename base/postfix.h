@@ -1,5 +1,4 @@
-#ifndef __POSTFIX_H__
-#define __POSTFIX_H__
+#pragma once
 
 #include <string>
 #include "stack.h"
@@ -39,5 +38,3 @@ public:
 	// gets variables and calculates following postfix form
 	Polynom calculate(Table** t);
 };
-
-#endif

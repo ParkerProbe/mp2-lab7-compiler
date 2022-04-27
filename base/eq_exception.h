@@ -1,6 +1,4 @@
-#ifndef EQ_EXCEPTION_H_
-#define EQ_EXCEPTION_H_
-
+#pragma once
 #include <string>
 
 #define k_EXCEPTION_COUNT 2
@@ -40,6 +38,3 @@ public:
     }
 
 };
-
-
-#endif // EQ_EXCEPTION_H

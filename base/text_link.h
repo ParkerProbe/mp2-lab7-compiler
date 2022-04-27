@@ -1,4 +1,5 @@
 #pragma once
+#include "stack.h"
 template <class T>
 struct TextNode
 {

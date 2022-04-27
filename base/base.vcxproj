@@ -86,14 +86,20 @@
     <ClCompile Include="error_handler.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="postfix.cpp" />
+    <ClCompile Include="table_string.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="compiler_data.h" />
+    <ClInclude Include="compiler_config.h" />
     <ClInclude Include="eq_exception.h" />
+    <ClInclude Include="lexer.h" />
+    <ClInclude Include="list.h" />
     <ClInclude Include="postfix.h" />
-    <ClInclude Include="printer.h" />
+    <ClInclude Include="semantic_analyzer.h" />
     <ClInclude Include="stack.h" />
+    <ClInclude Include="table.h" />
+    <ClInclude Include="table_string.h" />
     <ClInclude Include="text_link.h" />
+    <ClInclude Include="token.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

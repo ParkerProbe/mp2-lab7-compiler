@@ -1,6 +1,4 @@
-#ifndef __STACK_H__
-#define __STACK_H__
-
+#pragma once
 const int MaxStackSize = 100;
 
 template <class T>
@@ -106,4 +104,3 @@ int Stack<T>::get_size()
 {
     return size;
 }
-#endif

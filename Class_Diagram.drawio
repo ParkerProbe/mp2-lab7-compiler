@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-04-24T06:17:10.620Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36 Edg/100.0.1185.50" etag="KWQMiOtDRoUZFN2EULnj" version="17.4.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-27T09:41:39.766Z" agent="5.0 (X11)" etag="7TQjvLSRU_HuYHwgha5o" version="17.4.6" type="github">
   <diagram name="Page-1" id="42789a77-a242-8287-6e28-9cd8cfd52e62">
-    <mxGraphModel dx="1038" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1624" dy="945" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -80,7 +80,7 @@
           <mxGeometry x="109.99" y="510" width="238.13" height="110" as="geometry" />
         </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-1" value="Полезные ссылки" style="swimlane;" parent="1" vertex="1">
-          <mxGeometry x="775" y="410" width="300" height="120" as="geometry" />
+          <mxGeometry x="1150" y="260" width="300" height="120" as="geometry" />
         </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-4" value="&lt;a href=&quot;https://gist.github.com/ParkerProbe/62390cf65179a78cba430d15e39f2079&quot;&gt;Code Style (github.com)&lt;/a&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="lb1J8IbFt9z_0kmrgKfr-1" vertex="1">
           <mxGeometry x="80" y="40" width="140" height="20" as="geometry" />
@@ -89,52 +89,70 @@
           <mxGeometry x="15" y="80" width="270" height="20" as="geometry" />
         </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-31" value="Бугров Андрей" style="swimlane;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="420" y="560" width="200" height="200" as="geometry" />
+          <mxGeometry x="420" y="560" width="200" height="430" as="geometry" />
         </mxCell>
-        <mxCell id="2RiGxYoO24wWiqjHJsVi-5" value="Класс Исключений" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-31">
+        <mxCell id="2RiGxYoO24wWiqjHJsVi-5" value="Класс Исключений" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="lb1J8IbFt9z_0kmrgKfr-31" vertex="1">
           <mxGeometry x="40" y="40" width="120" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="2RiGxYoO24wWiqjHJsVi-8" value="Класс-обработчик ошибок" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-31">
+        <mxCell id="2RiGxYoO24wWiqjHJsVi-8" value="Класс-обработчик ошибок" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="lb1J8IbFt9z_0kmrgKfr-31" vertex="1">
           <mxGeometry x="20" y="70" width="160" height="20" as="geometry" />
         </mxCell>
+        <mxCell id="JJ14aypj55oh6TthJV8W-1" value="Класс исключений&lt;br&gt;(EqException)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-31">
+          <mxGeometry x="40" y="180" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lb1J8IbFt9z_0kmrgKfr-75" value="Класс обработчик ошибок&lt;br&gt;(ErrorHandler)" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-31" vertex="1">
+          <mxGeometry x="40" y="120" width="110" height="50" as="geometry" />
+        </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-49" value="Колесников Денис" style="swimlane;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
-          <mxGeometry x="652.5" y="560" width="200" height="200" as="geometry" />
+          <mxGeometry x="652.5" y="560" width="200" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="JJ14aypj55oh6TthJV8W-5" value="main()" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-49">
+          <mxGeometry x="55" y="30" width="95" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="JJ14aypj55oh6TthJV8W-6" value="Интерфейс&lt;br&gt;(Interface)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-49">
+          <mxGeometry x="55.01" y="70" width="95" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="JJ14aypj55oh6TthJV8W-7" value="Семантический&lt;br&gt;анализатор&lt;br&gt;(SemanticAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-49">
+          <mxGeometry x="46.88" y="120" width="111.25" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="JJ14aypj55oh6TthJV8W-8" value="HashTableList&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-49">
+          <mxGeometry x="55.01" y="180" width="95" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="JJ14aypj55oh6TthJV8W-9" value="&lt;div&gt;Table&lt;/div&gt;&lt;div&gt;TableString&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-49">
+          <mxGeometry x="51.25" y="290" width="102.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="JJ14aypj55oh6TthJV8W-15" value="List" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-49">
+          <mxGeometry x="65.95" y="240" width="73.12" height="40" as="geometry" />
         </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-50" value="Цветков Алексей" style="swimlane;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
-          <mxGeometry x="875" y="560" width="200" height="200" as="geometry" />
+          <mxGeometry x="880" y="560" width="200" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="JJ14aypj55oh6TthJV8W-13" value="Stack" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-50">
+          <mxGeometry x="61.25" y="50" width="77.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="JJ14aypj55oh6TthJV8W-14" value="Postfix" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-50">
+          <mxGeometry x="61.25" y="100" width="77.5" height="30" as="geometry" />
         </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-58" value="Блоки" style="swimlane;" parent="1" vertex="1">
-          <mxGeometry x="20" y="650" width="370" height="410" as="geometry" />
+          <mxGeometry x="20" y="640" width="370" height="410" as="geometry" />
         </mxCell>
-        <mxCell id="0fknKg0I96SZaBarsdJD-8" value="Семантический&lt;br&gt;анализатор&lt;br&gt;(SemanticAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1">
-          <mxGeometry x="42.5" y="210" width="110" height="60" as="geometry" />
+        <mxCell id="0fknKg0I96SZaBarsdJD-9" value="Исполнитель кода&lt;br&gt;&lt;div&gt;&lt;span&gt;&amp;nbsp; &amp;nbsp;(&lt;/span&gt;CodeRunner&lt;span&gt;)&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1">
+          <mxGeometry x="40" y="220" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0fknKg0I96SZaBarsdJD-9" value="Исполнитель кода&lt;br&gt;&lt;div&gt;&lt;span&gt;&amp;nbsp; &amp;nbsp;(&lt;/span&gt;&lt;font color=&quot;#202122&quot; face=&quot;sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px ; background-color: rgb(255 , 255 , 255)&quot;&gt;Interpretator&lt;/span&gt;&lt;/font&gt;&lt;span&gt;)&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1">
-          <mxGeometry x="40" y="300" width="120" height="60" as="geometry" />
+        <mxCell id="0fknKg0I96SZaBarsdJD-1" value="Лексический анализатор&lt;br&gt;(LexicalAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1">
+          <mxGeometry x="50" y="30" width="95" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="0fknKg0I96SZaBarsdJD-10" value="main()" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1">
-          <mxGeometry x="200" y="40" width="110" height="40" as="geometry" />
+        <mxCell id="0fknKg0I96SZaBarsdJD-2" value="Синтакскический&lt;br&gt;анализатор&lt;br&gt;(SyntaxAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1">
+          <mxGeometry x="47.5" y="90" width="105" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="lb1J8IbFt9z_0kmrgKfr-75" value="Класс обработчик ошибок&lt;br&gt;(ErrorHandler)" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1">
-          <mxGeometry x="200" y="120" width="110" height="50" as="geometry" />
+        <mxCell id="0fknKg0I96SZaBarsdJD-5" value="Иерархический&lt;br&gt;список&lt;br&gt;(TextLink)" style="rounded=0;whiteSpace=wrap;html=1;points=[[0,0,0,0,0],[0,0.23,0,0,0],[0,0.5,0,0,0],[0,0.77,0,0,0],[0,1,0,0,0],[0.25,0,0,0,0],[0.25,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.75,0,0,0,0],[0.75,1,0,0,0],[1,0,0,0,0],[1,0.27,0,0,0],[1,0.5,0,0,0],[1,0.77,0,0,0],[1,1,0,0,0]];" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1">
+          <mxGeometry x="37.5" y="150" width="120" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="0fknKg0I96SZaBarsdJD-11" value="" style="group" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1" connectable="0">
-          <mxGeometry x="47.5" y="40" width="105" height="140" as="geometry" />
-        </mxCell>
-        <mxCell id="0fknKg0I96SZaBarsdJD-1" value="Лексический анализатор&lt;br&gt;(LexicalAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" parent="0fknKg0I96SZaBarsdJD-11" vertex="1">
-          <mxGeometry x="5" width="95" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="0fknKg0I96SZaBarsdJD-6" value="" style="group" parent="0fknKg0I96SZaBarsdJD-11" vertex="1" connectable="0">
-          <mxGeometry y="40" width="105" height="100" as="geometry" />
-        </mxCell>
-        <mxCell id="0fknKg0I96SZaBarsdJD-2" value="Синтакскический&lt;br&gt;анализатор&lt;br&gt;(SyntaxAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" parent="0fknKg0I96SZaBarsdJD-6" vertex="1">
-          <mxGeometry width="105" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="0fknKg0I96SZaBarsdJD-5" value="Иерархически&lt;br&gt;список&lt;br&gt;(TextLink)" style="rounded=0;whiteSpace=wrap;html=1;points=[[0,0,0,0,0],[0,0.23,0,0,0],[0,0.5,0,0,0],[0,0.77,0,0,0],[0,1,0,0,0],[0.25,0,0,0,0],[0.25,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.75,0,0,0,0],[0.75,1,0,0,0],[1,0,0,0,0],[1,0.27,0,0,0],[1,0.5,0,0,0],[1,0.77,0,0,0],[1,1,0,0,0]];" parent="0fknKg0I96SZaBarsdJD-6" vertex="1">
-          <mxGeometry x="10" y="50" width="80" height="50" as="geometry" />
+        <mxCell id="JJ14aypj55oh6TthJV8W-10" value="Лексический анализатор&lt;br&gt;(LexicalAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-58">
+          <mxGeometry x="240" y="40" width="95" height="50" as="geometry" />
         </mxCell>
         <mxCell id="ob3So-rM5bVcGHjbNZR2-1" value="Полезные команды Git" style="swimlane;" parent="1" vertex="1">
-          <mxGeometry x="690" y="800" width="960" height="1055" as="geometry" />
+          <mxGeometry x="1150" y="410" width="960" height="1055" as="geometry" />
         </mxCell>
         <mxCell id="ob3So-rM5bVcGHjbNZR2-3" value="&lt;span style=&quot;font-family: , &amp;#34;blinkmacsystemfont&amp;#34; , &amp;#34;roboto&amp;#34; , &amp;#34;helvetica neue&amp;#34; , &amp;#34;geneva&amp;#34; , &amp;#34;noto sans armenian&amp;#34; , &amp;#34;noto sans bengali&amp;#34; , &amp;#34;noto sans cherokee&amp;#34; , &amp;#34;noto sans devanagari&amp;#34; , &amp;#34;noto sans ethiopic&amp;#34; , &amp;#34;noto sans georgian&amp;#34; , &amp;#34;noto sans hebrew&amp;#34; , &amp;#34;noto sans kannada&amp;#34; , &amp;#34;noto sans khmer&amp;#34; , &amp;#34;noto sans lao&amp;#34; , &amp;#34;noto sans osmanya&amp;#34; , &amp;#34;noto sans tamil&amp;#34; , &amp;#34;noto sans telugu&amp;#34; , &amp;#34;noto sans thai&amp;#34; , &amp;#34;arial&amp;#34; , &amp;#34;tahoma&amp;#34; , &amp;#34;verdana&amp;#34; , sans-serif ; font-size: 13px ; text-align: left ; background-color: rgb(255 , 255 , 255)&quot;&gt;&lt;br&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="ob3So-rM5bVcGHjbNZR2-1" vertex="1">
           <mxGeometry x="160" y="35" width="20" height="20" as="geometry" />
@@ -154,19 +172,19 @@
         <mxCell id="qFc7p6ZR1PxSnkgHKNbJ-4" value="TextLink" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=1;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
           <mxGeometry x="940" y="160" width="75" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="2RiGxYoO24wWiqjHJsVi-1" value="Предложения от Андрея Бугрова" style="swimlane;" vertex="1" parent="1">
-          <mxGeometry x="380" y="130" width="330" height="200" as="geometry" />
+        <mxCell id="2RiGxYoO24wWiqjHJsVi-1" value="Предложения от Андрея Бугрова" style="swimlane;" parent="1" vertex="1">
+          <mxGeometry x="760" y="320" width="330" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="2RiGxYoO24wWiqjHJsVi-2" value="1. Использовать в блокировке от повторного включения&amp;nbsp;&lt;br&gt;#pragma once" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="2RiGxYoO24wWiqjHJsVi-1">
+        <mxCell id="2RiGxYoO24wWiqjHJsVi-2" value="1. Использовать в блокировке от повторного включения&amp;nbsp;&lt;br&gt;#pragma once" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="2RiGxYoO24wWiqjHJsVi-1" vertex="1">
           <mxGeometry y="25" width="330" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="2RiGxYoO24wWiqjHJsVi-3" value="2. Частично использовать разделение из прошлой лабы:&lt;br&gt;Я - класс исключений, Алексей - стек и постфикс" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="2RiGxYoO24wWiqjHJsVi-1">
+        <mxCell id="2RiGxYoO24wWiqjHJsVi-3" value="2. Частично использовать разделение из прошлой лабы:&lt;br&gt;Я - класс исключений, Алексей - стек и постфикс" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="2RiGxYoO24wWiqjHJsVi-1" vertex="1">
           <mxGeometry y="55" width="330" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="2RiGxYoO24wWiqjHJsVi-4" value="3. Если возможно, сделать абстрактный класс&lt;br&gt;&amp;nbsp;Анализатор, чтобы всё было единообразно" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="2RiGxYoO24wWiqjHJsVi-1">
+        <mxCell id="2RiGxYoO24wWiqjHJsVi-4" value="3. Если возможно, сделать абстрактный класс&lt;br&gt;&amp;nbsp;Анализатор, чтобы всё было единообразно" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="2RiGxYoO24wWiqjHJsVi-1" vertex="1">
           <mxGeometry x="30" y="85" width="270" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="2RiGxYoO24wWiqjHJsVi-9" value="4. Каждому достаётся по одному анализатору" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="2RiGxYoO24wWiqjHJsVi-1">
+        <mxCell id="2RiGxYoO24wWiqjHJsVi-9" value="4. Каждому достаётся по одному анализатору" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="2RiGxYoO24wWiqjHJsVi-1" vertex="1">
           <mxGeometry x="30" y="115" width="270" height="20" as="geometry" />
         </mxCell>
       </root>

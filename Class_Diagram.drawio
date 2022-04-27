@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-04-27T09:43:50.344Z" agent="5.0 (X11)" etag="w36FEHwayawrSZ0AfuqB" version="17.4.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-27T19:51:00.170Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36 Edg/100.0.1185.50" etag="Akg769-momUKPbgxNem-" version="17.4.6" type="github">
   <diagram name="Page-1" id="42789a77-a242-8287-6e28-9cd8cfd52e62">
-    <mxGraphModel dx="1624" dy="945" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1038" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -94,40 +94,43 @@
         <mxCell id="2RiGxYoO24wWiqjHJsVi-8" value="Класс-обработчик ошибок" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="lb1J8IbFt9z_0kmrgKfr-31" vertex="1">
           <mxGeometry x="20" y="70" width="160" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="JJ14aypj55oh6TthJV8W-1" value="Класс исключений&lt;br&gt;(EqException)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-31">
+        <mxCell id="JJ14aypj55oh6TthJV8W-1" value="Класс исключений&lt;br&gt;(EqException)" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-31" vertex="1">
           <mxGeometry x="40" y="180" width="110" height="50" as="geometry" />
         </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-75" value="Класс обработчик ошибок&lt;br&gt;(ErrorHandler)" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-31" vertex="1">
           <mxGeometry x="40" y="120" width="110" height="50" as="geometry" />
         </mxCell>
+        <mxCell id="JJ14aypj55oh6TthJV8W-10" value="Лексический анализатор&lt;br&gt;(LexicalAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-31" vertex="1">
+          <mxGeometry x="47.5" y="260" width="95" height="50" as="geometry" />
+        </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-49" value="Колесников Денис" style="swimlane;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="652.5" y="560" width="200" height="430" as="geometry" />
         </mxCell>
-        <mxCell id="JJ14aypj55oh6TthJV8W-5" value="main()" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-49">
+        <mxCell id="JJ14aypj55oh6TthJV8W-5" value="main()" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-49" vertex="1">
           <mxGeometry x="55" y="30" width="95" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="JJ14aypj55oh6TthJV8W-6" value="Интерфейс&lt;br&gt;(Interface)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-49">
+        <mxCell id="JJ14aypj55oh6TthJV8W-6" value="Интерфейс&lt;br&gt;(Interface)" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-49" vertex="1">
           <mxGeometry x="55.01" y="70" width="95" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="JJ14aypj55oh6TthJV8W-7" value="Семантический&lt;br&gt;анализатор&lt;br&gt;(SemanticAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-49">
+        <mxCell id="JJ14aypj55oh6TthJV8W-7" value="Семантический&lt;br&gt;анализатор&lt;br&gt;(SemanticAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-49" vertex="1">
           <mxGeometry x="46.88" y="120" width="111.25" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="JJ14aypj55oh6TthJV8W-8" value="HashTableList&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-49">
+        <mxCell id="JJ14aypj55oh6TthJV8W-8" value="HashTableList&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-49" vertex="1">
           <mxGeometry x="55.01" y="180" width="95" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="JJ14aypj55oh6TthJV8W-9" value="&lt;div&gt;Table&lt;/div&gt;&lt;div&gt;TableString&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-49">
+        <mxCell id="JJ14aypj55oh6TthJV8W-9" value="&lt;div&gt;Table&lt;/div&gt;&lt;div&gt;TableString&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-49" vertex="1">
           <mxGeometry x="51.25" y="290" width="102.5" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="JJ14aypj55oh6TthJV8W-15" value="List" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-49">
+        <mxCell id="JJ14aypj55oh6TthJV8W-15" value="List" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-49" vertex="1">
           <mxGeometry x="65.95" y="240" width="73.12" height="40" as="geometry" />
         </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-50" value="Цветков Алексей" style="swimlane;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="880" y="560" width="200" height="430" as="geometry" />
         </mxCell>
-        <mxCell id="JJ14aypj55oh6TthJV8W-13" value="Stack" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-50">
+        <mxCell id="JJ14aypj55oh6TthJV8W-13" value="Stack" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-50" vertex="1">
           <mxGeometry x="61.25" y="50" width="77.5" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="JJ14aypj55oh6TthJV8W-14" value="Postfix" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-50">
+        <mxCell id="JJ14aypj55oh6TthJV8W-14" value="Postfix" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-50" vertex="1">
           <mxGeometry x="61.25" y="100" width="77.5" height="30" as="geometry" />
         </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-58" value="Блоки" style="swimlane;" parent="1" vertex="1">
@@ -139,10 +142,7 @@
         <mxCell id="0fknKg0I96SZaBarsdJD-5" value="Иерархический&lt;br&gt;список&lt;br&gt;(TextLink)" style="rounded=0;whiteSpace=wrap;html=1;points=[[0,0,0,0,0],[0,0.23,0,0,0],[0,0.5,0,0,0],[0,0.77,0,0,0],[0,1,0,0,0],[0.25,0,0,0,0],[0.25,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.75,0,0,0,0],[0.75,1,0,0,0],[1,0,0,0,0],[1,0.27,0,0,0],[1,0.5,0,0,0],[1,0.77,0,0,0],[1,1,0,0,0]];" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1">
           <mxGeometry x="37.5" y="150" width="120" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="JJ14aypj55oh6TthJV8W-10" value="Лексический анализатор&lt;br&gt;(LexicalAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-58">
-          <mxGeometry x="240" y="40" width="95" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="JJ14aypj55oh6TthJV8W-16" value="" style="group" vertex="1" connectable="0" parent="lb1J8IbFt9z_0kmrgKfr-58">
+        <mxCell id="JJ14aypj55oh6TthJV8W-16" value="" style="group" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1" connectable="0">
           <mxGeometry x="45" y="30" width="105" height="100" as="geometry" />
         </mxCell>
         <mxCell id="0fknKg0I96SZaBarsdJD-1" value="Лексический анализатор&lt;br&gt;(LexicalAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" parent="JJ14aypj55oh6TthJV8W-16" vertex="1">
@@ -150,6 +150,9 @@
         </mxCell>
         <mxCell id="0fknKg0I96SZaBarsdJD-2" value="Синтакскический&lt;br&gt;анализатор&lt;br&gt;(SyntaxAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" parent="JJ14aypj55oh6TthJV8W-16" vertex="1">
           <mxGeometry y="50" width="105" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="aVb_YRPvU2v0dRB28oqB-1" value="Лексический анализатор&lt;br&gt;(LexicalAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-58">
+          <mxGeometry x="230" y="50" width="95" height="50" as="geometry" />
         </mxCell>
         <mxCell id="ob3So-rM5bVcGHjbNZR2-1" value="Полезные команды Git" style="swimlane;" parent="1" vertex="1">
           <mxGeometry x="1150" y="410" width="960" height="1055" as="geometry" />

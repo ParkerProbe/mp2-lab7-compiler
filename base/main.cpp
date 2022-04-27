@@ -5,22 +5,33 @@
 #include <new>
 #include <sys/types.h>
 #include "string.h"
+
+
+
 #include "compiler_config.h"
 #include "interface.h"
+#include "text_link.h"
+#include "eq_exception.h"
+#include "token.h"
+
 
 
 #define COMPILER_VERSION 0.1
 
+namespace Compiler_codes {
+    
+    enum return_codes
+    {
+        k_NO_ERROR,
+        k_SOURCE_FILE_ERROR,
+        k_MEMORY_ALLOC_ERROR,
+        k_LEXICAL_ANALYSIS_ERROR,
+        k_SYNTAX_ANALYSIS_ERROR,
+        k_INTERPRETATION_ERROR,
+        k_INTERNAL_ERROR
+    };
+}
 
-enum  return_codes
-{
-    k_NO_ERROR,
-    k_SOURCE_FILE_ERROR,
-    k_MEMORY_ALLOC_ERROR,
-    k_LEXICAL_ANALYSIS_ERROR,
-    k_SYNTAX_ANALYSIS_ERROR,
-    k_INTERPRETATION_ERROR,
-};
 
 
 
@@ -34,10 +45,10 @@ int main(int argc, char* argv[])
         
         std::ifstream* source_code = nullptr;
         
-        Interface interface;
-        // ErrorHandler* err = new ErrorHandler;
-        
-        // TextLinker* txt_link = new TextLinker;
+        ErrorHandler* err = new ErrorHandler;
+        Interface interface(err, &compl_conf);
+
+        TextLink<Token>* txt_link = new TextLink<Token>;
 
         /* 
         
@@ -46,15 +57,14 @@ int main(int argc, char* argv[])
         */ 
 
         source_code = new std::ifstream(argv[1]);
+        interface.set_path();
+
         for (int i = 2; i < argc; i++) {
             if (strcmp(argv[i] , "-l") == 0) {
                 compl_conf.lexer_only = true; 
             }
             if (strcmp(argv[i] , "-s") == 0) {
                 compl_conf.syntax_only = true; 
-            }
-            if (strcmp(argv[i] , "-g") == 0) {
-                compl_conf.gen_only = true; 
             }
             if (strcmp(argv[i] , "-v") == 0) {
                 compl_conf.pr_version = true;
@@ -71,7 +81,8 @@ int main(int argc, char* argv[])
         }
         
         if (source_code->fail()) {
-            return k_SOURCE_FILE_ERROR;
+            interface.error_file_dialog();
+            return Compiler_codes::k_SOURCE_FILE_ERROR;
         }
 
         /* 
@@ -84,7 +95,6 @@ int main(int argc, char* argv[])
         // (
         //     source_code,
         //     err,
-        //     lexer_only
         // );
         // if(lexer_only) {}
 
@@ -99,7 +109,6 @@ int main(int argc, char* argv[])
         // (
         //     txt_link,
         //     err,
-        //     syntax_only
         // );
 
         // if(syntax_only) {}
@@ -113,13 +122,15 @@ int main(int argc, char* argv[])
         // (
         //     txt_link,
         //     err,
-        //     gen_only
         // );
 
         source_code->close();
     }
     catch(std::bad_alloc& e) {
-        return k_MEMORY_ALLOC_ERROR;
+        return Compiler_codes::k_MEMORY_ALLOC_ERROR;
+    }
+    catch(EqException& internal_error) {
+        return Compiler_codes::k_INTERNAL_ERROR;
     }
 
 

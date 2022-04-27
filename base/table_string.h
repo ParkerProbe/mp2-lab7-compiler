@@ -4,41 +4,44 @@
 #include <ostream>
 #include <string>
 
-#include "polynom.h"
-
 using std::string;
 
+template <class T>
 class TableString;
 
+template <class T>
+class Table;
 
+template <class T>
+class HashTableList;
+
+template <class T>
 struct TableBody
 {
-    string poly_string; // строка полинома
-    Polynom* poly; // указатель на полином
-    TableBody() // конструктор по умолчанию
-        : poly_string(), poly(nullptr)
+    T* data;
+    TableBody()
+        :  data(nullptr)
     {}
-    TableBody(const Polynom& poly_) // конструктор преобразования полинома в тело записи
+    TableBody(const T& data_)
     {
-        poly = new Polynom(poly_);
-        poly_string = poly_.str();
+        data = new T(data_);
     }
 
     ~TableBody() = default;
 };
 
+template <class T>
 class TableString
 {
 private:
-    //private:
-    string key; // Ключ записи
-    TableBody body; // Тело записи
+    string key;
+    TableBody<T> body; 
 public:
-    TableString() // Конструктор по умолчанию 
+    TableString()
         :key("I"), body()
     {}
 
-    TableString(string key_, TableBody& body_) // Конструктор инициализации
+    TableString(string key_, TableBody<T>& body_)
         : key(key_), body(body_)
     {
         const int k_MAX_NAME = 16;
@@ -58,56 +61,49 @@ public:
         }
     }
 
-    TableString(const TableString& other) = default; // Конструктор копирования
-    ~TableString() = default; // Деструктор
+    TableString(const TableString& other) = default; 
+    ~TableString() = default;
 
-    TableString& operator=(const TableString& other) = default; // Оператор присваивания
+    TableString& operator=(const TableString& other) = default;
 
-    bool operator==(const TableString& other) // Оператор проверки на равенство
+    bool operator==(const TableString& other)
     {
         return key == other.key;
     }
-    bool operator!=(const TableString& other) // Оператор проверки на неравенство
+    bool operator!=(const TableString& other)
     {
         return key != other.key;
     }
 
-    bool operator<(const TableString& other) // Оператор "меньше"
+    bool operator<(const TableString& other)
     {
         return key < other.key;
     }
 
-    bool operator>(const TableString& other) // Оператор "больше"
+    bool operator>(const TableString& other)
     {
         return key > other.key;
     }
 
-    inline string get_key() const // Получение ключа
+    inline string get_key() const
     {
         return key;
     }
 
-    inline Polynom* get_polynom() const // Получение указателя на полином
+    inline T* get_polynom() const
     {
-        return body.poly;
+        return body.data;
     }
 
-    void print(std::ostream& os) const // Простая печать строки
+    void print(std::ostream& os) const
     {
         os << key << " " << body.poly_string << std::endl;
     }
 
     friend std::ostream& operator<<(std::ostream& os, const TableString* ts);
 
-    friend class ArrayTable;
-    friend class Table;
-    friend class HashTableList;
-    friend class HashTableDouble;
-    friend class HashTableDouble;
-    friend class Interface;
-    friend class ListTable;
-    friend class RedBlackTree;
-    friend class SortTable;
+    friend class Table<T>;
+    friend class HashTableList<T>;
 };
 
 

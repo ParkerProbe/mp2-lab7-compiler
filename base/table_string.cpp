@@ -1,5 +1,6 @@
 #include "table_string.h"
-std::ostream& operator<<(std::ostream& os, const TableString* ts)
+template <class T>
+std::ostream& operator<<(std::ostream& os, const TableString<T>* ts)
 {
     const char vert = 179, horiz = 196;
     const char left_up = 192, up = 193, rigth_up = 217;

@@ -1,9 +1,7 @@
-#ifndef _TABLE_H_
-#define _TABLE_H_
+#pragma once
 
-
-#include "polynom.h"
 #include "table_string.h"
+#include <iostream>
 #include <ostream>
 #include <string>
 
@@ -11,6 +9,7 @@
 
 using std::cout;
 
+template <class T>
 class Table
 {
 protected:
@@ -20,11 +19,11 @@ public:
     Table() : data_cnt(0) {}
     virtual ~Table() {}
 
-    virtual bool insert(const std::string& key, TableBody& data) = 0;
+    virtual bool insert(const std::string& key, TableBody<T>& data) = 0;
     virtual bool erase(const std::string& key) = 0;
     inline virtual bool is_full() const = 0;
-    virtual TableBody* find(const std::string& key) = 0;
-    virtual TableString* find_str(const std::string& key) = 0;
+    virtual TableBody<T>* find(const std::string& key) = 0;
+    virtual TableString<T>* find_str(const std::string& key) = 0;
 
 
     // HOW TO PRINT: print_header(); print other TableString's
@@ -75,7 +74,7 @@ public:
     virtual bool go_next() = 0;
 
     // Get value of current iterable record
-    inline virtual TableString* get_value() = 0;
+    inline virtual TableString<T>* get_value() = 0;
 
     inline virtual bool empty() const
     {
@@ -103,4 +102,3 @@ public:
 
 };
 
-#endif // _TABLE_H_

@@ -3,8 +3,8 @@
 #include "list.h"
 #include "table_string.h"
 
-
-unsigned int HashTableList::Hash(const std::string& key)
+template <class T>
+unsigned int HashTableList<T>::Hash(const std::string& key)
 {
     unsigned long hashval = 0;
     int len = key.length();
@@ -14,10 +14,11 @@ unsigned int HashTableList::Hash(const std::string& key)
     return hashval % size;
 }
 
-TableString* HashTableList::find_str(const std::string& key)
+template <class T>
+TableString<T>* HashTableList<T>::find_str(const std::string& key)
 {
     int index = Hash(key);
-    for (ListIterator<TableString*> it = table[index]->begin();
+    for (ListIterator<TableString<T>*> it = table[index]->begin();
         it != table[index]->end(); ++it)
     {
         if ((*it)->get_key() == key) {
@@ -28,9 +29,10 @@ TableString* HashTableList::find_str(const std::string& key)
     return nullptr;
 }
 
-TableBody* HashTableList::find(const std::string& key)
+template <class T>
+TableBody<T>* HashTableList<T>::find(const std::string& key)
 {
-    TableString* tmp = (*this).find_str(key);
+    TableString<T>* tmp = (*this).find_str(key);
     if (tmp == nullptr) {
         return nullptr;
     }
@@ -39,29 +41,29 @@ TableBody* HashTableList::find(const std::string& key)
     }
 }
 
-
-bool HashTableList::insert(const std::string& key, TableBody& data)
+template <class T>
+bool HashTableList<T>::insert(const std::string& key, TableBody<T>& data)
 {
     if (is_full()) {
         throw EqException(error_codes::k_OUT_OF_MEMORY);
     }
 
-    TableString* tmp = find_str(key);
+    TableString<T>* tmp = find_str(key);
     if (tmp != nullptr) {
         return false;
     }
     else {
         int index = Hash(key);
-        ListIterator<TableString*> it =  table[index]->begin();
-        TableString* tmp = new TableString(key, data);
+        ListIterator<TableString<T>*> it =  table[index]->begin();
+        TableString<T>* tmp = new TableString<T>(key, data);
         table[index]->insert(it, tmp);
-        data_cnt++;
+        this->data_cnt++;
     }
     return true;
 }
 
-
-bool HashTableList::erase(const std::string& key)
+template <class T>
+bool HashTableList<T>::erase(const std::string& key)
 {
     int index = Hash(key);
 
@@ -70,15 +72,16 @@ bool HashTableList::erase(const std::string& key)
     }
     else {
         table[index]->erase(curr_pos);
-        data_cnt--;
+        this->data_cnt--;
         return true;
     }
 }
 
-bool HashTableList::is_full() const
+template <class T>
+bool HashTableList<T>::is_full() const
 {
     try {
-        TableString* pNode = new TableString();
+        TableString<T>* pNode = new TableString<T>();
         delete pNode;
     }
     catch(...) {
@@ -88,12 +91,14 @@ bool HashTableList::is_full() const
     return false;
 }
 
-bool HashTableList::is_tab_ended() const
+template <class T>
+bool HashTableList<T>::is_tab_ended() const
 {
     return curr_index >= size;
 }
 
-bool HashTableList::reset()
+template <class T>
+bool HashTableList<T>::reset()
 {
     curr_pos = table[0]->begin();
     curr_index = 0;
@@ -101,7 +106,8 @@ bool HashTableList::reset()
     return is_tab_ended();
 }
 
-bool HashTableList::go_next()
+template <class T>
+bool HashTableList<T>::go_next()
 {
     if (is_tab_ended()) {
         return true;
@@ -128,9 +134,10 @@ bool HashTableList::go_next()
     return is_tab_ended();
 }
 
-bool HashTableList::set_current_pos(int pos)
+template <class T>
+bool HashTableList<T>::set_current_pos(int pos)
 {
-    if(!((pos > -1) && (pos < data_cnt))) {
+    if(!((pos > -1) && (pos < this->data_cnt))) {
         return false;
     }
 
@@ -146,7 +153,8 @@ bool HashTableList::set_current_pos(int pos)
     return true;
 }
 
-TableString*  HashTableList::get_value()
+template <class T>
+TableString<T>*  HashTableList<T>::get_value()
 {
     if (table[curr_index]->get_size() == 0) {
         return nullptr;
@@ -155,13 +163,14 @@ TableString*  HashTableList::get_value()
     return (*curr_pos);
 }
 
-int HashTableList::hash_string(const std::string &key)
+template <class T>
+int HashTableList<T>::hash_string(const std::string &key)
 {
     return Hash(key);
 }
 
-
-int HashTableList::get_current_pos() const
+template <class T>
+int HashTableList<T>::get_current_pos() const
 {
     return curr_pos_num;
 }

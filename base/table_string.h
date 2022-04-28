@@ -1,5 +1,4 @@
-#ifndef _TABLE_STRING_H_
-#define _TABLE_STRING_H_
+#pragma once
 
 #include <ostream>
 #include <string>
@@ -106,6 +105,3 @@ public:
     friend class HashTableList<T>;
 };
 
-
-
-#endif // 

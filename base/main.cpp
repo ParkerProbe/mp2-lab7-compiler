@@ -1,4 +1,5 @@
 #include <iostream>
+#include "semantic_analyzer.h"
 #include "vector"
 #include "string"
 #include <fstream>
@@ -13,6 +14,7 @@
 #include "text_link.h"
 #include "eq_exception.h"
 #include "token.h"
+#include "lexer.h"
 
 
 
@@ -46,7 +48,7 @@ int main(int argc, char* argv[])
         std::ifstream* source_code = nullptr;
         
         ErrorHandler* err = new ErrorHandler;
-        Interface interface(err, &compl_conf);
+        Interface interface(err, &compl_conf, COMPILER_VERSION);
 
         TextLink<Token>* txt_link = new TextLink<Token>;
 
@@ -57,7 +59,7 @@ int main(int argc, char* argv[])
         */ 
 
         source_code = new std::ifstream(argv[1]);
-        interface.set_path();
+        interface.set_path(argv[1]);
 
         for (int i = 2; i < argc; i++) {
             if (strcmp(argv[i] , "-l") == 0) {
@@ -112,6 +114,12 @@ int main(int argc, char* argv[])
         // );
 
         // if(syntax_only) {}
+
+        SemanticAnalyzer* sym_analyzer = new SemanticAnalyzer
+        (
+            txt_link,
+            err
+        );
 
         /* 
             Start Interpretation

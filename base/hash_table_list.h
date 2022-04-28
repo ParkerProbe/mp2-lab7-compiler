@@ -1,7 +1,4 @@
-
-   
-#ifndef __HASHTABLELIST_H__
-#define __HASHTABLELIST_H__
+#pragma once
 
 #include "table.h"
 #include "table_string.h"
@@ -54,5 +51,3 @@ public:
     int get_current_pos() const ;
     int hash_string(const std::string& key);
 };
-
-#endif

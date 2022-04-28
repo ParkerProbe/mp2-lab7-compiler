@@ -13,17 +13,17 @@ private:
 
     ErrorHandler *err;
     compiler_parameters* prs;
-    int compl_version;
+    double compl_version;
     std::string path;
 
     void help()
     {
         cout << "Team ADA Pascal compiler" << std::endl;
-	    cout << "Usage: pascal [-l] [-s] [--help] [-v] file_name" << std::endl;
-	    cout << "  -l - lexical analysis only" << std::endl;
-	    cout << "  -s - syntax analysis only" << std::endl;
-	    cout << "  -v - print program version" << std::endl;
-	    cout << "  --help - print help page" << std::endl;
+        cout << "Usage: pascal [-l] [-s] [--help] [-v] file_name" << std::endl;
+        cout << "  -l - lexical analysis only" << std::endl;
+        cout << "  -s - syntax analysis only" << std::endl;
+        cout << "  -v - print program version" << std::endl;
+        cout << "  --help - print help page" << std::endl;
     }
 
 public:
@@ -32,7 +32,7 @@ public:
     (
         ErrorHandler* _err,
         compiler_parameters* _prs,
-        int compl_version_
+        double compl_version_
     ) : err(_err), prs(_prs), compl_version(compl_version_)
     {}
 

@@ -24,20 +24,22 @@ class Token
         GREATER_RELATIONAL_OPERATOR, GREATER_OR_EQUALS_RELATIONAL_OPERATOR,
         PROGRAM_BLOCK, CONST_DEFINITION_KEYWORD, 
         DECLARATION_TYPE, VAR_DEFINITION_KEYWORD, COLON /* ':' */,
+        READ_FUNC, WRITE_FUNC
     };
 
 private:
         struct StringCoord
         {
-            int col, row;
+            int col;
+            // int row;
+            StringCoord(int col_ = -1) : col(col_)
+                {}
         };
 
         std::string text;
         LexemeType type;
 
         StringCoord position_in_string;
-
-
 
 public:
         

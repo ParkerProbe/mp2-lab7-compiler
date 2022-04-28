@@ -15,6 +15,8 @@
 #include "eq_exception.h"
 #include "token.h"
 #include "lexer.h"
+#include "hash_table_list.h"
+#include "symbol_table_rec.h"
 
 
 
@@ -34,11 +36,6 @@ namespace Compiler_codes {
     };
 }
 
-
-
-
-
-
 int main(int argc, char* argv[])
 {
     compiler_parameters compl_conf; 
@@ -51,6 +48,12 @@ int main(int argc, char* argv[])
         Interface interface(err, &compl_conf, COMPILER_VERSION);
 
         TextLink<Token>* txt_link = new TextLink<Token>;
+        
+        HashTableList<SymbolTableRecInt>* symbol_table_int;
+        HashTableList<SymbolTableRecDouble>* symbol_table_double;
+        
+
+
 
         /* 
         
@@ -87,11 +90,6 @@ int main(int argc, char* argv[])
             return Compiler_codes::k_SOURCE_FILE_ERROR;
         }
 
-        /* 
-        
-            Start Lexical Analysis 
-        
-        */
 
         // LexicalAnalyzer* lex_analyzer = new LexicalAnalyzer
         // (
@@ -99,13 +97,6 @@ int main(int argc, char* argv[])
         //     err,
         // );
         // if(lexer_only) {}
-
-                
-        /* 
-            
-            Start Syntax Analysis 
-
-        */
 
         // SyntaxAnalyzer* syn_analyzer = new SyntaxAnalyzer
         // (
@@ -118,13 +109,10 @@ int main(int argc, char* argv[])
         SemanticAnalyzer* sym_analyzer = new SemanticAnalyzer
         (
             txt_link,
+            symbol_table_int,
+            symbol_table_double,
             err
         );
-
-        /* 
-            Start Interpretation
-
-        */
 
         // Interpretator* intpr = new Interpretator
         // (

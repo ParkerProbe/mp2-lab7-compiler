@@ -19,7 +19,7 @@ class TText
 protected:
     TTextNode * pFirst;//корень дерева
     TTextNode * pCurrent;//текущее звено
-    TStack <TTextNode> Path;//стек траектории
+    Stack <TTextNode> Path;//стек траектории
 public:
     void go_first_node();// к первому звену
     void go_down_node();// к след. звену по  Down

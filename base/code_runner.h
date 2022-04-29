@@ -8,7 +8,7 @@
 #include "stack.h"
 #include <string>
 
-class SemanticAnalyzer
+class CodeRunner
 {
 
 private:
@@ -16,10 +16,10 @@ private:
     HashTableList<SymbolTableRecInt>* symbol_table_int;
     HashTableList<SymbolTableRecDouble>* symbol_table_double;
     TPostfix op();
-    TStack <string> tp;
+    Stack <string> tp;
 
 public:
-    SemanticAnalyzer
+    CodeRunner
     (
         TextLink<Token>* txt_link_,
         HashTableList<SymbolTableRecInt>* sti,

@@ -28,5 +28,5 @@ public:
         symbol_table_int(sti), symbol_table_double(std)
     {}
 
-    void Start(std::ifstream* source_code) {};
+    void Start() {};
 };

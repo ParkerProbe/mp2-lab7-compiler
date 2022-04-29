@@ -12,9 +12,9 @@ class TPostfix
 	string infix;
 	string postfix;
 	//operation stack
-	TStack <string> sc;
+	Stack <string> sc;
 	//operand stack
-	TStack <> sd;
+	Stack <> sd;
 	//to store the values of variables
 	double* p;
 public:

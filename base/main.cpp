@@ -9,7 +9,9 @@
 
 
 
-#include "compiler_config.h" #include "interface.h" #include "text_link.h"
+#include "compiler_config.h"
+#include "interface.h"
+#include "text_link.h"
 #include "eq_exception.h"
 #include "token.h"
 #include "lexer.h"

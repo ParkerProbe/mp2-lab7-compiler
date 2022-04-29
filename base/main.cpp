@@ -9,9 +9,7 @@
 
 
 
-#include "compiler_config.h"
-#include "interface.h"
-#include "text_link.h"
+#include "compiler_config.h" #include "interface.h" #include "text_link.h"
 #include "eq_exception.h"
 #include "token.h"
 #include "lexer.h"
@@ -60,7 +58,7 @@ int main(int argc, char* argv[])
 
         for (int i = 1; i < argc; i++) {
             if (strcmp(argv[i], "-p") == 0) {
-                if ( i + 1 < argc) {
+                if (i + 1 < argc) {
                     source_code = new std::ifstream(argv[i+1]);
                     interface.set_path(argv[1]);
                 }

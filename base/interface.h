@@ -19,10 +19,11 @@ private:
     void help()
     {
         cout << "Team ADA Pascal compiler" << std::endl;
-        cout << "Usage: pascal [-l] [-s] [--help] [-v] file_name" << std::endl;
+        cout << "Usage: pascal [-l] [-s] [--help] [-v] [-p] [path] file_name" << std::endl;
         cout << "  -l - lexical analysis only" << std::endl;
         cout << "  -s - syntax analysis only" << std::endl;
         cout << "  -v - print program version" << std::endl;
+        cout << "  -p path - set input file" << std::endl;
         cout << "  --help - print help page" << std::endl;
     }
 

@@ -20,12 +20,12 @@ public:
     SemanticAnalyzer
     (
         TextLink<Token>* txt_link_,
-        ErrorHandler* err_,
         HashTableList<SymbolTableRecInt>* sti,
-        HashTableList<SymbolTableRecDouble>* std
+        HashTableList<SymbolTableRecDouble>* std,
+        ErrorHandler* err_
     )
-    : txt_link(txt_link_), err(err_),
-    symbol_table_int(sti), symbol_table_double(std)
+    : txt_link(txt_link_), symbol_table_int(sti),
+    symbol_table_double(std), err(err_)
     {}
 
     void Start();

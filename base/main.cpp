@@ -51,9 +51,6 @@ int main(int argc, char* argv[])
         
         HashTableList<SymbolTableRecInt>* symbol_table_int;
         HashTableList<SymbolTableRecDouble>* symbol_table_double;
-        
-
-
 
         /* 
         
@@ -61,10 +58,17 @@ int main(int argc, char* argv[])
         
         */ 
 
-        source_code = new std::ifstream(argv[1]);
-        interface.set_path(argv[1]);
-
-        for (int i = 2; i < argc; i++) {
+        for (int i = 1; i < argc; i++) {
+            if (strcmp(argv[i], "-p") == 0) {
+                if ( i + 1 < argc) {
+                    source_code = new std::ifstream(argv[i+1]);
+                    interface.set_path(argv[1]);
+                }
+                else {
+                    interface.no_file_dialog();
+                    return Compiler_codes::k_SOURCE_FILE_ERROR;
+                }
+            }
             if (strcmp(argv[i] , "-l") == 0) {
                 compl_conf.lexer_only = true; 
             }
@@ -77,34 +81,29 @@ int main(int argc, char* argv[])
             if (strcmp(argv[i] , "--help") == 0) {
                 compl_conf.pr_help = true;
             }
-            
         }
-
         if (source_code == nullptr) {
             compl_conf.pr_path_dlg = true;
             interface.print_file_dialog(source_code);
         }
-        
         if (source_code->fail()) {
             interface.error_file_dialog();
             return Compiler_codes::k_SOURCE_FILE_ERROR;
         }
-
 
         // LexicalAnalyzer* lex_analyzer = new LexicalAnalyzer
         // (
         //     source_code,
         //     err,
         // );
-        // if(lexer_only) {}
+        if (compl_conf.lexer_only) {}
 
         // SyntaxAnalyzer* syn_analyzer = new SyntaxAnalyzer
         // (
         //     txt_link,
         //     err,
         // );
-
-        // if(syntax_only) {}
+        if (compl_conf.syntax_only) {}
 
         SemanticAnalyzer* sym_analyzer = new SemanticAnalyzer
         (
@@ -117,7 +116,9 @@ int main(int argc, char* argv[])
         // Interpretator* intpr = new Interpretator
         // (
         //     txt_link,
-        //     err,
+        //     symbol_table_int,
+        //     symbol_table_double,
+        //     err
         // );
 
         source_code->close();

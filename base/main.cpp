@@ -1,5 +1,4 @@
 #include <iostream>
-#include "semantic_analyzer.h"
 #include "vector"
 #include "string"
 #include <fstream>
@@ -17,6 +16,8 @@
 #include "lexer.h"
 #include "hash_table_list.h"
 #include "symbol_table_rec.h"
+#include "semantic_analyzer.h"
+#include "lexical_analyzer.h"
 
 
 
@@ -48,6 +49,7 @@ int main(int argc, char* argv[])
         Interface interface(err, &compl_conf, COMPILER_VERSION);
 
         TextLink<Token>* txt_link = new TextLink<Token>;
+        vector<Token>* lexems = new vector<Token>;
         
         HashTableList<SymbolTableRecInt>* symbol_table_int;
         HashTableList<SymbolTableRecDouble>* symbol_table_double;
@@ -91,11 +93,12 @@ int main(int argc, char* argv[])
             return Compiler_codes::k_SOURCE_FILE_ERROR;
         }
 
-        // LexicalAnalyzer* lex_analyzer = new LexicalAnalyzer
-        // (
-        //     source_code,
-        //     err,
-        // );
+        LexicalAnalyzer* lex_analyzer = new LexicalAnalyzer
+        (
+            source_code,
+            lexems,
+            err
+        );
         if (compl_conf.lexer_only) {}
 
         // SyntaxAnalyzer* syn_analyzer = new SyntaxAnalyzer

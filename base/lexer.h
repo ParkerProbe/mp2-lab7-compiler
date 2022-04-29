@@ -3,11 +3,12 @@
 #include <vector>
 #include "token.h"
 #include "error_handler.h"
-//May be LexicalAnalyzer
-class Lexer
+
+class LexicalAnalyzer
 {
-    std::vector<Token> tokens;
+    std::vector*<Token> tokens;
     ErrorHandler* eh;
+    std::ifstream* source_code = nullptr;
     //deletes all garbage from program
     //garbage is comments and gaps
     void del_garb();
@@ -15,8 +16,15 @@ class Lexer
 public:
     //runs del_garb then creates tokens;
     //can find errors in program;
-    Lexer(std::vector<std::string> prog, ErrorHandler* _eh);
+    LexicalAnalyzer
+    (
+      std::vector*<Token> tokens,
+      std::ifstream* source_code_,
+      ErrorHandler* eh_
+    ) : tokens(tokens_), eh(eh_), source_code(source_code_)
+    {}
+
     //returns vector of tokens
-    std::vector<Token> get_tokens();
+    // std::vector<Token> get_tokens();
 
 };

@@ -3,7 +3,6 @@
 #include <string>
 #include "stack.h"
 #include "table.h"
-#include "polynom.h"
 
 
 using namespace std;
@@ -13,9 +12,9 @@ class TPostfix
 	string infix;
 	string postfix;
 	//operation stack
-	Stack <string> sc;
+	TStack <string> sc;
 	//operand stack
-	Stack <Polynom> sd;
+	TStack <> sd;
 	//to store the values of variables
 	double* p;
 public:
@@ -35,6 +34,4 @@ public:
 	string get_infix() { return infix; }
 	string get_postfix() { return postfix; }
 	string to_postfix();
-	// gets variables and calculates following postfix form
-	Polynom calculate(Table** t);
 };

@@ -89,6 +89,7 @@
     <ClCompile Include="table_string.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="code_runner.h" />
     <ClInclude Include="compiler_config.h" />
     <ClInclude Include="eq_exception.h" />
     <ClInclude Include="lexer.h" />
@@ -96,6 +97,7 @@
     <ClInclude Include="postfix.h" />
     <ClInclude Include="semantic_analyzer.h" />
     <ClInclude Include="stack.h" />
+    <ClInclude Include="syntax_analyzer.h" />
     <ClInclude Include="table.h" />
     <ClInclude Include="table_string.h" />
     <ClInclude Include="text_link.h" />

@@ -62,9 +62,6 @@
     <ClInclude Include="table_string.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="lexer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="syntax_analyzer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -75,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="symbol_table_rec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lexical_analyzer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

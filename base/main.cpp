@@ -13,11 +13,12 @@
 #include "text_link.h"
 #include "eq_exception.h"
 #include "token.h"
-#include "lexer.h"
 #include "hash_table_list.h"
 #include "symbol_table_rec.h"
 #include "semantic_analyzer.h"
 #include "lexical_analyzer.h"
+#include "syntax_analyzer.h"
+#include "code_runner.h"
 
 
 
@@ -48,7 +49,7 @@ int main(int argc, char* argv[])
         ErrorHandler* err = new ErrorHandler;
         Interface interface(err, &compl_conf, COMPILER_VERSION);
 
-        TextLink<Token>* txt_link = new TextLink<Token>;
+        TText<Token>* txt_link = new TText<Token>;
         vector<Token>* lexems = new vector<Token>;
         
         HashTableList<SymbolTableRecInt>* symbol_table_int;
@@ -101,11 +102,12 @@ int main(int argc, char* argv[])
         );
         if (compl_conf.lexer_only) {}
 
-        // SyntaxAnalyzer* syn_analyzer = new SyntaxAnalyzer
-        // (
-        //     txt_link,
-        //     err,
-        // );
+         SyntaxAnalyzer* syn_analyzer = new SyntaxAnalyzer
+         (
+             txt_link,
+             lexems,
+             err
+         );
         if (compl_conf.syntax_only) {}
 
         SemanticAnalyzer* sym_analyzer = new SemanticAnalyzer
@@ -116,13 +118,13 @@ int main(int argc, char* argv[])
             err
         );
 
-        // Interpretator* intpr = new Interpretator
-        // (
-        //     txt_link,
-        //     symbol_table_int,
-        //     symbol_table_double,
-        //     err
-        // );
+         CodeRunner* runner = new CodeRunner
+         (
+             txt_link,
+             symbol_table_int,
+             symbol_table_double,
+             err
+         );
 
         source_code->close();
     }

@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 
 #include "text_link.h"
 #include "token.h"
@@ -10,22 +11,17 @@ class SyntaxAnalyzer
 {
 
 private:
-    TextLink<Token>* txt_link;
+    TText<Token>* txt_link;
     ErrorHandler* err;
-    HashTableList<SymbolTableRecInt>* symbol_table_int;
-    HashTableList<SymbolTableRecDouble>* symbol_table_double;
-
-
+    std::vector<Token>* tokens;
 public:
     SyntaxAnalyzer
     (
-        TextLink<Token>* txt_link_,
-        ErrorHandler* err_,
-        HashTableList<SymbolTableRecInt>* sti,
-        HashTableList<SymbolTableRecDouble>* std
+        TText<Token>* txt_link_,
+        std::vector<Token>* tokens_,
+        ErrorHandler* err_
     )
-        : txt_link(txt_link_), err(err_),
-        symbol_table_int(sti), symbol_table_double(std)
+        : txt_link(txt_link_), tokens(tokens_), err(err_)
     {}
 
     void Start() {};

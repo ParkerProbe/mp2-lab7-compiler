@@ -12,21 +12,23 @@ class CodeRunner
 {
 
 private:
-    TextLink<Token>* txt_link;
+    TText<Token>* txt_link;
     HashTableList<SymbolTableRecInt>* symbol_table_int;
     HashTableList<SymbolTableRecDouble>* symbol_table_double;
     TPostfix op();
     Stack <string> tp;
+    ErrorHandler* err;
 
 public:
     CodeRunner
     (
-        TextLink<Token>* txt_link_,
+        TText<Token>* txt_link_,
         HashTableList<SymbolTableRecInt>* sti,
-        HashTableList<SymbolTableRecDouble>* std
+        HashTableList<SymbolTableRecDouble>* std,
+        ErrorHandler* err_
     )
         : txt_link(txt_link_),
-        symbol_table_int(sti), symbol_table_double(std)
+        symbol_table_int(sti), symbol_table_double(std), err(err_)
     {}
 
     void Start();

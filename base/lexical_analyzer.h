@@ -6,7 +6,7 @@
 
 class LexicalAnalyzer
 {
-    std::vector*<Token> tokens;
+    std::vector<Token>* tokens;
     ErrorHandler* eh;
     std::ifstream* source_code = nullptr;
     //deletes all garbage from program
@@ -18,10 +18,10 @@ public:
     //can find errors in program;
     LexicalAnalyzer
     (
-      std::vector*<Token> tokens,
       std::ifstream* source_code_,
+      std::vector<Token>* tokens_,
       ErrorHandler* eh_
-    ) : tokens(tokens_), eh(eh_), source_code(source_code_)
+    ) : tokens(tokens_), source_code(source_code_), eh(eh_)
     {}
 
     //returns vector of tokens

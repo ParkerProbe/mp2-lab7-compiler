@@ -25,6 +25,7 @@ class Token
         PROGRAM_BLOCK, CONST_DEFINITION_KEYWORD, 
         DECLARATION_TYPE, VAR_DEFINITION_KEYWORD, COLON /* ':' */,
         READ_FUNC, WRITE_FUNC
+        /* ' ' - ?*/
     };
 
 private:

@@ -84,3 +84,80 @@ TEST(Compiler, test_file_1)
 {
 	EXPECT_EQ(StartCompiler("test_files/test1.pas"), 0);
 }
+
+TEST(Compiler, var_no_defined)
+{
+	EXPECT_EQ(StartCompiler("test_files/test_file_1_1.pas"), 4);
+}
+
+TEST(Compiler, no_semicolon_1)
+{
+	EXPECT_EQ(StartCompiler("test_files/test_file_1_1.pas"), 4);
+}
+
+TEST(Compiler, no_semicolon_2)
+{
+	EXPECT_EQ(StartCompiler("test_files/test_file_1_3.pas"), 4);
+}
+
+
+
+TEST(Compiler, conv_real_to_int)
+{
+	EXPECT_EQ(StartCompiler("test_files/test_file_1_4.pas"), 6);
+}
+
+TEST(Compiler, no_type_dicl)
+{
+	EXPECT_EQ(StartCompiler("test_files/test_file_1_5.pas"), 6);
+}
+
+TEST(Compiler, writeln_no_apostrophe)
+{
+	EXPECT_EQ(StartCompiler("test_files/test_file_1_6.pas"), 6);
+}
+
+TEST(Compiler, writeln_wrong_use)
+{
+	EXPECT_EQ(StartCompiler("test_files/test_file_1_7.pas"), 6);
+}
+
+TEST(Compiler, var_no_type)
+{
+	EXPECT_EQ(StartCompiler("test_files/test_file_1_8.pas"), 6);
+}
+
+TEST(Compiler, var_no_init)
+{
+	EXPECT_EQ(StartCompiler("test_files/test_file_1_9.pas"), 6);
+}
+
+TEST(Compiler, zero_division)
+{
+	EXPECT_EQ(StartCompiler("test_files/test_file_1_10.pas"), 6);
+}
+
+TEST(Compiler, sqrt_from_negative)
+{
+	EXPECT_EQ(StartCompiler("test_files/test_file_1_11.pas"), 6);
+}
+
+TEST(Compiler, if_begin_end_1)
+{
+	EXPECT_EQ(StartCompiler("test_files/test_file_1_12.pas"), 4);
+}
+
+TEST(Compiler, if_begin_end_2)
+{
+	EXPECT_EQ(StartCompiler("test_files/test_file_1_13.pas"), 4);
+}
+
+TEST(Compiler, if_brackets)
+{
+	EXPECT_EQ(StartCompiler("test_files/test_file_1_14.pas"), 4);
+}
+
+TEST(Compiler, real_comparison)
+{
+	EXPECT_EQ(StartCompiler("test_files/test_file_1_15.pas"), 4);
+}

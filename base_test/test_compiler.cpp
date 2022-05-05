@@ -15,8 +15,11 @@
 #include "code_runner.h"
 
 
-void StartCompiler(std::string path)
+int StartCompiler(std::string path)
 {
+	// 1 - Warning
+	// 2 - Critical
+
 	std::ifstream* source_code = nullptr;
 	ErrorHandler err;
 	TText<Token> txt_link;
@@ -32,6 +35,14 @@ void StartCompiler(std::string path)
 		&lexems,
 		&err
 	);
+	if (err.condition() == 1) {
+		source_code->close();
+		return 1;
+	}
+	if (err.condition() == 2) {
+		source_code->close();
+		return 2;
+	}
 
 	SyntaxAnalyzer* syn_analyzer = new SyntaxAnalyzer
 	(
@@ -39,6 +50,15 @@ void StartCompiler(std::string path)
 		&lexems,
 		&err
 	);
+	if (err.condition() == 1) {
+		source_code->close();
+		return 3;
+	}
+	if (err.condition() == 2) {
+		source_code->close();
+		return 4;
+	}
+
 	SemanticAnalyzer* sym_analyzer = new SemanticAnalyzer
 	(
 		&txt_link,
@@ -46,11 +66,21 @@ void StartCompiler(std::string path)
 		&symbol_table_double,
 		&err
 	);
+	if (err.condition() == 1) {
+		source_code->close();
+		return 5;
+	}
+	if (err.condition() == 2) {
+		source_code->close();
+		return 6;
+	}
+
 	source_code->close();
+	return 0;
 }
 
 
 TEST(Compiler, test_file_1)
 {
-	ASSERT_NO_THROW(StartCompiler("test_files/test1.pas"));
+	EXPECT_EQ(StartCompiler("test_files/test1.pas"), 0);
 }

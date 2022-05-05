@@ -33,14 +33,25 @@ void ErrorHandler::print_cur_error(size_t cur_pos)
     }
     cout << comment[errors[cur_pos].error_num] << '\n';
 }
+void ErrorHandler::print_errors()
+{
+    print_head();
+    for (size_t i = 0; i < size; i++) {
+        print_cur_error(i);
+    }
+}
 void ErrorHandler::push(size_t line_num, progError error_num, bool is_critical)
 {
     ErrorParam extra(line_num, error_num, is_critical);
+    push(extra);
+}
+void ErrorHandler::push(ErrorParam err)
+{
     if (size + 1 > buff) {
         ErrorParam* tmp = new ErrorParam[size];
         for (int i = 0; i < size; i++)
             tmp[i] = errors[i];
-        tmp[size] = extra;
+        tmp[size] = err;
         delete[] errors;
         buff = buff << 1;//multyplying buffer by two
         errors = new ErrorParam[buff];
@@ -51,14 +62,17 @@ void ErrorHandler::push(size_t line_num, progError error_num, bool is_critical)
         delete[]tmp;
     }
     else {
-        errors[size] = extra;
+        errors[size] = err;
         size++;
     }
 }
-void ErrorHandler::print_errors()
+
+int ErrorHandler::condition()
 {
-    print_head();
-    for (size_t i = 0; i < size; i++) {
-        print_cur_error(i);
-    }
+    if (size == 0)
+        return 0;
+    for (int i = 0; i < size; i++)
+        if (errors[i].is_critical)
+            return 2;
+    return 1;
 }

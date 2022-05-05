@@ -45,21 +45,29 @@ private:
     ErrorHandler(const ErrorHandler& eh) = delete;*/
 
     void print_head();
-    void print_errors();
     void print_cur_error(size_t cur_pos);
 
     int get_symbol_quan(size_t num);
 public:
+    //prints every cur error + head
+    void print_errors();
     ErrorHandler() :size(0), buff(4)//, cur_pos(0)
     {
         errors = new ErrorParam[buff];
     }
 
+
+    int condition();
     void push(size_t line_num, progError error_num, bool is_critical);
+    void push(ErrorParam err);
+
+    //only for tests
     const ErrorParam& operator[](size_t ind)
     {
         return errors[ind];
     }
+
+
     //void print_error(size_t ind, std::ostream& os)
     //{
     //    std::ostringstream ot;

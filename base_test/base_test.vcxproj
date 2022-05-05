@@ -120,6 +120,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="test_files\test1.pas" />
+    <None Include="test_files\test_file_1_1.pas" />
+    <None Include="test_files\test_file_1_10.pas" />
+    <None Include="test_files\test_file_1_11.pas" />
+    <None Include="test_files\test_file_1_12.pas" />
+    <None Include="test_files\test_file_1_13.pas" />
+    <None Include="test_files\test_file_1_14.pas" />
+    <None Include="test_files\test_file_1_15.pas" />
+    <None Include="test_files\test_file_1_2.pas" />
+    <None Include="test_files\test_file_1_3.pas" />
+    <None Include="test_files\test_file_1_4.pas" />
+    <None Include="test_files\test_file_1_5.pas" />
+    <None Include="test_files\test_file_1_6.pas" />
+    <None Include="test_files\test_file_1_7.pas" />
+    <None Include="test_files\test_file_1_8.pas" />
+    <None Include="test_files\test_file_1_9.pas" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

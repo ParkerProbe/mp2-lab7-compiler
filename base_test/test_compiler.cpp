@@ -100,8 +100,6 @@ TEST(Compiler, no_semicolon_2)
 	EXPECT_EQ(StartCompiler("test_files/test_file_1_3.pas"), 4);
 }
 
-
-
 TEST(Compiler, conv_real_to_int)
 {
 	EXPECT_EQ(StartCompiler("test_files/test_file_1_4.pas"), 6);

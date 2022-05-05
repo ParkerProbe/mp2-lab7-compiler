@@ -28,11 +28,11 @@ public:
     T get_node();// доступ текущего звена
     T set_node(T tmp);//замена содержимого текущего звена
     void ins_down_node(T tmp);//вставка на нижний подуровень 
-    void del_down_node(T tmp);//удаление на нижний подуровень 
+    void del_down_node();//удаление на нижний подуровень 
     void ins_next_node(T tmp);//вставка на тот же подуровень 
-    void del_next_node(T tmp);//удаление на тот же подуровень 
+    void del_next_node();//удаление на тот же подуровень 
     void ins_down_section(T tmp);//вставка нового подуровня
-    void del_down_section(T tmp);//удаление нового подуровня
+    void del_down_section();//удаление нового подуровня
     void ins_next_section(T tmp);//вставка на том же подуровне
-    void del_next_section(T tmp);//удаление на том же подуровня
+    void del_next_section();//удаление на том же подуровня
 };

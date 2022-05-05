@@ -34,4 +34,5 @@ public:
 	string get_infix() { return infix; }
 	string get_postfix() { return postfix; }
 	string to_postfix();
+	double calculate(Table * tmp);
 };

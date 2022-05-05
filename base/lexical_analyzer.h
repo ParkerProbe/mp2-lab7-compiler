@@ -23,7 +23,6 @@ public:
       ErrorHandler* eh_
     ) : tokens(tokens_), source_code(source_code_), eh(eh_)
     {}
-
     //returns vector of tokens
     // std::vector<Token> get_tokens();
 

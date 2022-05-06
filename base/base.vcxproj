@@ -84,6 +84,7 @@
   <ItemGroup>
     <ClCompile Include="error_handler.cpp" />
     <ClCompile Include="error_handler.h" />
+    <ClCompile Include="lexical_analyzer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="postfix.cpp" />
     <ClCompile Include="table_string.cpp" />

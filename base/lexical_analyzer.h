@@ -3,7 +3,8 @@
 #include <vector>
 #include "token.h"
 #include "error_handler.h"
-
+#include <string>
+#include <iostream>
 class LexicalAnalyzer
 {
     std::vector<Token>* tokens;

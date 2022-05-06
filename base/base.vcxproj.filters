@@ -30,6 +30,9 @@
     <ClCompile Include="table_string.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="lexical_analyzer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stack.h">

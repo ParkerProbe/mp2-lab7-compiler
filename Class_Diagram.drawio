@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-04-27T19:51:00.170Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36 Edg/100.0.1185.50" etag="Akg769-momUKPbgxNem-" version="17.4.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-05-06T12:20:53.309Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36 Edg/101.0.1210.32" etag="sF4jX8Zj1_PkjA-e04Zz" version="18.0.1" type="github">
   <diagram name="Page-1" id="42789a77-a242-8287-6e28-9cd8cfd52e62">
     <mxGraphModel dx="1038" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" background="none" math="0" shadow="0">
       <root>
@@ -151,7 +151,7 @@
         <mxCell id="0fknKg0I96SZaBarsdJD-2" value="Синтакскический&lt;br&gt;анализатор&lt;br&gt;(SyntaxAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" parent="JJ14aypj55oh6TthJV8W-16" vertex="1">
           <mxGeometry y="50" width="105" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="aVb_YRPvU2v0dRB28oqB-1" value="Лексический анализатор&lt;br&gt;(LexicalAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-58">
+        <mxCell id="aVb_YRPvU2v0dRB28oqB-1" value="Лексический анализатор&lt;br&gt;(LexicalAnalyzer)" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1">
           <mxGeometry x="230" y="50" width="95" height="50" as="geometry" />
         </mxCell>
         <mxCell id="ob3So-rM5bVcGHjbNZR2-1" value="Полезные команды Git" style="swimlane;" parent="1" vertex="1">
@@ -189,6 +189,9 @@
         </mxCell>
         <mxCell id="2RiGxYoO24wWiqjHJsVi-9" value="4. Каждому достаётся по одному анализатору" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="2RiGxYoO24wWiqjHJsVi-1" vertex="1">
           <mxGeometry x="30" y="115" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="-QRkZu0fPuvnNcLMefd_-1" value="&lt;div&gt;Конвейер действий компиляции:&lt;/div&gt;&lt;div&gt;1. Получили аргументы в main. Получаем путь до файла расширения .pas&lt;/div&gt;&lt;div&gt;2. Лексический анализатор:&lt;/div&gt;&lt;div&gt;Отделяет каждую лексему (в выражении if(a&amp;gt;b) лексемы: if, (, a, &amp;gt;, ) ).&lt;/div&gt;&lt;div&gt;Убирает комментарии, все пробелы и разделители, приводит к единому регистру (к строчным буквам)&lt;/div&gt;&lt;div&gt;Все лексемы кладёт в вектор&lt;/div&gt;&lt;div&gt;Переда&lt;/div&gt;&lt;div&gt;3. Синтаксический анализатор:&lt;/div&gt;&lt;div&gt;Проходит по вектору, конструируя иерархический список&lt;/div&gt;&lt;div&gt;Если есть лишние или недостающие лексемы, передаёт ошибку&lt;/div&gt;&lt;div&gt;4. Семантический анализатор:&amp;nbsp;&lt;/div&gt;&lt;div&gt;5. Исполнитель кода:&amp;nbsp;&lt;/div&gt;&lt;div&gt;Проход&amp;nbsp;&amp;nbsp;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="240" y="40" width="480" height="480" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

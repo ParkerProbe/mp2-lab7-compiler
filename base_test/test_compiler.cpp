@@ -1,8 +1,7 @@
-#include "stack.h"
-
 #include <gtest.h>
 
 #include "compiler_config.h"
+#include "stack.h"
 #include "interface.h"
 #include "text_link.h"
 #include "eq_exception.h"
@@ -13,23 +12,21 @@
 #include "lexical_analyzer.h"
 #include "syntax_analyzer.h"
 #include "code_runner.h"
+#include "symbol_table_rec.h"
+
 
 
 int StartCompiler(std::string path)
 {
-	// 1 - Warning
-	// 2 - Critical
-
 	std::ifstream* source_code = nullptr;
 	ErrorHandler err;
 	TText<Token> txt_link;
 	vector<Token> lexems;
 	HashTableList<SymbolTableRecInt> symbol_table_int;
 	HashTableList<SymbolTableRecDouble> symbol_table_double;
-
 	source_code = new std::ifstream(path);
 
-	LexicalAnalyzer* lex_analyzer = new LexicalAnalyzer
+	LexicalAnalyzer lex_analyzer
 	(
 		source_code,
 		&lexems,
@@ -44,7 +41,7 @@ int StartCompiler(std::string path)
 		return 2;
 	}
 
-	SyntaxAnalyzer* syn_analyzer = new SyntaxAnalyzer
+	SyntaxAnalyzer syn_analyzer  
 	(
 		&txt_link,
 		&lexems,
@@ -59,7 +56,7 @@ int StartCompiler(std::string path)
 		return 4;
 	}
 
-	SemanticAnalyzer* sym_analyzer = new SemanticAnalyzer
+	SemanticAnalyzer sym_analyzer
 	(
 		&txt_link,
 		&symbol_table_int,
@@ -80,7 +77,7 @@ int StartCompiler(std::string path)
 }
 
 
-TEST(Compiler, test_file_1)
+TEST(Compiler, correct_code)
 {
 	EXPECT_EQ(StartCompiler("test_files/test1.pas"), 0);
 }

@@ -75,9 +75,6 @@
     <ClCompile Include="test_textlink.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test_code_runner.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\base\list_table.h">

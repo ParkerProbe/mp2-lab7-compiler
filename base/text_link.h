@@ -6,9 +6,9 @@ class TTextNode
 {
 protected:
     T content;
-    TextNode *pNext, *pDown;
+    TTextNode *pNext, *pDown;
 public:
-    TextNode(T s = NULL, TextNode* next = NULL, TextNode* down = NULL);
+    TextNode(TextNode* next = NULL, TextNode* down = NULL);
     TextNode* get_next() { return pNext; }
     TextNode* get_down() { return pDown; }
 

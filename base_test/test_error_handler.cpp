@@ -18,7 +18,7 @@ TEST(ErrorHandler, can_return_errors)
     EXPECT_EQ(ep, eh[0]);
 }
 
-TEST(ErrorHandler, can_create_exception_by_error_codes)
+/*TEST(ErrorHandler, can_create_exception_by_error_codes)
 {
     ASSERT_NO_THROW(ErrorHandler eh(progError::k_SUCCESS));
 }
@@ -31,4 +31,4 @@ TEST(ErrorHandler, can_error_comment)
 {
     ErrorHandler eh(progError::k_UNDEFINED_ERROR);
     EXPECT_EQ("UNDEFINED ERROR", eh.get_comment());
-}
+}*/

@@ -8,11 +8,14 @@ using std::cout;
 /// 1. PRINT_CUR_ERROR() IN CPP
 /// 2. PRINT_ERRORS() IN CPP USING PRINT CUR_ERRORS
 
-#define k_ERROR_HANDLER_MAX 4
+#define k_ERROR_HANDLER_MAX 6
 enum progError
 {
-    k_SUCCESS, // NO ERROR
-    k_UNEXPECTED_TERMINATION_OF_OPERATOR, // ABSENCE OF ; OR UNEXPECTED TRANSITION TO A NEW LINE OR ABSENCE OF " IN STRING
+    //k_SUCCESS, // NO ERROR
+    k_UNEXPECTED_TERMINATION_OF_STRING,
+    k_UNEXPECTED_TERMINATION_OF_OPERATOR, // ABSENCE OF ; OR UNEXPECTED TRANSITION TO A NEW LINE OR ABSENCE OF ' IN STRING
+    k_ENDLESS_COMMENT,
+    k_INCORRECT_TABULATION,
     k_TOO_MANY_ARGUMENTS,
     k_UNDEFINED_ERROR
 
@@ -26,7 +29,7 @@ struct ErrorParam
     // flag. if critical - is error, not - warning
     bool is_critical;
     ErrorParam(size_t _line_num = 0, progError _error_num = 
-        progError::k_SUCCESS, bool _is_critical = false): line_num(_line_num),
+        progError::k_UNDEFINED_ERROR, bool _is_critical = false): line_num(_line_num),
         error_num(_error_num),is_critical(_is_critical)
     {}
 };
@@ -38,8 +41,10 @@ private:
     size_t size;
     size_t buff;
    // size_t cur_pos;
-    const std::string comment[k_ERROR_HANDLER_MAX] = { "SUCCESS", 
-        "UNEXPECTED TERMINATION OF OPERATOR", "TOO MANY ARGUMENTS", "UNDEFINED ERROR" };
+    const std::string comment[k_ERROR_HANDLER_MAX] = {
+        "UNEXPECTED TERMINATION OF STRING", 
+        "UNEXPECTED TERMINATION OF OPERATOR", "ENDLESS COMMENT", 
+        "INCORRECT TABULATION", "TOO MANY ARGUMENTS", "UNDEFINED ERROR" };
 
    /* ErrorHandler& operator=(const ErrorHandler& eh) = delete;
     ErrorHandler(const ErrorHandler& eh) = delete;*/

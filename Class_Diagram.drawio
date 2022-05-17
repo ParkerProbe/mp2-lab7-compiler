@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-05-10T12:26:57.545Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36 Edg/101.0.1210.39" etag="1CdeTqQdZli4HQyaZtip" version="18.0.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-05-17T15:14:46.242Z" agent="5.0 (Windows)" etag="0QxxVe5Hl7dkcRUENyq0" version="18.0.3" type="github">
   <diagram name="Page-1" id="42789a77-a242-8287-6e28-9cd8cfd52e62">
-    <mxGraphModel dx="1038" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1094" dy="578" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -83,7 +83,7 @@
           <mxGeometry x="15" y="80" width="270" height="20" as="geometry" />
         </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-31" value="Бугров Андрей" style="swimlane;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="420" y="560" width="200" height="430" as="geometry" />
+          <mxGeometry x="419" y="1033" width="201" height="437" as="geometry" />
         </mxCell>
         <mxCell id="JJ14aypj55oh6TthJV8W-1" value="Класс исключений&lt;br&gt;(EqException)" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-31" vertex="1">
           <mxGeometry x="40" y="180" width="110" height="50" as="geometry" />
@@ -98,7 +98,7 @@
           <mxGeometry x="57.5" y="50" width="75" height="50" as="geometry" />
         </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-49" value="Колесников Денис" style="swimlane;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
-          <mxGeometry x="652.5" y="560" width="200" height="430" as="geometry" />
+          <mxGeometry x="651.5" y="1033" width="198.5" height="437" as="geometry" />
         </mxCell>
         <mxCell id="JJ14aypj55oh6TthJV8W-5" value="main()" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-49" vertex="1">
           <mxGeometry x="55" y="30" width="95" height="30" as="geometry" />
@@ -119,7 +119,7 @@
           <mxGeometry x="65.95" y="240" width="73.12" height="40" as="geometry" />
         </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-50" value="Цветков Алексей" style="swimlane;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
-          <mxGeometry x="880" y="560" width="200" height="430" as="geometry" />
+          <mxGeometry x="879" y="1033" width="201" height="437" as="geometry" />
         </mxCell>
         <mxCell id="JJ14aypj55oh6TthJV8W-13" value="Stack" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-50" vertex="1">
           <mxGeometry x="61.25" y="50" width="77.5" height="30" as="geometry" />
@@ -134,13 +134,13 @@
           <mxGeometry x="40" y="230" width="120" height="50" as="geometry" />
         </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-58" value="Блоки" style="swimlane;" parent="1" vertex="1">
-          <mxGeometry x="20" y="560" width="370" height="430" as="geometry" />
+          <mxGeometry x="19" y="1033" width="371" height="437" as="geometry" />
         </mxCell>
         <mxCell id="0fknKg0I96SZaBarsdJD-9" value="Исполнитель кода&lt;br&gt;&lt;div&gt;&lt;span&gt;&amp;nbsp; &amp;nbsp;(&lt;/span&gt;CodeRunner&lt;span&gt;)&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="lb1J8IbFt9z_0kmrgKfr-58" vertex="1">
           <mxGeometry x="40" y="220" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="ob3So-rM5bVcGHjbNZR2-1" value="Полезные команды Git" style="swimlane;" parent="1" vertex="1">
-          <mxGeometry x="1150" y="410" width="960" height="1055" as="geometry" />
+          <mxGeometry x="1150" y="410" width="960" height="1060" as="geometry" />
         </mxCell>
         <mxCell id="ob3So-rM5bVcGHjbNZR2-3" value="&lt;span style=&quot;font-family: , &amp;#34;blinkmacsystemfont&amp;#34; , &amp;#34;roboto&amp;#34; , &amp;#34;helvetica neue&amp;#34; , &amp;#34;geneva&amp;#34; , &amp;#34;noto sans armenian&amp;#34; , &amp;#34;noto sans bengali&amp;#34; , &amp;#34;noto sans cherokee&amp;#34; , &amp;#34;noto sans devanagari&amp;#34; , &amp;#34;noto sans ethiopic&amp;#34; , &amp;#34;noto sans georgian&amp;#34; , &amp;#34;noto sans hebrew&amp;#34; , &amp;#34;noto sans kannada&amp;#34; , &amp;#34;noto sans khmer&amp;#34; , &amp;#34;noto sans lao&amp;#34; , &amp;#34;noto sans osmanya&amp;#34; , &amp;#34;noto sans tamil&amp;#34; , &amp;#34;noto sans telugu&amp;#34; , &amp;#34;noto sans thai&amp;#34; , &amp;#34;arial&amp;#34; , &amp;#34;tahoma&amp;#34; , &amp;#34;verdana&amp;#34; , sans-serif ; font-size: 13px ; text-align: left ; background-color: rgb(255 , 255 , 255)&quot;&gt;&lt;br&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="ob3So-rM5bVcGHjbNZR2-1" vertex="1">
           <mxGeometry x="160" y="35" width="20" height="20" as="geometry" />
@@ -149,7 +149,7 @@
           <mxGeometry x="9" y="35" width="940" height="1020" as="geometry" />
         </mxCell>
         <mxCell id="2RiGxYoO24wWiqjHJsVi-1" value="Предложения от Андрея Бугрова" style="swimlane;" parent="1" vertex="1">
-          <mxGeometry x="760" y="320" width="330" height="200" as="geometry" />
+          <mxGeometry x="740" y="20" width="330" height="200" as="geometry" />
         </mxCell>
         <mxCell id="2RiGxYoO24wWiqjHJsVi-2" value="1. Использовать в блокировке от повторного включения&amp;nbsp;&lt;br&gt;#pragma once" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="2RiGxYoO24wWiqjHJsVi-1" vertex="1">
           <mxGeometry y="25" width="330" height="30" as="geometry" />
@@ -160,8 +160,8 @@
         <mxCell id="2RiGxYoO24wWiqjHJsVi-9" value="4. Каждому достаётся по одному анализатору" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="2RiGxYoO24wWiqjHJsVi-1" vertex="1">
           <mxGeometry x="30" y="115" width="270" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="-QRkZu0fPuvnNcLMefd_-1" value="&lt;div&gt;Конвейер действий компиляции:&lt;/div&gt;&lt;div&gt;1. Получили аргументы в main. Получаем путь до файла расширения .pas&lt;/div&gt;&lt;div&gt;2. Лексический анализатор:&lt;/div&gt;&lt;div&gt;Отделяет каждую лексему (в выражении if(a&amp;gt;b) лексемы: if, (, a, &amp;gt;, ) ).&lt;/div&gt;&lt;div&gt;Убирает комментарии, все пробелы и разделители, приводит к единому регистру (к строчным буквам). В write не приводит к единому регистру. В конце программы ставит токен ENDOFFILE, означающий конец программы.&lt;/div&gt;&lt;div&gt;Все лексемы кладёт в вектор токенов.&lt;/div&gt;&lt;div&gt;3. Синтаксический анализатор:&lt;/div&gt;&lt;div&gt;Проходит по вектору, конструируя иерархический список, пока не встретит токен&amp;nbsp;&lt;/div&gt;ENDOFFILE. Пример иерархического дерева:&amp;nbsp;&lt;a href=&quot;https://github.com/4udoman/mp2-lab7-compiler/blob/main/data_structures/binaryTree.h&quot;&gt;mp2-lab7-compiler/binaryTree.h at main · 4udoman/mp2-lab7-compiler (github.com)&lt;/a&gt;. Сильно творчески переработать&lt;div&gt;Если есть лишние, недостающие или ошибочные лексемы, передаёт ошибку.&lt;/div&gt;&lt;div&gt;4. Семантический анализатор:&amp;nbsp;&lt;/div&gt;&lt;div&gt;Проходит по списку, создавая таблицу переменных, констант. Формирует связи между участками кода.&amp;nbsp;&lt;/div&gt;&lt;div&gt;5. Исполнитель кода:&amp;nbsp;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
-          <mxGeometry x="240" y="40" width="480" height="480" as="geometry" />
+        <mxCell id="-QRkZu0fPuvnNcLMefd_-1" value="&lt;div style=&quot;font-size: 15px;&quot;&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;Конвейер действий компиляции:&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 15px;&quot;&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;b&gt;1. Получили аргументы в main. Получаем путь до файла расширения .pas&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;b&gt;2. Лексический анализатор:&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;Отделяет каждую лексему (в выражении if(a&amp;gt;b) лексемы: if, (, a, &amp;gt;, ) ).&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;Убирает комментарии, все пробелы и разделители, приводит к единому регистру (к строчным буквам). В write не приводит к единому регистру. В конце программы ставит токен ENDOFFILE, означающий конец программы.&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;Все лексемы кладёт в вектор токенов.&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;b&gt;3. Синтаксический анализатор:&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;Проходит по вектору, конструируя иерархический список, пока не встретит токен&amp;nbsp;&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;ENDOFFILE. Пример иерархического дерева:&amp;nbsp;&lt;a href=&quot;https://github.com/4udoman/mp2-lab7-compiler/blob/main/data_structures/binaryTree.h&quot;&gt;mp2-lab7-compiler/binaryTree.h at main · 4udoman/mp2-lab7-compiler (github.com)&lt;/a&gt;. Сильно творчески переработать&lt;/font&gt;&lt;/p&gt;&lt;div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;Если есть лишние, недостающие или ошибочные лексемы, передаёт ошибку.&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;b&gt;4. Семантический анализатор:&amp;nbsp;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;&amp;nbsp;Выполняет проверки на: &lt;/font&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;- Несоответствие типов&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;- Необъявлённые переменные&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;- Проверка смысловых норм языков программирования:&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;- каждая переменная или константа должна хотя бы один раз использоваться в программе;&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;- каждая переменная должна быть определена до ее первого использования при любом ходе выполнения программы&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;- Проверка типов операндов операций&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;Алгоритм&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;1. Разрешение имени/символа&lt;/font&gt;&lt;/p&gt;&lt;div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;Анализатор проходит по всем блокам кода в функциях и т.п. и разрешает их — то есть, находит символы, требующие разрешения.&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;2. Выведение типов &lt;/font&gt;&lt;/p&gt;&lt;div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;Анализатор проходит через все переменные и выводит их типы.&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;3. Проход на изменяемость переменных &lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;Анализатор проходит по всем блокам и функциям и проверяет, что их «переменные корректны», то есть мы не меняем то, что не следует.&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;4. Проверка типов операндов операций&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;Автоматически не выполняет приведение типов. Требуется полное соответствие типов. &lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;5. Заполнение таблицы переменных&lt;/font&gt;&lt;/p&gt;&lt;div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;b&gt;5. Исполнитель кода:&amp;nbsp;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="230" width="490" height="970" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

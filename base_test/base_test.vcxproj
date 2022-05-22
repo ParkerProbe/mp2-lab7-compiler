@@ -122,7 +122,6 @@
   <ItemGroup>
     <None Include="test_files\test1.pas" />
     <None Include="test_files\test_file_1_1.pas" />
-    <None Include="test_files\test_file_1_10.pas" />
     <None Include="test_files\test_file_1_11.pas" />
     <None Include="test_files\test_file_1_12.pas" />
     <None Include="test_files\test_file_1_13.pas" />

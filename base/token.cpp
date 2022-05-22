@@ -7,3 +7,7 @@ std::string Token::get_text() const
 {
     return text;
 }
+Token::LexemeType Token::get_type() const
+{
+    return type;
+}

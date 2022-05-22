@@ -6,6 +6,25 @@ void LexicalAnalyzer::del_garb()
         'M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' };
     const char small[] = { 'a','b','c','d','e','f','g','h','i','j','k','l',
        'm','n','o','p','q','r','s','t','u','v','w','x','y','z' };
+
+
+    //const int n_op = 10;
+    //const string op[n_op] = { "+", "-", "*", "/", "div","mod","fdiv", "while","if","else" };
+    //const int n_keywords = 5;
+    //const string keywords[n_keywords] = { "program","begin","end","var","const" };
+    //const int n_logic_op = 8;
+    //const string logic_op[n_logic_op] = { "and","or", ">","<",">=","<=","<>","=" };
+    //const string symbols[] = { "+","-","*","/",";" };
+
+    //const int n_smalls = 11;
+    ////up to 4-th elem
+    //const char smalls[n_smalls] = { '+','-','*','/',';','{','}',':',' ','_','.' };
+    //const int n_letters = 26;
+    //const char letters[n_letters] = { 'a','b','c','d','e','f','g','h','i','j','k','l',
+    //   'm','n','o','p','q','r','s','t','u','v','w','x','y','z' };
+
+    std::string p = "";
+
     std::string str;
     int counter = 1;
     while (*source_code)
@@ -30,16 +49,17 @@ void LexicalAnalyzer::del_garb()
             //
             //// end of strange thing
 
-            //if this is an expression in WRITELN
+            // Big letters become small letters
             for (int i = 0; i < 26; i++) {
                 if (*it == big[i]) {
                     *it = small[i];
                     goto next_cycle;
                 }
             }
+            //if this is an expression in WRITELN
             if (*it == '\'') {
-                do {                  
-                    ++it;
+                do {
+                    it = str.erase(it);
                     if (it == str.end()) {
                         ErrorParam ep(counter, progError::k_UNEXPECTED_TERMINATION_OF_STRING, true);
                         eh->push(ep);
@@ -50,15 +70,19 @@ void LexicalAnalyzer::del_garb()
             else
                 if (*it == '{') {
                     while (*it != '}')
-                    {                      
+                    {
                         it = str.erase(it);
                         if (it == str.end()) {
-                            ErrorParam ep(counter, progError::k_ENDLESS_COMMENT, true);
+                            ErrorParam ep(counter, progError::k_ENDLESS_ONE_LINE_COMMENT, true);
                             eh->push(ep);
                             break;
                         }
                     }
                 }
+                else
+                    if (*it == '}') {
+                        ErrorParam ep(counter, progError::k_FIRST_PART_OF_PAIR_IS_MISSED, true);
+                    }
             next_cycle:
         }
         plain_code.push_back(str);
@@ -71,29 +95,51 @@ void LexicalAnalyzer::create_tokens()
   //  const char ch_op[] = { '+','-','*','/' };
     const int n_op = 10;
     const string op[n_op] = { "+", "-", "*", "/", "div","mod","fdiv", "while","if","else" };
-    const int n_keywords = 5;
-    const string keywords[n_keywords] = { "program","begin","end","var","const" };
+    const int n_keywords = 6;
+    const string keywords[n_keywords] = { "program","begin","end","var","const", "end" };
     const int n_logic_op = 8;
     const string logic_op[n_logic_op] = { "and","or", ">","<",">=","<=","<>","=" };
     const string symbols[] = { "+","-","*","/",";" };
 
     const int n_smalls = 11;
     //up to 4-th elem
-    const char smalls[n_smalls] = { '+','-','*','/',';','{','}',':',' ','_','.' };
+    const char smalls[n_smalls] = { '+','-','*','/',';',' ',':','_','.' };
     const int n_letters = 26;
     const char letters[n_letters] = { 'a','b','c','d','e','f','g','h','i','j','k','l',
        'm','n','o','p','q','r','s','t','u','v','w','x','y','z' };
+    /// <summary>
+    /// Стратегия - каждую строку накопление до пробела слова. 
+    /// Это слово анализируется на предмет совпадения с доступными
+    /// Если анализ не дал результатов, посылаем ошибку непонятное ключевое слово
+    /// </summary>
+    string tmp = "";
     for (string str : plain_code) {
         for (char c : str) {
            for(int i=0;i<n_smalls;i++)
                if (smalls[i] == c) {
-                   if (c == ' ') {
-                       break;
-                   }
-                   else
-                       if (i < 4) {
-//                           tokens->push_back(symbols[i]);
+                   switch (c) {
+                   case ' ': {
+                       if (!tmp.empty()) {
+                           //add token;
                        }
+                   }
+                   case ';': {
+
+                       // create token of ;
+                       // do not add it;
+                   }
+                   case '+':case '*':case '/': case '-': {
+                       //create new token and add it;
+                   }
+                   }
+//                   if (c == ' ') {
+//                       break;
+//                   }
+//                   else
+//                       if (i < 4) {
+////                           creating token
+//                       }
+//                       e
 
                }
         }

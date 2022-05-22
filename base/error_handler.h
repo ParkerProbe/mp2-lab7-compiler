@@ -5,19 +5,18 @@
 using std::cout;
 
 /// TO DO:
-/// 1. PRINT_CUR_ERROR() IN CPP
-/// 2. PRINT_ERRORS() IN CPP USING PRINT CUR_ERRORS
 
-#define k_ERROR_HANDLER_MAX 6
+#define k_ERROR_HANDLER_MAX 7
 enum progError
 {
-    //k_SUCCESS, // NO ERROR
-    k_UNEXPECTED_TERMINATION_OF_STRING,
-    k_UNEXPECTED_TERMINATION_OF_OPERATOR, // ABSENCE OF ; OR UNEXPECTED TRANSITION TO A NEW LINE OR ABSENCE OF ' IN STRING
-    k_ENDLESS_COMMENT,
-    k_INCORRECT_TABULATION,
-    k_TOO_MANY_ARGUMENTS,
-    k_UNDEFINED_ERROR
+    k_UNEXPECTED_TERMINATION_OF_STRING, // A NEW LINE BEFORE SECOND '
+    k_UNEXPECTED_TERMINATION_OF_OPERATOR, // ABSENCE OF ; OR UNEXPECTED TRANSITION TO A NEW LINE
+    k_ENDLESS_ONE_LINE_COMMENT, // ABSENCE OF } IN COMMENT OR A NEW LINE. COMMENTS ARE ONLY SINGLE-LINE
+    k_INCORRECT_TABULATION, // NOT A MULTIPLE OF THE SPECIFIED NUMBER OF SPACES
+    k_TOO_MANY_ARGUMENTS, // IT CAN BE IN WRITE, READ OPERATORS. MAY BE MORE
+    k_FIRST_PART_OF_PAIR_IS_MISSED, // ] OR ) OR } BEFORE [ OR ) OR }
+    k_UNDEFINED_KEY_NAME, // MOST ERRORS IN LEXICAL ANALYZER
+    k_UNDEFINED_ERROR // DO NOT USE IT! 
 
 };
 struct ErrorParam
@@ -42,9 +41,9 @@ private:
     size_t buff;
    // size_t cur_pos;
     const std::string comment[k_ERROR_HANDLER_MAX] = {
-        "UNEXPECTED TERMINATION OF STRING", 
-        "UNEXPECTED TERMINATION OF OPERATOR", "ENDLESS COMMENT", 
-        "INCORRECT TABULATION", "TOO MANY ARGUMENTS", "UNDEFINED ERROR" };
+        "Unexpected termination of string", 
+        "Unexpected termination of operator", "Endless one-line comment", 
+        "Incorrect tabulation", "Too many arguments", "First part of pair is missed", "Undefined error" };
 
    /* ErrorHandler& operator=(const ErrorHandler& eh) = delete;
     ErrorHandler(const ErrorHandler& eh) = delete;*/

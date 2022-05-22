@@ -4,10 +4,12 @@
 #include "token.h"
 #include "error_handler.h"
 #include <string>
-#include <iostream>
 #include "token.h"
 
-//TO DO: FILL IN CASES OF DEL_GARB AND FILL CREATE_TOKENS
+///TO DO:
+/// Сделать накопление данных в соответствии с планом
+/// Организовать сравненеие с заданными ключевыми словами
+
 
 
 class LexicalAnalyzer
@@ -16,14 +18,16 @@ class LexicalAnalyzer
     ErrorHandler* eh;
     std::ifstream* source_code = nullptr;
     std::vector<string> plain_code;//code for making tokens
+
+
     //deletes all garbage from program
     //garbage is comments and gaps, changes all letters to the same register
     void del_garb();
     void create_tokens();
 
 public:
-    //runs del_garb then creates tokens;
-    //can find errors in program;
+    //runs del_garb then creates tokens
+    //can find lexical errors in program
     LexicalAnalyzer
     (
       std::ifstream* source_code_,

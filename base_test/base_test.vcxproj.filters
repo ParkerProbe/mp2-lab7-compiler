@@ -151,9 +151,6 @@
     <None Include="test_files\test_file_1_9.pas">
       <Filter>test_files</Filter>
     </None>
-    <None Include="test_files\test_file_1_10.pas">
-      <Filter>test_files</Filter>
-    </None>
     <None Include="test_files\test_file_1_11.pas">
       <Filter>test_files</Filter>
     </None>

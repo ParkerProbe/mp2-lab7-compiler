@@ -8,31 +8,192 @@ protected:
     T content;
     TTextNode *pNext, *pDown;
 public:
-    TextNode(TextNode* next = NULL, TextNode* down = NULL);
-    TextNode* get_next() { return pNext; }
-    TextNode* get_down() { return pDown; }
-
+    TTextNode(TTextNode* next = NULL, TTextNode* down = NULL, T con = NULL) : pNext(next), pdown(down), contetnt(con) {}
+    TTextNode* get_next() { return pNext; }
+    TTextNode* get_down() { return pDown; }
+    T get_content() { return content; }
+    void set_content(T tmp) { content = tmp; }
 };
 template <class T>
 class TText
 {
 protected:
-    TTextNode * pFirst;//корень дерева
-    TTextNode * pCurrent;//текущее звено
-    Stack <TTextNode> Path;//стек траектории
+    TTextNode * pFirst();//tree root
+    TTextNode * pCurrent();//current node
+    Stack <TTextNode> Path;//trajectory stack
 public:
-    void go_first_node();// к первому звену
-    void go_down_node();// к след. звену по  Down
-    void go_next_node();// к след. звену по Next
-    void go_prev_node();// к пред. звену
-    T get_node();// доступ текущего звена
-    T set_node(T tmp);//замена содержимого текущего звена
-    void ins_down_node(T tmp);//вставка на нижний подуровень 
-    void del_down_node();//удаление на нижний подуровень 
-    void ins_next_node(T tmp);//вставка на тот же подуровень 
-    void del_next_node();//удаление на тот же подуровень 
-    void ins_down_section(T tmp);//вставка нового подуровня
-    void del_down_section();//удаление нового подуровня
-    void ins_next_section(T tmp);//вставка на том же подуровне
-    void del_next_section();//удаление на том же подуровня
+    bool go_first_node();// to the first node
+    bool go_down_node();// to the next node Down
+    bool go_next_node();// to the next node  Next
+    bool go_prev_node();// to prev. link
+    T get_node();// current node access
+    bool set_node(T tmp);//replacing the contents of the current node
+    bool ins_down_node(T tmp);//insert ro lower sublevel
+    bool del_down_node();//delete from lower sublevel
+    bool ins_next_node(T tmp);//insert to same sublevel
+    bool del_next_node();//delete from same sublevel
+    bool ins_down_section(T tmp);// insert new lower sublevel
+    bool del_down_section();//delete lower sublevel
+    bool ins_next_section(T tmp);//insert new same sublevel
+    bool del_next_section();//delete same sublevel
 };
+
+template <class T>
+bool TText<T>::go_first_node()
+{
+    while (!Path.is_empty())
+        Path.get_top();
+    pCurrent = pFirst;
+    if (pCurrent != NULL)
+        return true;
+    return false;
+}
+template <class T>
+bool TText<T>::go_down_node()
+{
+    if (pCurrent != NULL)
+        if (pCurrent.get_down() != NULL)
+        {
+            Path.add(pCurrent);
+            pCurrent = pCurrent.get_down();
+            return true;
+        }
+    return false;
+}
+template <class T>
+bool TText<T>::go_next_node()
+{
+    if (pCurrent != NULL)
+        if (pCurrent.get_next() != NULL)
+        {
+            Path.add(pCurrent);
+            pCurrent = pCurrent.get_next();
+            return true;
+        }
+    return false;
+}
+template <class T>
+bool TText<T>::go_prev_node()
+{
+    if (Path.is_empty())
+        return false;
+    pCurrent = Path.get_top();
+    return true;
+}
+template <class T>
+T TText<T>::get_node()
+{
+    if (pCurrent==NULL)
+        return NULL;
+    return pCurrent.get_content();
+}
+template <class T>
+bool TText<T>::set_node(T tmp)
+{
+    if (pCurrent == NULL)
+        return NULL;
+     pCurrent.set_content(tmp);
+     return true;
+}
+template <class T>
+bool TText<T>::ins_down_node(T tmp)
+{
+    if (pCurrent == NULL)
+        return false;
+    TTextNode pd = pCurrent.get_down();
+    TTextNode pl - new TTextNode(pd, NULL, tmp);
+    pCurrent.get_down() = pl;
+    return true;
+}
+template <class T>
+bool TText<T>::ins_down_section(T tmp)
+{
+    if (pCurrent == NULL)
+        return false;
+    TTextNode pd = pCurrent.get_down();
+    TTextNode pl - new TTextNode(NULL, pd, tmp);
+    pCurrent.get_down() = pl;
+    return true;
+}
+template <class T>
+bool TText<T>::ins_next_node(T tmp)
+{
+    if (pCurrent == NULL)
+        return false;
+    TTextNode pd = pCurrent.get_next();
+    TTextNode pl - new TTextNode(pd, NULL, tmp);
+    pCurrent.get_next() = pl;
+    return true;
+}
+template <class T>
+bool TText<T>::ins_next_section(T tmp)
+{
+    if (pCurrent == NULL)
+        return false;
+    TTextNode pd = pCurrent.get_next();
+    TTextNode pl - new TTextNode(NULL, pd, tmp);
+    pCurrent.get_next() = pl;
+    return true;
+}
+template <class T>
+bool TText<T>::del_down_node()
+{
+    if (pCurrent == NULL)
+        return false
+    else if (pCurrent.get_gown() != NULL)
+    {
+        TTextNode pd = pCurrent.get_down();
+        TTextNode pl - pd.get_next();
+        if (pd.get_down() == NULL)
+        {
+            pCurrent.get_down() = pl;
+            return true;
+        }
+    }
+    return false;
+}
+template <class T>
+bool TText<T>::del_down_section()
+{
+    if (pCurrent == NULL)
+        return false
+    else if (pCurrent.get_gown() != NULL)
+    {
+        TTextNode pd = pCurrent.get_down();
+        TTextNode pl - pd.get_next();
+        pCurrent.get_down() = pl;
+        return true;
+    }
+    return false;
+}
+template <class T>
+bool TText<T>::del_next_node()
+{
+    if (pCurrent == NULL)
+        return false
+    else if (pCurrent.get_next() != NULL)
+    {
+        TTextNode pd = pCurrent.get_next();
+        TTextNode pl - pd.get_next();
+        if (pd.get_down() == NULL)
+        {
+            pCurrent.get_next() = pl;
+            return true;
+        }
+    }
+    return false;
+}
+template <class T>
+bool TText<T>::del_next_section()
+{
+    if (pCurrent == NULL)
+        return false
+    else if (pCurrent.get_next() != NULL)
+    {
+        TTextNode pd = pCurrent.get_next();
+        TTextNode pl - pd.get_next();
+        pCurrent.get_next() = pl;
+        return true;
+    }
+    return false;
+}

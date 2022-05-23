@@ -83,16 +83,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\base\array_table.cpp" />
-    <ClCompile Include="..\base\hash_table_double.cpp" />
+    <ClCompile Include="..\base\error_handler.cpp" />
     <ClCompile Include="..\base\hash_table_list.cpp" />
-    <ClCompile Include="..\base\interface.cpp" />
-    <ClCompile Include="..\base\list_table.cpp" />
-    <ClCompile Include="..\base\polynom.cpp" />
+    <ClCompile Include="..\base\lexical_analyzer.cpp" />
+    <ClCompile Include="..\base\main.cpp" />
     <ClCompile Include="..\base\postfix.cpp" />
-    <ClCompile Include="..\base\red_black_tree.cpp" />
-    <ClCompile Include="..\base\sorted_array_table.cpp" />
     <ClCompile Include="..\base\table_string.cpp" />
+    <ClCompile Include="..\base\token.cpp" />
     <ClCompile Include="test_compiler.cpp" />
     <ClCompile Include="test_eq_exception.cpp" />
     <ClCompile Include="test_error_handler.cpp" />
@@ -104,28 +101,11 @@
     <ClCompile Include="test_textlink.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\base\array_table.h" />
-    <ClInclude Include="..\base\eq_exception.h" />
-    <ClInclude Include="..\base\hash_table_double.h" />
-    <ClInclude Include="..\base\hash_table_list.h" />
-    <ClInclude Include="..\base\interface.h" />
-    <ClInclude Include="..\base\list.h" />
-    <ClInclude Include="..\base\list_table.h" />
-    <ClInclude Include="..\base\polynom.h" />
-    <ClInclude Include="..\base\postfix.h" />
-    <ClInclude Include="..\base\red_black_tree.h" />
-    <ClInclude Include="..\base\sorted_array_table.h" />
-    <ClInclude Include="..\base\stack.h" />
-    <ClInclude Include="..\base\table.h" />
-    <ClInclude Include="..\base\table_string.h" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="test_files\test1.pas" />
     <None Include="test_files\test_file_1_1.pas" />
     <None Include="test_files\test_file_1_11.pas" />
     <None Include="test_files\test_file_1_12.pas" />
     <None Include="test_files\test_file_1_13.pas" />
-    <None Include="test_files\test_file_1_14.pas" />
     <None Include="test_files\test_file_1_15.pas" />
     <None Include="test_files\test_file_1_2.pas" />
     <None Include="test_files\test_file_1_3.pas" />
@@ -135,6 +115,25 @@
     <None Include="test_files\test_file_1_7.pas" />
     <None Include="test_files\test_file_1_8.pas" />
     <None Include="test_files\test_file_1_9.pas" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\base\code_runner.h" />
+    <ClInclude Include="..\base\compiler_config.h" />
+    <ClInclude Include="..\base\eq_exception.h" />
+    <ClInclude Include="..\base\error_handler.h" />
+    <ClInclude Include="..\base\hash_table_list.h" />
+    <ClInclude Include="..\base\interface.h" />
+    <ClInclude Include="..\base\lexical_analyzer.h" />
+    <ClInclude Include="..\base\list.h" />
+    <ClInclude Include="..\base\postfix.h" />
+    <ClInclude Include="..\base\semantic_analyzer.h" />
+    <ClInclude Include="..\base\stack.h" />
+    <ClInclude Include="..\base\symbol_table_rec.h" />
+    <ClInclude Include="..\base\syntax_analyzer.h" />
+    <ClInclude Include="..\base\table.h" />
+    <ClInclude Include="..\base\table_string.h" />
+    <ClInclude Include="..\base\text_link.h" />
+    <ClInclude Include="..\base\token.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

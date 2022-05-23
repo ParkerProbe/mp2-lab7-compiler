@@ -65,7 +65,7 @@ int main(int argc, char* argv[])
             if (strcmp(argv[i], "-p") == 0) {
                 if (i + 1 < argc) {
                     source_code = new std::ifstream(argv[i+1]);
-                    interface.set_path(argv[1]);
+                    interface.set_path(argv[i+1]);
                 }
                 else {
                     interface.no_file_dialog();

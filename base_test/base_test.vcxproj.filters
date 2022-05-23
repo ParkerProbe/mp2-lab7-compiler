@@ -27,36 +27,6 @@
     <ClCompile Include="test_stack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\base\list_table.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\base\array_table.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\base\hash_table_double.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\base\hash_table_list.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\base\interface.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\base\polynom.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\base\postfix.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\base\red_black_tree.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\base\sorted_array_table.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\base\table_string.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="test_error_handler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -75,50 +45,27 @@
     <ClCompile Include="test_textlink.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\base\list_table.h">
+    <ClCompile Include="..\base\error_handler.cpp">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\array_table.h">
+    </ClCompile>
+    <ClCompile Include="..\base\hash_table_list.cpp">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\eq_exception.h">
+    </ClCompile>
+    <ClCompile Include="..\base\lexical_analyzer.cpp">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\hash_table_double.h">
+    </ClCompile>
+    <ClCompile Include="..\base\main.cpp">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\hash_table_list.h">
+    </ClCompile>
+    <ClCompile Include="..\base\postfix.cpp">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\interface.h">
+    </ClCompile>
+    <ClCompile Include="..\base\table_string.cpp">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\list.h">
+    </ClCompile>
+    <ClCompile Include="..\base\token.cpp">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\polynom.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\postfix.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\red_black_tree.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\sorted_array_table.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\stack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\table.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\base\table_string.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="test_files\test1.pas">
@@ -160,11 +107,61 @@
     <None Include="test_files\test_file_1_13.pas">
       <Filter>test_files</Filter>
     </None>
-    <None Include="test_files\test_file_1_14.pas">
-      <Filter>test_files</Filter>
-    </None>
     <None Include="test_files\test_file_1_15.pas">
       <Filter>test_files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\base\code_runner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\compiler_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\eq_exception.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\error_handler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\hash_table_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\lexical_analyzer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\postfix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\semantic_analyzer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\stack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\symbol_table_rec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\syntax_analyzer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\table.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\table_string.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\text_link.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\token.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

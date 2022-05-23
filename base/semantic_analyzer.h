@@ -10,7 +10,7 @@ class SemanticAnalyzer
 {
 
 private:
-    TextLink<Token>* txt_link;
+    TText<Token>* txt_link;
     ErrorHandler* err;
     HashTableList<SymbolTableRecInt>* symbol_table_int;
     HashTableList<SymbolTableRecDouble>* symbol_table_double;
@@ -19,7 +19,7 @@ private:
 public:
     SemanticAnalyzer
     (
-        TextLink<Token>* txt_link_,
+        TText<Token>* txt_link_,
         HashTableList<SymbolTableRecInt>* sti,
         HashTableList<SymbolTableRecDouble>* std,
         ErrorHandler* err_

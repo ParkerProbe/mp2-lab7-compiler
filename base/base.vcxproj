@@ -107,6 +107,9 @@
     <ClInclude Include="text_link.h" />
     <ClInclude Include="token.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="test_files\test.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -127,10 +127,6 @@ TEST(Compiler, var_no_init)
 	EXPECT_EQ(StartCompiler("test_files/test_file_1_9.pas"), 6);
 }
 
-TEST(Compiler, zero_division)
-{
-	EXPECT_EQ(StartCompiler("test_files/test_file_1_10.pas"), 6);
-}
 
 TEST(Compiler, sqrt_from_negative)
 {
@@ -147,10 +143,6 @@ TEST(Compiler, if_begin_end_2)
 	EXPECT_EQ(StartCompiler("test_files/test_file_1_13.pas"), 4);
 }
 
-TEST(Compiler, if_brackets)
-{
-	EXPECT_EQ(StartCompiler("test_files/test_file_1_14.pas"), 4);
-}
 
 TEST(Compiler, real_comparison)
 {

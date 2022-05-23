@@ -7,7 +7,9 @@ var
   num1: integer = 2;
   num2: double = 0.12;
   num3: double = -7,24423;
+  num4: integer;
 begin
+  num4 := 2;
   num1 := 5;
   num2 := 20;
   write('Введите четное целое число');
@@ -22,19 +24,21 @@ begin
       write('Result = ', num1);
     end
     else
-    begin
       write();
-    end
-    write('Hello World!');
+    write('1');
   end
   else
   begin
-    write('Error');
+    write('2');
     Read(num3);
     if num3 == 20 then
     begin
       num2:=(num1-num2*5 div 2)/(d*2);
-      write('Result = ', num2);
+      write('3 = ', num2);
     end
+    else
+      if c1 == 10 then
+        if num2 == 30 then
+          write('4')
   end
 end.

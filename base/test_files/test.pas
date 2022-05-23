@@ -7,9 +7,9 @@ var
   num1: integer = 2;
   num2: double = 0.12;
   num3: double = -7,24423;
-  num4: integer;
-begin
-  num4 := 2;
+  NUM4: integer;
+begin { Commentary}
+  num4 := 2; 
   num1 := 5;
   num2 := 20;
   write('Введите четное целое число');
@@ -42,3 +42,4 @@ begin
           write('4')
   end
 end.
+{Program end}

@@ -108,7 +108,7 @@
     <ClInclude Include="token.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="test_files\test.txt" />
+    <Text Include="test_files\test.pas" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

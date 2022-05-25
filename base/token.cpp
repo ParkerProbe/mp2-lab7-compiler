@@ -7,7 +7,19 @@ std::string Token::get_text() const
 {
     return text;
 }
-Token::LexemeType Token::get_type() const
+Token::LexemeType Token::g_type() const
 {
     return type;
+}
+Token::LexemeSubType Token::s_type() const
+{
+    return subtype;
+}
+bool Token::operator==(const std::string lex_text)
+{
+    return text == lex_text;
+}
+bool Token::operator!=(const std::string lex_text)
+{
+    return text != lex_text;
 }

@@ -6,6 +6,10 @@
 #include <string>
 #include "token.h"
 
+#include <cctype>
+
+#include <map>
+
 ///TO DO:
 /// Сделать накопление данных в соответствии с планом
 /// Организовать сравненеие с заданными ключевыми словами
@@ -24,6 +28,7 @@ class LexicalAnalyzer
     //garbage is comments and gaps, changes all letters to the same register
     void del_garb();
     void create_tokens();
+    void to_tokens();
 
 public:
     //runs del_garb then creates tokens

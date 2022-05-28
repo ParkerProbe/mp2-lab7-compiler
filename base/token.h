@@ -34,6 +34,7 @@ public:
         ADDITION_OPERATOR /* +, -, OR */,
         MULTYPLICATION_OPERATOR, /* *, /, AND, MOD, DIV */
         RELATIONAL_OPERATOR /* >, <, >=, <=, =, <>, IN*/,
+        BRACKET /*(, )*/,
         IO_OPERATOR /*WRITE, READ*/,
         DECLARATION_KEYWORD /* INTEGER, REAL, VAR, CONST, PROGRAM*/,
         SERVICE_KEYWORDS /*BEGIN, END, IF, ELSE, THEN*/,
@@ -52,26 +53,24 @@ public:
         IF_HEADING /* if */, THEN_KEYWORD /* then */, ELSE_KEYWORD /* else */,
         LSBRACE /* ( */, RSBRACE /* ) */, //LBRACE/* { */, RBRACE /* } */,
         PLUS_OPERATOR, MINUS_OPERATOR, MULTIPLY_OPERATOR, DIVIDE_OPERATOR,
-        DIV_OPERATOR, MOD_OPERATOR, COMMA /* , */,
+        DIV_OPERATOR, MOD_OPERATOR, COMMA /* , */, ASSIGNMENT_OPERATOR__________ /*:=*/,
         AND_OPERATOR, OR_OPERATOR, EQUALS_RELATION_OPERATOR /* = */,
         NOT_EQUALS_RELATIONAL_OPERATOR /* <> */, LESS_RELATIONAL_OPERATOR,
         LESS_OR_EQUALS_RELATIONAL_OPERATOR, GREATER_RELATIONAL_OPERATOR,
         GREATER_OR_EQUALS_RELATIONAL_OPERATOR /* >= */, COLON /* : */,
         CONST_DEFINITION_KEYWORD /* const */, VAR_DEFINITION_KEYWORD /* var */,
         READ_FUNC /* read */, WRITE_FUNC /* write */, INTEGER_TYPE /*integer*/,
-        UNDEFINED_LEXEM /* should be error */
+        DOUBLE_TYPE /* double */, KEY_WORD /* can be variable or constant */,
     };
 
-private:
-        
     struct StringCoord
     {
         int col; // number of line where token is in
         int space; // number of spaces before the line 
-        StringCoord(int col_ = -1, int _sp = 0) : col(col_), space(_sp)
+        StringCoord(int col_ = 0, int _sp = -1) : col(col_), space(_sp)
         {}
     };
-
+private:
     std::string text;
     LexemeType type;
     LexemeSubType subtype;

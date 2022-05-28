@@ -145,3 +145,85 @@ void LexicalAnalyzer::create_tokens()
         }
     }
 }
+
+void LexicalAnalyzer::to_tokens()
+{
+    const int k_num_of_tokens = 37;
+    //const string[k_num_of_tokens]={""}
+    std::map<Token::LexemeSubType, string> examples; // examples of all lexemes
+    std::string cur_line; // current line
+    int line_counter = 1;
+    while (*source_code) {
+        std::getline(*source_code, cur_line, '\n');
+        std::string word; // cuurent word
+        char c = '\0';
+        int i = 0;
+        int gap_counter = 0;
+        for (; i < cur_line.size() && cur_line[i] == ' '; i++) {
+            gap_counter++;
+        }
+        if (gap_counter % Token::k_MIN_TAB) {
+            ErrorParam ep(line_counter, progError::k_INCORRECT_TABULATION, true);
+            eh->push(ep);
+        }
+        for (; i < cur_line.size(); i++) {
+            switch (cur_line[i]) {
+            case '{': {
+                while (cur_line[i] != '}' && i < cur_line.size())
+                    i++;
+                if (i == cur_line.size()) {
+                    ErrorParam ep(line_counter, progError::k_ENDLESS_ONE_LINE_COMMENT, true);
+                    eh->push(ep);
+                    break;
+                }
+
+            }
+            case ' ': {
+                while (cur_line[i] == ' ' && i < cur_line.size()) {
+                    i++;
+                }
+            }
+            case '+':case'*':case '/':case'-': case '(': case ')': {
+                Token::LexemeType type;
+                Token::LexemeSubType sub;
+                if (cur_line[i] == '+' || cur_line[i] == '-') {
+                    type = Token::LexemeType::ADDITION_OPERATOR;
+                    if (cur_line[i] == '+') {
+                        sub = Token::LexemeSubType::PLUS_OPERATOR;
+                    }
+                    else {
+                        sub = Token::LexemeSubType::MINUS_OPERATOR;
+                    }
+                }
+                else
+                    if (cur_line[i] == '(' || cur_line[i] == ')') {
+                        type = Token::LexemeType::BRACKET;
+                        if (cur_line[i] == '(') {
+                            sub = Token::LexemeSubType::LSBRACE;
+                        }
+                        else {
+                            sub = Token::LexemeSubType::RSBRACE;
+                        }
+                    }
+                    else {
+                        type = Token::LexemeType::MULTYPLICATION_OPERATOR;
+                        if (cur_line[i] == '*') {
+                            sub = Token::LexemeSubType::MULTIPLY_OPERATOR;
+                        }
+                        else {
+                            sub = Token::LexemeSubType::DIVIDE_OPERATOR;
+                        }
+                    }
+                Token::StringCoord coord(line_counter, gap_counter);
+                string tmp_str;
+                tmp_str.push_back(cur_line[i]);
+                tokens->push_back(Token(coord, type, sub, tmp_str));
+            }
+            default: {
+                ////////////////////////////////////////////////////////////////////
+            }
+            }
+        }
+    }
+    line_counter++;
+}

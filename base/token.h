@@ -36,31 +36,33 @@ public:
         RELATIONAL_OPERATOR /* >, <, >=, <=, =, <>, IN*/,
         BRACKET /*(, )*/,
         IO_OPERATOR /*WRITE, READ*/,
-        DECLARATION_KEYWORD /* INTEGER, REAL, VAR, CONST, PROGRAM*/,
+        DECLARATION_KEYWORD /* INTEGER, DOUBLE, VAR, CONST, PROGRAM, 
+        program name */,
         SERVICE_KEYWORDS /*BEGIN, END, IF, ELSE, THEN*/,
         LITERAL /*INT, DOUBLE, STRING*/,
         ASSIGNMENT_OPERATOR /* := : */, 
         ENDOFFILE /* IT MUST BE AT THE END OF PROGRAM */, // SMALL TYPE 
-       // USELESS_LEXEM /* */,              
+                 
     };
     //!!! AFTER CHOOSING ONE BIG TYPE FIND SMALL TYPE FROM:
     enum LexemeSubType
     {
-        INTEGER_LITERAL /* int value*/, DOUBLE_LITERAL /* double value*/,
-        STRING_LITERAL /* string value*/, DELIMETER /* '_' */,
-        PROGRAM_HEADING /* program + name */, SEMICOLON /* ; */,
+        PROGRAM_HEADING /* program */, SEMICOLON /* ; */,
         BEGIN_KEYWORD /* begin */, END_KEYWORD /* end */,
         IF_HEADING /* if */, THEN_KEYWORD /* then */, ELSE_KEYWORD /* else */,
         LSBRACE /* ( */, RSBRACE /* ) */, //LBRACE/* { */, RBRACE /* } */,
         PLUS_OPERATOR, MINUS_OPERATOR, MULTIPLY_OPERATOR, DIVIDE_OPERATOR,
-        DIV_OPERATOR, MOD_OPERATOR, COMMA /* , */, ASSIGNMENT_OPERATOR__________ /*:=*/,
+        DIV_OPERATOR, MOD_OPERATOR, COMMA /* , */, ASSIGN_OPERATOR /*:=*/,
         AND_OPERATOR, OR_OPERATOR, EQUALS_RELATION_OPERATOR /* = */,
         NOT_EQUALS_RELATIONAL_OPERATOR /* <> */, LESS_RELATIONAL_OPERATOR,
         LESS_OR_EQUALS_RELATIONAL_OPERATOR, GREATER_RELATIONAL_OPERATOR,
         GREATER_OR_EQUALS_RELATIONAL_OPERATOR /* >= */, COLON /* : */,
         CONST_DEFINITION_KEYWORD /* const */, VAR_DEFINITION_KEYWORD /* var */,
         READ_FUNC /* read */, WRITE_FUNC /* write */, INTEGER_TYPE /*integer*/,
-        DOUBLE_TYPE /* double */, KEY_WORD /* can be variable or constant */,
+        DOUBLE_TYPE /* double */, USER_KEY_WORD /* everything else */,
+        INTEGER_LITERAL /* int value */, DOUBLE_LITERAL /* double value*/,
+        STRING_LITERAL /* string value*/, PROGRAM_NAME /* program's name */,
+        END_OF_FILE
     };
 
     struct StringCoord
@@ -69,6 +71,11 @@ public:
         int space; // number of spaces before the line 
         StringCoord(int col_ = 0, int _sp = -1) : col(col_), space(_sp)
         {}
+        void set(int col_, int _sp)
+        {
+            col = col_;
+            space = _sp;
+        }
     };
 private:
     std::string text;

@@ -6,15 +6,18 @@ using std::cout;
 
 /// TO DO:
 
-#define k_ERROR_HANDLER_MAX 7
+#define k_ERROR_HANDLER_MAX 10
 enum progError
 {
     k_UNEXPECTED_TERMINATION_OF_STRING, // A NEW LINE BEFORE SECOND '
     k_UNEXPECTED_TERMINATION_OF_OPERATOR, // ABSENCE OF ; OR UNEXPECTED TRANSITION TO A NEW LINE
     k_ENDLESS_ONE_LINE_COMMENT, // ABSENCE OF } IN COMMENT OR A NEW LINE. COMMENTS ARE ONLY SINGLE-LINE
     k_INCORRECT_TABULATION, // NOT A MULTIPLE OF THE SPECIFIED NUMBER OF SPACES
+    k_INCORRECT_NESTING_LEVEL,// TOO MANY OR TOO FEW TABS
     k_TOO_MANY_ARGUMENTS, // IT CAN BE IN WRITE, READ OPERATORS. MAY BE MORE
     k_FIRST_PART_OF_PAIR_IS_MISSED, // ] OR ) OR } BEFORE [ OR ) OR }
+    k_NO_PROGRAM_KEY_WORD, //THERE IS NO WORD PROGRAM AT THE BEGINNING
+    k_NO_PROGRAM_NAME, // THERE IS NO NAME OF PROGRAM IN FIRST LINE
     k_UNDEFINED_LEXEME, // MOST ERRORS IN LEXICAL ANALYZER
     k_UNDEFINED_ERROR // DO NOT USE IT! 
 
@@ -43,7 +46,9 @@ private:
     const std::string comment[k_ERROR_HANDLER_MAX] = {
         "Unexpected termination of string", 
         "Unexpected termination of operator", "Endless one-line comment", 
-        "Incorrect tabulation", "Too many arguments", "First part of pair is missed", "Undefined error" };
+        "Incorrect tabulation", "Incorrect level of nesting", 
+        "Too many arguments", "No program key word","No program name", "First part of pair is missed", 
+        "Undefined error" };
 
    /* ErrorHandler& operator=(const ErrorHandler& eh) = delete;
     ErrorHandler(const ErrorHandler& eh) = delete;*/

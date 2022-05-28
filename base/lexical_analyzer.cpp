@@ -89,103 +89,151 @@ void LexicalAnalyzer::del_garb()
         counter++;
     }
 }
+
 void LexicalAnalyzer::create_tokens()
 {
-    //std::vector<string> plain_code;
-  //  const char ch_op[] = { '+','-','*','/' };
-    const int n_op = 10;
-    const string op[n_op] = { "+", "-", "*", "/", "div","mod","fdiv", "while","if","else" };
-    const int n_keywords = 6;
-    const string keywords[n_keywords] = { "program","begin","end","var","const", "end" };
-    const int n_logic_op = 8;
-    const string logic_op[n_logic_op] = { "and","or", ">","<",">=","<=","<>","=" };
-    const string symbols[] = { "+","-","*","/",";" };
+    const int k_num_of_tokens = 32;// name of program can be everything, but...
 
-    const int n_smalls = 11;
-    //up to 4-th elem
-    const char smalls[n_smalls] = { '+','-','*','/',';',' ',':','_','.' };
-    const int n_letters = 26;
-    const char letters[n_letters] = { 'a','b','c','d','e','f','g','h','i','j','k','l',
-       'm','n','o','p','q','r','s','t','u','v','w','x','y','z' };
-    /// <summary>
-    /// Стратегия - каждую строку накопление до пробела слова. 
-    /// Это слово анализируется на предмет совпадения с доступными
-    /// Если анализ не дал результатов, посылаем ошибку непонятное ключевое слово
-    /// </summary>
-    string tmp = "";
-    for (string str : plain_code) {
-        for (char c : str) {
-           for(int i=0;i<n_smalls;i++)
-               if (smalls[i] == c) {
-                   switch (c) {
-                   case ' ': {
-                       if (!tmp.empty()) {
-                           //add token;
-                       }
-                   }
-                   case ';': {
+    //    PROGRAM_KEY_VALUE /* program */, SEMICOLON /* ; */,
+    //    BEGIN_KEYWORD /* begin */, END_KEYWORD /* end */,
+    //    IF_HEADING /* if */, THEN_KEYWORD /* then */, ELSE_KEYWORD /* else */,
+    //    LSBRACE /* ( */, RSBRACE /* ) */, //LBRACE/* { */, RBRACE /* } */,
+    //    PLUS_OPERATOR, MINUS_OPERATOR, MULTIPLY_OPERATOR, DIVIDE_OPERATOR,
+    //    DIV_OPERATOR, MOD_OPERATOR, COMMA /* , */, ASSIGN_OPERATOR /*:=*/,
+    //    AND_OPERATOR, OR_OPERATOR, EQUALS_RELATION_OPERATOR /* = */,
+    //    NOT_EQUALS_RELATIONAL_OPERATOR /* <> */, LESS_RELATIONAL_OPERATOR,
+    //    LESS_OR_EQUALS_RELATIONAL_OPERATOR, GREATER_RELATIONAL_OPERATOR,
+    //    GREATER_OR_EQUALS_RELATIONAL_OPERATOR /* >= */, COLON /* : */,
+    //    CONST_DEFINITION_KEYWORD /* const */, VAR_DEFINITION_KEYWORD /* var */,
+    //    READ_FUNC /* read */, WRITE_FUNC /* write */, INTEGER_TYPE /*integer*/,
+    //    DOUBLE_TYPE /* double */,
 
-                       // create token of ;
-                       // do not add it;
-                   }
-                   case '+':case '*':case '/': case '-': {
-                       //create new token and add it;
-                   }
-                   }
-//                   if (c == ' ') {
-//                       break;
-//                   }
-//                   else
-//                       if (i < 4) {
-////                           creating token
-//                       }
-//                       e
-
-               }
-        }
+    const string values[k_num_of_tokens] = { "program", ";","begin","end","if",
+        "then", "else","(",")","+","-","*","/", "div", "mod", ",", ":=",
+        /*not necessary*/ "and","or" /*end of not necessary*/,"=","<>", "<",
+        "<=", ">",">=",":","const", "var", "read", "write", "integer", "double" };
+    std::map<string, Token::LexemeSubType> examples; // examples of all lexemes
+    for (int i = 0; i < k_num_of_tokens; i++) {
+        examples.insert(std::pair<string, Token::LexemeSubType>(values[i], static_cast<Token::LexemeSubType>(i)));
     }
-}
 
-void LexicalAnalyzer::to_tokens()
-{
-    const int k_num_of_tokens = 37;
-    //const string[k_num_of_tokens]={""}
-    std::map<Token::LexemeSubType, string> examples; // examples of all lexemes
     std::string cur_line; // current line
     int line_counter = 1;
+    std::string word; // curent word
+    int i = 0;
+    int gap_counter = 0;
+    Token::LexemeSubType sub; // subtype of token
+    Token::LexemeType type; // type of token
+    Token::StringCoord coord; // coords of line
+    std::getline(*source_code, cur_line, '\n');
+    for (; i < cur_line.size() && cur_line[i] == ' '; i++) {
+        ;
+    }
+    if (i > 0) {
+        if (i % 2)
+            eh->push(line_counter, progError::k_INCORRECT_NESTING_LEVEL, true);
+        else {
+            eh->push(line_counter, progError::k_INCORRECT_TABULATION, true);
+        }
+    }
+    int word_counter = 0;
+    // only just to create tokens with program key word and name of program
+    // and to create errors then they don't exist
+    for (; i < cur_line.size(); i++) {
+        if (cur_line[i] >= 'A' && cur_line[i] <= 'z')
+            word.push_back(tolower(cur_line[i]));
+        if (cur_line[i] == ' ')
+        {
+            if (!word.empty()) {
+                coord.set(line_counter, gap_counter);
+                if (word_counter) {
+                    sub = Token::LexemeSubType::PROGRAM_NAME;
+                    type = Token::LexemeType::DECLARATION_KEYWORD;
+                    tokens->push_back(Token(coord, type, sub, word));
+                }
+                else {
+                    if (word == string("program")) {
+                        sub = Token::LexemeSubType::PROGRAM_HEADING;
+                        type = Token::LexemeType::DECLARATION_KEYWORD;
+                        tokens->push_back(Token(coord, type, sub, word));
+                    }
+                    else {
+                        eh->push(line_counter, progError::k_NO_PROGRAM_KEY_WORD, true);
+                    }
+                }
+                word.clear();
+            }
+        }
+        else
+            if (cur_line[i] == ';')
+                if (!word.empty()) {
+                    coord.set(line_counter, gap_counter);
+                    if (word_counter) {
+                        sub = Token::LexemeSubType::PROGRAM_NAME;
+                        type = Token::LexemeType::DECLARATION_KEYWORD;
+                        tokens->push_back(Token(coord, type, sub, word));
+                    }
+                    else {
+                        if (word == string("program")) {
+                            sub = Token::LexemeSubType::PROGRAM_HEADING;
+                            type = Token::LexemeType::DECLARATION_KEYWORD;
+                            tokens->push_back(Token(coord, type, sub, word));
+                        }
+                        else {
+                            eh->push(line_counter, progError::k_NO_PROGRAM_KEY_WORD, true);
+                        }
+                    }
+                    break;
+                }
+    }
+    if (word_counter < 2)
+        eh->push(line_counter, progError::k_NO_PROGRAM_NAME, true);
     while (*source_code) {
         std::getline(*source_code, cur_line, '\n');
-        std::string word; // cuurent word
-        char c = '\0';
-        int i = 0;
-        int gap_counter = 0;
-        for (; i < cur_line.size() && cur_line[i] == ' '; i++) {
+        word.clear();
+        gap_counter = 0;
+        for (i = 0; i < cur_line.size() && cur_line[i] == ' '; i++) {
             gap_counter++;
         }
+        coord.set(line_counter, gap_counter);
         if (gap_counter % Token::k_MIN_TAB) {
-            ErrorParam ep(line_counter, progError::k_INCORRECT_TABULATION, true);
-            eh->push(ep);
+            eh->push(line_counter, progError::k_INCORRECT_TABULATION, true);
         }
         for (; i < cur_line.size(); i++) {
             switch (cur_line[i]) {
+            case ';': {
+                /// <summary>
+                /// //////////////////////////////////////////////////
+                /// </summary>
+                goto next_line;
+            }
+            case ' ': {
+                if (!word.empty()) {
+                    /// <summary>
+                    /// ///////////////////////////////////////////
+                    /// </summary>
+                    tokens->push_back(Token(line_counter, type, sub, word));
+                    word.clear();
+                }
+                while (cur_line[i] == ' ' && i < cur_line.size()) {
+                    i++;
+                }
+                break;
+            }
             case '{': {
                 while (cur_line[i] != '}' && i < cur_line.size())
                     i++;
                 if (i == cur_line.size()) {
-                    ErrorParam ep(line_counter, progError::k_ENDLESS_ONE_LINE_COMMENT, true);
-                    eh->push(ep);
-                    break;
+                    eh->push(line_counter, progError::k_ENDLESS_ONE_LINE_COMMENT, true);
                 }
-
-            }
-            case ' ': {
-                while (cur_line[i] == ' ' && i < cur_line.size()) {
-                    i++;
-                }
+                break;
             }
             case '+':case'*':case '/':case'-': case '(': case ')': {
-                Token::LexemeType type;
-                Token::LexemeSubType sub;
+                if (!word.empty()) {
+                    ////////////////////////////////////////////////////////
+                    tokens->push_back(Token(line_counter, type, sub, word));
+                    word.clear();
+                }
                 if (cur_line[i] == '+' || cur_line[i] == '-') {
                     type = Token::LexemeType::ADDITION_OPERATOR;
                     if (cur_line[i] == '+') {
@@ -214,16 +262,51 @@ void LexicalAnalyzer::to_tokens()
                             sub = Token::LexemeSubType::DIVIDE_OPERATOR;
                         }
                     }
-                Token::StringCoord coord(line_counter, gap_counter);
                 string tmp_str;
                 tmp_str.push_back(cur_line[i]);
                 tokens->push_back(Token(coord, type, sub, tmp_str));
+                break;
+            }
+            case '0':case '1':case'2':case'3':case '4':case '5':case'6':case'7':case'8':case '9': {
+                while (cur_line[i] < '9' && cur_line[i]>'0')
+                {
+                    word.push_back(cur_line[i]);
+                }
+                if (cur_line[i] == '.') {
+                    sub = Token::LexemeSubType::DOUBLE_LITERAL;
+                    word.push_back(cur_line[i]);
+                    while (cur_line[i] < '9' && cur_line[i]>'0')
+                    {
+                        word.push_back(cur_line[i]);
+                    }
+                }
+                else {
+                    sub = Token::LexemeSubType::INTEGER_LITERAL;
+                }
+                type = Token::LexemeType::LITERAL;
+                tokens->push_back(Token(coord, type, sub, word));
+                word.clear();
+                break;
+            }
+           /* prohibited because can be : and :=
+           case ':': {
+                type = Token::LexemeType::ASSIGNMENT_OPERATOR;
+                sub = Token::LexemeSubType::COLON;
+                tokens->push_back(Token(coord, type, sub, string(":")));
+                break;
+            }*/
+            case '<':case'>':case'=':case':': {
+                ////////////////////////////////////////////
             }
             default: {
-                ////////////////////////////////////////////////////////////////////
+                word.push_back(tolower(cur_line[i]));
             }
             }
         }
+next_line:        line_counter++;
     }
-    line_counter++;
+    type = Token::LexemeType::ENDOFFILE;
+    sub = Token::LexemeSubType::END_OF_FILE;
+    coord.set(line_counter, 0);
+    tokens->push_back(Token(coord, type, sub, string("eof")));
 }

@@ -112,10 +112,12 @@ void LexicalAnalyzer::create_tokens()
         "then", "else","(",")","+","-","*","/", "div", "mod", ",", ":=",
         /*not necessary*/ "and","or" /*end of not necessary*/,"=","<>", "<",
         "<=", ">",">=",":","const", "var", "read", "write", "integer", "double" };
+   // std::map<string, std::pair<Token::LexemeType, Token::LexemeSubType>> ex;
     std::map<string, Token::LexemeSubType> examples; // examples of all lexemes
     for (int i = 0; i < k_num_of_tokens; i++) {
         examples.insert(std::pair<string, Token::LexemeSubType>(values[i], static_cast<Token::LexemeSubType>(i)));
     }
+    std::map<string, Token::LexemeSubType>::iterator it;// to create most of tokens
 
     std::string cur_line; // current line
     int line_counter = 1;
@@ -123,14 +125,14 @@ void LexicalAnalyzer::create_tokens()
     int i = 0;
     int gap_counter = 0;
     Token::LexemeSubType sub; // subtype of token
-    Token::LexemeType type; // type of token
+    //Token::LexemeType type; // type of token
     Token::StringCoord coord; // coords of line
     std::getline(*source_code, cur_line, '\n');
     for (; i < cur_line.size() && cur_line[i] == ' '; i++) {
         ;
     }
     if (i > 0) {
-        if (i % 2)
+        if (i % Token::k_MIN_TAB)
             eh->push(line_counter, progError::k_INCORRECT_NESTING_LEVEL, true);
         else {
             eh->push(line_counter, progError::k_INCORRECT_TABULATION, true);
@@ -148,14 +150,16 @@ void LexicalAnalyzer::create_tokens()
                 coord.set(line_counter, gap_counter);
                 if (word_counter) {
                     sub = Token::LexemeSubType::PROGRAM_NAME;
-                    type = Token::LexemeType::DECLARATION_KEYWORD;
-                    tokens->push_back(Token(coord, type, sub, word));
+      //              type = Token::LexemeType::USER_TYPE;
+            //        tokens->push_back(Token(coord, type, sub, word));
+                    tokens->push_back(Token(coord, sub, word));
                 }
                 else {
                     if (word == string("program")) {
                         sub = Token::LexemeSubType::PROGRAM_HEADING;
-                        type = Token::LexemeType::DECLARATION_KEYWORD;
-                        tokens->push_back(Token(coord, type, sub, word));
+        //                type = Token::LexemeType::DECLARATION_KEYWORD;
+          //              tokens->push_back(Token(coord, type, sub, word));
+                        tokens->push_back(Token(coord, sub, word));
                     }
                     else {
                         eh->push(line_counter, progError::k_NO_PROGRAM_KEY_WORD, true);
@@ -170,14 +174,16 @@ void LexicalAnalyzer::create_tokens()
                     coord.set(line_counter, gap_counter);
                     if (word_counter) {
                         sub = Token::LexemeSubType::PROGRAM_NAME;
-                        type = Token::LexemeType::DECLARATION_KEYWORD;
-                        tokens->push_back(Token(coord, type, sub, word));
+                       /* type = Token::LexemeType::DECLARATION_KEYWORD;
+                        tokens->push_back(Token(coord, type, sub, word));*/
+                        tokens->push_back(Token(coord, sub, word));
                     }
                     else {
                         if (word == string("program")) {
                             sub = Token::LexemeSubType::PROGRAM_HEADING;
-                            type = Token::LexemeType::DECLARATION_KEYWORD;
-                            tokens->push_back(Token(coord, type, sub, word));
+                           /* type = Token::LexemeType::DECLARATION_KEYWORD;
+                            tokens->push_back(Token(coord, type, sub, word));*/
+                            tokens->push_back(Token(coord, sub, word));
                         }
                         else {
                             eh->push(line_counter, progError::k_NO_PROGRAM_KEY_WORD, true);
@@ -202,22 +208,40 @@ void LexicalAnalyzer::create_tokens()
         for (; i < cur_line.size(); i++) {
             switch (cur_line[i]) {
             case ';': {
-                /// <summary>
-                /// //////////////////////////////////////////////////
-                /// </summary>
+                if (!word.empty()) {
+                    it = examples.find(word);
+                    if (it == examples.end()) {
+                        sub = Token::LexemeSubType::USER_KEY_WORD;
+                        tokens->push_back(Token(line_counter, sub, word));
+                        word.clear();
+                    }
+                    else {
+                        sub = it->second;
+                    }
+                }
+                sub = Token::LexemeSubType::SEMICOLON;
+                tokens->push_back(Token(line_counter, sub, string(";")));
                 goto next_line;
             }
             case ' ': {
                 if (!word.empty()) {
-                    /// <summary>
-                    /// ///////////////////////////////////////////
-                    /// </summary>
-                    tokens->push_back(Token(line_counter, type, sub, word));
-                    word.clear();
+                    it = examples.find(word);
+                    if (it == examples.end()) {
+                        sub = Token::LexemeSubType::USER_KEY_WORD;
+                        tokens->push_back(Token(line_counter, sub, word));
+                        word.clear();
+                    }
+                    else {
+                        sub = it->second;
+                    }
                 }
                 while (cur_line[i] == ' ' && i < cur_line.size()) {
                     i++;
                 }
+                //it's not lexer's buisness. It is responsibility of syntaxer
+                /*if (i == cur_line.size()) {
+                    
+                }*/
                 break;
             }
             case '{': {
@@ -230,12 +254,17 @@ void LexicalAnalyzer::create_tokens()
             }
             case '+':case'*':case '/':case'-': case '(': case ')': {
                 if (!word.empty()) {
-                    ////////////////////////////////////////////////////////
-                    tokens->push_back(Token(line_counter, type, sub, word));
-                    word.clear();
+                    it = examples.find(word);
+                    if (it == examples.end()) {
+                        sub = Token::LexemeSubType::USER_KEY_WORD;
+                        tokens->push_back(Token(line_counter, sub, word));
+                        word.clear();
+                    }
+                    else {
+                        sub = it->second;
+                    }
                 }
                 if (cur_line[i] == '+' || cur_line[i] == '-') {
-                    type = Token::LexemeType::ADDITION_OPERATOR;
                     if (cur_line[i] == '+') {
                         sub = Token::LexemeSubType::PLUS_OPERATOR;
                     }
@@ -245,7 +274,6 @@ void LexicalAnalyzer::create_tokens()
                 }
                 else
                     if (cur_line[i] == '(' || cur_line[i] == ')') {
-                        type = Token::LexemeType::BRACKET;
                         if (cur_line[i] == '(') {
                             sub = Token::LexemeSubType::LSBRACE;
                         }
@@ -254,7 +282,6 @@ void LexicalAnalyzer::create_tokens()
                         }
                     }
                     else {
-                        type = Token::LexemeType::MULTYPLICATION_OPERATOR;
                         if (cur_line[i] == '*') {
                             sub = Token::LexemeSubType::MULTIPLY_OPERATOR;
                         }
@@ -264,7 +291,7 @@ void LexicalAnalyzer::create_tokens()
                     }
                 string tmp_str;
                 tmp_str.push_back(cur_line[i]);
-                tokens->push_back(Token(coord, type, sub, tmp_str));
+                tokens->push_back(Token(coord, sub, tmp_str));
                 break;
             }
             case '0':case '1':case'2':case'3':case '4':case '5':case'6':case'7':case'8':case '9': {
@@ -280,11 +307,11 @@ void LexicalAnalyzer::create_tokens()
                         word.push_back(cur_line[i]);
                     }
                 }
+                ///////////////////////////////////////////////////// can be continue of lexeme
                 else {
                     sub = Token::LexemeSubType::INTEGER_LITERAL;
                 }
-                type = Token::LexemeType::LITERAL;
-                tokens->push_back(Token(coord, type, sub, word));
+                tokens->push_back(Token(coord, sub, word));
                 word.clear();
                 break;
             }
@@ -296,7 +323,7 @@ void LexicalAnalyzer::create_tokens()
                 break;
             }*/
             case '<':case'>':case'=':case':': {
-                ////////////////////////////////////////////
+                
             }
             default: {
                 word.push_back(tolower(cur_line[i]));
@@ -305,8 +332,16 @@ void LexicalAnalyzer::create_tokens()
         }
 next_line:        line_counter++;
     }
-    type = Token::LexemeType::ENDOFFILE;
     sub = Token::LexemeSubType::END_OF_FILE;
     coord.set(line_counter, 0);
-    tokens->push_back(Token(coord, type, sub, string("eof")));
+    tokens->push_back(Token(coord, sub, string("eof")));
+}
+
+void LexicalAnalyzer::get_sub_type(string word)
+{
+    const int k_num_of_tokens = 32;// name of program can be everything, but...
+    const string values[k_num_of_tokens] = { "program", ";","begin","end","if",
+        "then", "else","(",")","+","-","*","/", "div", "mod", ",", ":=",
+        /*not necessary*/ "and","or" /*end of not necessary*/,"=","<>", "<",
+        "<=", ">",">=",":","const", "var", "read", "write", "integer", "double" };
 }

@@ -26,9 +26,9 @@ class LexicalAnalyzer
 
     //deletes all garbage from program
     //garbage is comments and gaps, changes all letters to the same register
-    void del_garb();
+   // void del_garb();
     void create_tokens();
-    void get_sub_type(string word);
+    //void get_sub_type(string word);
 
 public:
     //runs del_garb then creates tokens

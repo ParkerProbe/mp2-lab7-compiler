@@ -3,18 +3,20 @@
 #include <string>
 #include "stack.h"
 #include "table.h"
-
-
+#include "token.h"
+#include "list.h"
+#include "symbol_table_rec.h"
+#include "hash_table_list.h"
 using namespace std;
 
 class TPostfix
 {
-	string infix;
-	string postfix;
+	std::vector<Token> infix;
+	std::vector<Token> postfix;
 	//operation stack
-	Stack <string> sc;
+	Stack <Token> sc;
 	//operand stack
-	Stack <> sd;
+	Stack <double> sd;
 	//to store the values of variables
 	double* p;
 public:
@@ -29,10 +31,10 @@ public:
 
 	// Changed in accordance with the coding rules
 
-	int prior(string a);
-	void set_infix(string t) { infix = t; }
-	string get_infix() { return infix; }
-	string get_postfix() { return postfix; }
-	string to_postfix();
-	double calculate(Table * tmp);
+	int prior(Token::LexemeSubType a);
+	void set_infix(std::vector<Token> t) { infix = t; }
+	std::vector<Token> get_infix() { return infix; }
+	std::vector<Token> get_postfix() { return postfix; }
+	std::vector<Token> to_postfix();
+	double calculate(HashTableList<SymbolTableRecInt>* symbol_table_int, HashTableList<SymbolTableRecDouble>* symbol_table_double);
 };

@@ -18,10 +18,11 @@ template <class T>
 class TText
 {
 protected:
-    TTextNode * pFirst();//tree root
-    TTextNode * pCurrent();//current node
-    Stack <TTextNode> Path;//trajectory stack
+    TTextNode<T>* pFirst();//tree root
+    TTextNode<T> * pCurrent();//current node
+    Stack <TTextNode<T>> Path;//trajectory stack
 public:
+    bool set_first_node(T tmp);
     bool go_first_node();// to the first node
     bool go_down_node();// to the next node Down
     bool go_next_node();// to the next node  Next
@@ -37,7 +38,13 @@ public:
     bool ins_next_section(T tmp);//insert new same sublevel
     bool del_next_section();//delete same sublevel
 };
-
+template <class T>
+bool TText<T>::set_first_node(T tmp)
+{
+    pFirst = new TTextNode<T>(NULL, NULL, tmp);;
+    pCurrent = pFirst;;
+    return true;
+}
 template <class T>
 bool TText<T>::go_first_node()
 {
@@ -100,8 +107,8 @@ bool TText<T>::ins_down_node(T tmp)
 {
     if (pCurrent == NULL)
         return false;
-    TTextNode pd = pCurrent.get_down();
-    TTextNode pl - new TTextNode(pd, NULL, tmp);
+    TTextNode<T> pd = pCurrent.get_down();
+    TTextNode<T> pl - new TTextNode<T> (pd, NULL, tmp);
     pCurrent.get_down() = pl;
     return true;
 }
@@ -110,8 +117,8 @@ bool TText<T>::ins_down_section(T tmp)
 {
     if (pCurrent == NULL)
         return false;
-    TTextNode pd = pCurrent.get_down();
-    TTextNode pl - new TTextNode(NULL, pd, tmp);
+    TTextNode<T> pd = pCurrent.get_down();
+    TTextNode<T> pl - new TTextNode<T>(NULL, pd, tmp);
     pCurrent.get_down() = pl;
     return true;
 }
@@ -120,8 +127,8 @@ bool TText<T>::ins_next_node(T tmp)
 {
     if (pCurrent == NULL)
         return false;
-    TTextNode pd = pCurrent.get_next();
-    TTextNode pl - new TTextNode(pd, NULL, tmp);
+    TTextNode<T> pd = pCurrent.get_next();
+    TTextNode<T> pl - new TTextNode<T>(pd, NULL, tmp);
     pCurrent.get_next() = pl;
     return true;
 }

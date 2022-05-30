@@ -23,3 +23,7 @@ bool Token::operator!=(const std::string lex_text)
 {
     return text != lex_text;
 }
+int Token::get_line_num() const
+{
+    return position_in_string.col;
+}

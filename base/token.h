@@ -118,6 +118,7 @@ public:
     inline std::string get_text() const;
     //inline void* get_value(); // May be will help anyone
     inline int get_nesting() const;
+    inline int get_line_num() const;
 
     bool operator==(const std::string lex_text);//text from other lexeme
     bool operator!=(const std::string lex_text);//text from other lexeme

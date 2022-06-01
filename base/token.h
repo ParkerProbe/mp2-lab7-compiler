@@ -62,11 +62,10 @@ public:
         }
     };
 private:
-    std::string text;
+    StringCoord position_in_string;
     //LexemeType type;
     LexemeSubType subtype;
-    StringCoord position_in_string;
-
+    std::string text;   
     // Prohibition
     Token(StringCoord);
 public:

@@ -33,7 +33,7 @@ public:
         int countif = 0;
         int countthen = 0;
         std::vector<Token>::iterator iter = (*tokens).begin();
-        while ((iter != (*tokens).end()) && ((*iter).g_type()!= Token::LexemeType::ENDOFFILE))
+        while ((iter != (*tokens).end()) && ((*iter).s_type()!= Token::LexemeSubType::END_OF_FILE))
         {
             int space, spacecurr;
             if (txt_link->get_node() == NULL)
@@ -43,7 +43,7 @@ public:
                 continue;
             }
 
-            switch ((*iter).g_type())
+            switch ((*iter).s_type())
             {
             case Token::LexemeSubType::BEGIN_KEYWORD:
                 countbrake1++;

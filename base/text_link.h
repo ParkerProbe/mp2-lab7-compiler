@@ -9,8 +9,8 @@ protected:
     TTextNode *pNext, *pDown;
 public:
     TTextNode(T con, TTextNode* next = NULL, TTextNode* down = NULL) : pNext(next), pdown(down), contetnt(con) {}
-    TTextNode* get_next() { return pNext; }
-    TTextNode* get_down() { return pDown; }
+    TTextNode*& get_next() { return pNext; }
+    TTextNode*& get_down() { return pDown; }
     T get_content() { return content; }
     void set_content(T tmp) { content = tmp; }
 };

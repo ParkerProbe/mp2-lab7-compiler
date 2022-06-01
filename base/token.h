@@ -28,43 +28,8 @@ public:
     /// Min number of spaces which makes tab
     static const int k_MIN_TAB = 2;
 
-    //enum LexemeType 
-    //{
-    //    //!!! AT FIRST USE THESE TYPES IN SYNTAX ANALYZER:
-    //    ADDITION_OPERATOR /* +, -, OR */,
-    //    MULTYPLICATION_OPERATOR, /* *, /, AND, MOD, DIV */
-    //    RELATIONAL_OPERATOR /* >, <, >=, <=, =, <>, IN*/,
-    //    BRACKET /*(, )*/,
-    //    IO_OPERATOR /*WRITE, READ*/,
-    //    DECLARATION_KEYWORD /* INTEGER, DOUBLE, VAR, CONST, PROGRAM, */,
-    //    SERVICE_KEYWORDS /*BEGIN, END, IF, ELSE, THEN*/,
-    //    LITERAL /*INT, DOUBLE, STRING*/,
-    //    SYMBOLIC_LEXEM /* := : ;*/, 
-    //    ENDOFFILE /* IT MUST BE AT THE END OF PROGRAM */, // SMALL TYPE 
-    //    USER_TYPE /*USER_KEY_WORD, name of a program*/
-    //};
-    //!!! AFTER CHOOSING ONE BIG TYPE FIND SMALL TYPE FROM:
     enum LexemeSubType
     {
-        ////ADDITION
-        //PLUS_OPERATOR, MINUS_OPERATOR, OR_OPERATOR,
-        ////MULTYPLICATIOON
-        //MULTIPLY_OPERATOR, DIVIDE_OPERATOR, DIV_OPERATOR, MOD_OPERATOR,
-        //AND_OPERATOR,
-        ////RELATIONAL
-        //EQUALS_RELATION_OPERATOR /* = */, 
-        //NOT_EQUALS_RELATIONAL_OPERATOR /* <> */, LESS_RELATIONAL_OPERATOR,
-        //LESS_OR_EQUALS_RELATIONAL_OPERATOR, GREATER_RELATIONAL_OPERATOR,
-        //GREATER_OR_EQUALS_RELATIONAL_OPERATOR /* >= */,
-        ////BRACKET
-        //LSBRACE /* ( */, RSBRACE /* ) */,
-
-        //READ_FUNC /* read */, WRITE_FUNC /* write */,
-        //INTEGER_TYPE /*integer*/, DOUBLE_TYPE /* double */,
-        //CONST_DEFINITION_KEYWORD /* const */, VAR_DEFINITION_KEYWORD /* var */,
-        //PROGRAM_NAME /* program's name */, PROGRAM_HEADING /* program */,
-
-
         PROGRAM_HEADING /* program */, SEMICOLON /* ; */,
         BEGIN_KEYWORD /* begin */, END_KEYWORD /* end */,
         IF_HEADING /* if */, THEN_KEYWORD /* then */, ELSE_KEYWORD /* else */,
@@ -80,7 +45,8 @@ public:
         DOUBLE_TYPE /* double */, USER_KEY_WORD /* everything else */,
         INTEGER_LITERAL /* int value */, DOUBLE_LITERAL /* double value*/,
         STRING_LITERAL /* string value*/, PROGRAM_NAME /* program's name */,
-        END_OF_FILE /*this lexeme is only at the end of program*/
+        END_OF_FILE /*this lexeme is only at the end of program*/,
+        DEFAULT_TYPE /*this sh*t shows that token is empty*/
     };
 
     struct StringCoord
@@ -103,13 +69,14 @@ private:
 
     // Prohibition
     Token(StringCoord);
-    Token() {}
 public:
         //Token(StringCoord coord, LexemeType lex_type, LexemeSubType lex_sub_type, std::string _text, void*);
     Token(StringCoord coord, /*LexemeType lex_type,*/ LexemeSubType lex_sub_type,
         std::string _text) :
         position_in_string(coord), /*type(lex_type),*/ subtype(lex_sub_type), 
         text(text)
+    {}
+    Token():position_in_string(0,-1),subtype(LexemeSubType::END_OF_FILE),text("")
     {}
     ~Token() = default;
 

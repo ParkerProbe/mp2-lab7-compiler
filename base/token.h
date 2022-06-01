@@ -76,7 +76,7 @@ public:
         position_in_string(coord), /*type(lex_type),*/ subtype(lex_sub_type), 
         text(text)
     {}
-    Token():position_in_string(0,-1),subtype(LexemeSubType::END_OF_FILE),text("")
+    Token():position_in_string(0,-1),subtype(Token::LexemeSubType::DEFAULT_TYPE),text("")
     {}
     ~Token() = default;
 

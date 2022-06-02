@@ -105,7 +105,7 @@ int SemanticAnalyzer::check_var(Token var)
 }
 
 
-void SemanticAnalyzer::set_var(Token var, Token value, bool is_set = true, bool is_const = false)
+void SemanticAnalyzer::set_var(Token var, Token value, bool is_set, bool is_const)
 {
         if (value.s_type() == Token::DOUBLE_LITERAL) {
             try {

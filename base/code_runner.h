@@ -44,8 +44,7 @@ public:
         HashTableList<SymbolTableRec<double>>* std,
         ErrorHandler* err_
     )
-        : txt_link(txt_link_),
-        symbol_table_int(sti), symbol_table_double(std), err(err_)
+        : txt_link(txt_link_), symbol_table_int(sti), symbol_table_double(std), op(), err(err_), var_int(), var_double()
     {}
 
     void Start();

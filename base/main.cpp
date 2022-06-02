@@ -52,8 +52,8 @@ int main(int argc, char* argv[])
         TText<Token>* txt_link = new TText<Token>;
         vector<Token>* lexems = new vector<Token>;
         
-        HashTableList<SymbolTableRecInt>* symbol_table_int;
-        HashTableList<SymbolTableRecDouble>* symbol_table_double;
+        HashTableList<SymbolTableRec<int>>* symbol_table_int;
+        HashTableList<SymbolTableRec<double>>* symbol_table_double;
 
         /* 
         

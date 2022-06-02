@@ -61,7 +61,7 @@ void CodeRunner::set_var_double(Token symbol, double num, bool is_set, bool is_c
     }
 }
 
-void CodeRunner::set_var(Token var, double value, bool is_set = true, bool is_const = false)
+void CodeRunner::set_var(Token var, double value, bool is_set, bool is_const)
 {
     get_var(var, var_int, var_double);
     if (var_int != nullptr) {

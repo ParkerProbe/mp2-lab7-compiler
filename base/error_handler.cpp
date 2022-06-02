@@ -19,13 +19,18 @@ void ErrorHandler::print_cur_error(size_t cur_pos)
 {
     cout << ' ';
     cout << errors[cur_pos].error_num;
-    int gap_counter = 5;// string "CODE "
+    int gap_counter = 6;// string "CODE "
     gap_counter -= get_symbol_quan(errors[cur_pos].error_num);
-    cout << ' ';
-    gap_counter = 5;// string "LINE "
+    for (; gap_counter > 0; gap_counter--) {
+        cout << ' ';
+    }
+    cout << errors[cur_pos].line_num;
+    gap_counter = 6;// string "LINE "
     gap_counter -= get_symbol_quan(errors[cur_pos].line_num);
-    cout << ' ';
-    if (cout << errors[cur_pos].is_critical) {
+    for (; gap_counter > 0; gap_counter--) {
+        cout << ' ';
+    }
+    if (errors[cur_pos].is_critical) {
         cout << "ERROR: ";
     }
     else {

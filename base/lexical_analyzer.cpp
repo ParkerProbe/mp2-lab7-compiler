@@ -94,20 +94,6 @@ void LexicalAnalyzer::create_tokens()
 {
     const int k_num_of_tokens = 32;// name of program can be everything, but...
 
-    //    PROGRAM_KEY_VALUE /* program */, SEMICOLON /* ; */,
-    //    BEGIN_KEYWORD /* begin */, END_KEYWORD /* end */,
-    //    IF_HEADING /* if */, THEN_KEYWORD /* then */, ELSE_KEYWORD /* else */,
-    //    LSBRACE /* ( */, RSBRACE /* ) */, //LBRACE/* { */, RBRACE /* } */,
-    //    PLUS_OPERATOR, MINUS_OPERATOR, MULTIPLY_OPERATOR, DIVIDE_OPERATOR,
-    //    DIV_OPERATOR, MOD_OPERATOR, COMMA /* , */, ASSIGN_OPERATOR /*:=*/,
-    //    AND_OPERATOR, OR_OPERATOR, EQUALS_RELATION_OPERATOR /* = */,
-    //    NOT_EQUALS_RELATIONAL_OPERATOR /* <> */, LESS_RELATIONAL_OPERATOR,
-    //    LESS_OR_EQUALS_RELATIONAL_OPERATOR, GREATER_RELATIONAL_OPERATOR,
-    //    GREATER_OR_EQUALS_RELATIONAL_OPERATOR /* >= */, COLON /* : */,
-    //    CONST_DEFINITION_KEYWORD /* const */, VAR_DEFINITION_KEYWORD /* var */,
-    //    READ_FUNC /* read */, WRITE_FUNC /* write */, INTEGER_TYPE /*integer*/,
-    //    DOUBLE_TYPE /* double */,
-
     const string values[k_num_of_tokens] = { "program", ";","begin","end","if",
         "then", "else","(",")","+","-","*","/", "div", "mod", ",", ":=",
         /*not necessary*/ "and","or" /*end of not necessary*/,"=","<>", "<",
@@ -150,15 +136,11 @@ void LexicalAnalyzer::create_tokens()
                 coord.set(line_counter, gap_counter);
                 if (word_counter) {
                     sub = Token::LexemeSubType::PROGRAM_NAME;
-      //              type = Token::LexemeType::USER_TYPE;
-            //        tokens->push_back(Token(coord, type, sub, word));
                     tokens->push_back(Token(coord, sub, word));
                 }
                 else {
                     if (word == string("program")) {
                         sub = Token::LexemeSubType::PROGRAM_HEADING;
-        //                type = Token::LexemeType::DECLARATION_KEYWORD;
-          //              tokens->push_back(Token(coord, type, sub, word));
                         tokens->push_back(Token(coord, sub, word));
                     }
                     else {
@@ -167,6 +149,7 @@ void LexicalAnalyzer::create_tokens()
                 }
                 word.clear();
             }
+            word_counter++;
         }
         else
             if (cur_line[i] == ';')
@@ -188,7 +171,7 @@ void LexicalAnalyzer::create_tokens()
                     break;
                 }
     }
-    if (word_counter < 2)
+    if (word_counter < 1)
         eh->push(line_counter, progError::k_NO_PROGRAM_NAME, true);
     while (*source_code) {
         std::getline(*source_code, cur_line, '\n');

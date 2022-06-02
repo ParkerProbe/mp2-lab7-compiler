@@ -7,7 +7,7 @@ using std::cout;
 
 /// TO DO:
 
-#define k_ERROR_HANDLER_MAX 15
+#define k_ERROR_HANDLER_MAX 16
 enum progError
 {
     k_UNEXPECTED_TERMINATION_OF_STRING, // A NEW LINE BEFORE SECOND '
@@ -19,13 +19,13 @@ enum progError
     k_FIRST_PART_OF_PAIR_IS_MISSED, // ] OR ) OR } BEFORE [ OR ) OR }
     k_NO_PROGRAM_KEY_WORD, //THERE IS NO WORD PROGRAM AT THE BEGINNING
     k_NO_PROGRAM_NAME, // THERE IS NO NAME OF PROGRAM IN FIRST LINE
-    k_UNDEFINED_LEXEME, // MOST ERRORS IN LEXICAL ANALYZER
+    k_CUT_DOUBLE_VALUE, // BEGINS FROM POINT. MUST BEGIN FROM DIGIT
     k_ID_NO_DECLARATED,
     k_CONST_NOT_INIT,
     k_CHANGED_CONST_VALUE,
     k_INCORRECT_OPERATION,
     k_INCORRECT_WRITE_CALL,
-
+    k_ID_DOUBLE_DECLARATION,
 
     k_UNDEFINED_ERROR // DO NOT USE IT! 
 
@@ -54,11 +54,13 @@ private:
         "Unexpected termination of string", 
         "Unexpected termination of operator", "Endless one-line comment", 
         "Incorrect tabulation", "Incorrect level of nesting", 
-        "Too many arguments", "No program key word","No program name", 
-        "First part of pair is missed", "Identifier is not declared", 
-        "Const did not initialized", "Const value was changed",
-        "Incorrect operation", "Incorrect write call",
-        "Undefined error" };
+        "Too many arguments","First part of pair is missed", 
+        "No program key word", "No program name", "Double value is cut",
+        "Identifier is not declared", "Const did not initialized", 
+        "Const value was changed", "Incorrect operation", 
+        "Incorrect write call", "Double declaration of identifier"
+        "Undefined error" 
+    };
 
 
     void print_head();

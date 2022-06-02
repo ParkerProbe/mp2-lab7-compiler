@@ -27,7 +27,6 @@ class LexicalAnalyzer
     //deletes all garbage from program
     //garbage is comments and gaps, changes all letters to the same register
    // void del_garb();
-    void create_tokens();
     //void get_sub_type(string word);
 
 public:
@@ -39,6 +38,9 @@ public:
       ErrorHandler* eh_
     ) : tokens(tokens_), source_code(source_code_), eh(eh_)
     {}
+
+    void create_tokens();
+
     //returns vector of tokens
     // std::vector<Token> get_tokens();
 

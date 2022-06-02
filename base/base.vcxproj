@@ -97,6 +97,7 @@
     <ClInclude Include="compiler_config.h" />
     <ClInclude Include="eq_exception.h" />
     <ClInclude Include="hash_table_list.h" />
+    <ClInclude Include="interface.h" />
     <ClInclude Include="lexical_analyzer.h" />
     <ClInclude Include="list.h" />
     <ClInclude Include="postfix.h" />

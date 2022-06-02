@@ -52,8 +52,8 @@ int main(int argc, char* argv[])
         TText<Token>* txt_link = new TText<Token>;
         vector<Token>* lexems = new vector<Token>;
         
-        HashTableList<SymbolTableRec<int>>* symbol_table_int;
-        HashTableList<SymbolTableRec<double>>* symbol_table_double;
+        HashTableList<SymbolTableRec<int>>* symbol_table_int = nullptr;
+        HashTableList<SymbolTableRec<double>>* symbol_table_double = nullptr;
 
         /* 
         
@@ -100,7 +100,9 @@ int main(int argc, char* argv[])
             lexems,
             err
         );
-        if (compl_conf.lexer_only) {}
+        // if (compl_conf.lexer_only) {}
+        interface.printer();
+
 
          SyntaxAnalyzer* syn_analyzer = new SyntaxAnalyzer
          (
@@ -108,7 +110,10 @@ int main(int argc, char* argv[])
              lexems,
              err
          );
-        if (compl_conf.syntax_only) {}
+         syn_analyzer->Start();
+        // if (compl_conf.syntax_only) {}
+         interface.printer();
+
 
         SemanticAnalyzer* sym_analyzer = new SemanticAnalyzer
         (
@@ -117,6 +122,9 @@ int main(int argc, char* argv[])
             symbol_table_double,
             err
         );
+        sym_analyzer->Start();
+        interface.printer();
+
 
          CodeRunner* runner = new CodeRunner
          (
@@ -125,6 +133,9 @@ int main(int argc, char* argv[])
              symbol_table_double,
              err
          );
+         runner->Start();
+         interface.printer();
+
 
         source_code->close();
     }

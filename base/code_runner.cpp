@@ -42,7 +42,7 @@ void CodeRunner::set_var_int(Token symbol, int num, bool is_set, bool is_const)
             symbol_table_int->find(symbol.get_text())->data->num = num;
         }
         else {
-            err->push(symbol.get_line_num(), progError::CHANGED_CONST_VALUE, true);
+            err->push(symbol.get_line_num(), progError::k_CHANGED_CONST_VALUE, true);
         }
     }
 }
@@ -56,7 +56,7 @@ void CodeRunner::set_var_double(Token symbol, double num, bool is_set, bool is_c
             symbol_table_double->find(symbol.get_text())->data->num = num;
         }
         else {
-            err->push(symbol.get_line_num(), progError::CHANGED_CONST_VALUE, true);
+            err->push(symbol.get_line_num(), progError::k_CHANGED_CONST_VALUE, true);
         }
     }
 }
@@ -171,12 +171,53 @@ mc:
             // (
             txt_link->go_next_node();
 
+            // Out parameters
+            std::string text;
+
+            int order_to_out;
+
             while (txt_link->get_node().s_type() != Token::RSBRACE) {
                 txt_link->go_next_node();
+                if (txt_link->get_node().s_type() == Token::STRING_LITERAL) {
+                    if (!order_to_out) {
+                        order_to_out = 1;
+                    }
+                    text = txt_link->get_node().get_text();
+                }
                 if (txt_link->get_node().s_type() == Token::VAR_DEFINITION_KEYWORD) {
-                    check_var(txt_link->get_node());
+                    if (!order_to_out) {
+                        order_to_out = 2;
+                    }
+                    get_var(txt_link->get_node(), var_int, var_double);
+                }
+                // Operation in write
+                if (is_operation(txt_link->get_node())) {
+                    err->push(txt_link->get_node().get_line_num(), progError::k_INCORRECT_WRITE_CALL, true);
+                    return;
                 }
             }
+
+            // Write Realization
+            if (order_to_out == 1) {
+                if (var_int != nullptr) {
+                    std::cout << text << var_int->num << std::endl;
+                }
+                else if (var_double != nullptr) {
+                    std::cout << text << var_double->num << std::endl;
+                }
+                else {
+                    std::cout << text << std::endl;
+                }
+            }
+            if (order_to_out == 2) {
+                if (var_int != nullptr) {
+                    std::cout <<  var_int->num << text << std::endl;
+                }
+                else {
+                    std::cout << var_double->num <<  text << std::endl;
+                }
+            }
+
             // ;
             txt_link->go_next_node();
             continue;
@@ -188,10 +229,21 @@ mc:
         if (txt_link->get_node().s_type() == Token::READ_FUNC) {
             // (
             txt_link->go_next_node();
-
+// Argument count
             txt_link->go_next_node();
             if (txt_link->get_node().s_type() == Token::VAR_DEFINITION_KEYWORD) {
-                check_var(txt_link->get_node());
+                // Read realization
+                get_var(txt_link->get_node(), var_int, var_double);
+                if (var_int != nullptr) {
+                    int num;
+                    std::cin >> num;
+                    set_var_int(txt_link->get_node(), num, true, false);
+                }
+                if (var_double != nullptr) {
+                    double num;
+                    std::cin >> num;
+                    set_var_double(txt_link->get_node(), num, true, false);
+                }
             }
 
             // )
@@ -205,29 +257,110 @@ mc:
 
         // IF 
         if (txt_link->get_node().s_type() == Token::IF_HEADING) {
+
+
+            int equal_type = 0;
+            const int equal = 1;
+            const int not_equal = 2;
+            vector <Token> left_equal;
+            vector <Token> right_equal;
+
             do {
                 txt_link->go_next_node();
-                if (txt_link->get_node().s_type() == Token::USER_KEY_WORD) {
-                    Token var = txt_link->get_node();
-                    check_var(var);
-                }
-            } while (txt_link->get_node().s_type() != Token::THEN_KEYWORD);
+                left_equal.push_back(txt_link->get_node());
+            } while
+                ((txt_link->get_node().s_type() != Token::EQUALS_RELATION_OPERATOR) ||
+                    (txt_link->get_node().s_type() != Token::NOT_EQUALS_RELATIONAL_OPERATOR) ||
+                    (txt_link->get_node().s_type() != Token::THEN_KEYWORD));
 
-            // Check if without begin
-            if (txt_link->go_down_node() != false) {
-                continue;
+            if (txt_link->get_node().s_type() != Token::EQUALS_RELATION_OPERATOR)
+            {
+                equal_type = equal;
+            }
+            if (txt_link->get_node().s_type() != Token::NOT_EQUALS_RELATIONAL_OPERATOR)
+            {
+                equal_type = not_equal;
+            }
+
+            if (!equal) {
+                do {
+                    right_equal.push_back(txt_link->get_node());
+                } while (txt_link->get_node().s_type() != Token::THEN_KEYWORD);
+            }
+
+            // Calculate if condition
+            bool if_condition;
+            double left_value;
+            op.set_infix(left_equal);
+            op.to_postfix();
+            left_value = op.calculate(symbol_table_int, symbol_table_double);
+            if (equal_type) {
+                double right_value;
+                op.set_infix(right_equal);
+                op.to_postfix();
+                right_value = op.calculate(symbol_table_int, symbol_table_double);
+
+                // =
+                if (equal_type == equal) {
+                    if (right_value == left_value) {
+                        if_condition = false;
+                    }
+                    else {
+                        if_condition = true;
+                    }
+                }
+
+                if (equal_type == not_equal) {
+                    if (right_value != left_value) {
+                        if_condition = false;
+                    }
+                    else {
+                        if_condition = true;
+                    }
+                }
             }
             else {
-                // begin
-                txt_link->go_next_node();
+                // Double true convert
+                if_condition = true;
+            }
 
-                // begin body
-                if (txt_link->go_down_node()) {
+            // Check if without begin
+            if (if_condition) {
+                if (txt_link->go_down_node() != false) {
                     continue;
                 }
-            }
-        }
+                else {
+                    // begin
+                    txt_link->go_next_node();
 
+                    // begin body
+                    if (txt_link->go_down_node()) {
+                        continue;
+                    }
+                }
+            }
+            else {
+                // begin || next command
+                txt_link->go_next_node();
+                if (txt_link->get_node().s_type() == Token::BEGIN_KEYWORD) {
+                    // END
+                    txt_link->go_next_node();
+                    txt_link->go_next_node();
+
+
+                }
+                if (txt_link->get_node().s_type() == Token::ELSE_KEYWORD) {
+                    // begin || next command
+                    txt_link->go_next_node();
+                    if (txt_link->get_node().s_type() == Token::BEGIN_KEYWORD) {
+                        // END
+                        txt_link->go_next_node();
+                        txt_link->go_next_node();
+                    }
+                }
+            }
+            
+        }
 
         // ELSE
         if (txt_link->get_node().s_type() == Token::ELSE_KEYWORD) {

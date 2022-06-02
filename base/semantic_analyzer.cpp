@@ -13,7 +13,7 @@ void SemanticAnalyzer::set_var_int(Token symbol, int num, bool is_set, bool is_c
             symbol_table_int->find(symbol.get_text())->data->num = num;
         }
         else {
-            err->push(symbol.get_line_num(), progError::CHANGED_CONST_VALUE, true);
+            err->push(symbol.get_line_num(), progError::k_CHANGED_CONST_VALUE, true);
         }
     }
 }
@@ -27,7 +27,7 @@ void SemanticAnalyzer::set_var_double(Token symbol, double num, bool is_set, boo
             symbol_table_double->find(symbol.get_text())->data->num = num;
         }
         else {
-            err->push(symbol.get_line_num(), progError::CHANGED_CONST_VALUE, true);
+            err->push(symbol.get_line_num(), progError::k_CHANGED_CONST_VALUE, true);
         }
     }
 }
@@ -100,7 +100,7 @@ int SemanticAnalyzer::check_var(Token var)
         }
     }
 
-    err->push(var.get_line_num(), progError::VAR_NO_DECLARATED, true);
+    err->push(var.get_line_num(), progError::k_VAR_NO_DECLARATED, true);
     return not_found;
 }
 
@@ -160,7 +160,7 @@ void SemanticAnalyzer::Start()
 
             if (txt_link->get_node().s_type() == Token::SEMICOLON) {
                 //Const  not set
-                err->push(var.get_line_num(), progError::CONST_NOT_INIT, true);
+                err->push(var.get_line_num(), progError::k_CONST_NOT_INIT, true);
                 continue;
             }
 
@@ -244,7 +244,7 @@ mc:
                 // Check not const
                 int var_type = check_var(var);
                 if ((var_type == 2) || (var_type == 4)) {
-                    err->push(var.get_line_num(), progError::CHANGE_CONST_VALUE, true);
+                    err->push(var.get_line_num(), progError::k_CHANGED_CONST_VALUE, true);
                 }
                 is_assign = true;
             }

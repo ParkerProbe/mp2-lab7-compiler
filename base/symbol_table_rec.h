@@ -3,27 +3,18 @@
 #include <string>
 
 
-struct SymbolTableRecInt
+template <class T>
+struct SymbolTableRec
 {
 
    std::string symbol;
-   int  num;
+   T  num;
    bool is_const;
+   bool is_set;
 
-    SymbolTableRecInt(std::string symbol_, int num_, bool is_const_ = false)
+    SymbolTableRec(std::string symbol_, int num_, bool is_const_ = false, bool is_set = true)
         :   symbol(symbol_), num(num_), is_const(is_const_)
     {}  
+
+    SymbolTableRec& operator=(SymbolTableRec& other) = default;
 };
-
-struct SymbolTableRecDouble
-{
-   std::string symbol;
-   double  num;
-   bool is_const;
-
-    SymbolTableRecDouble(std::string symbol_, double num_, bool is_const_ = false)
-        :   symbol(symbol_), num(num_), is_const(is_const_)
-    {}  
-};
-
-

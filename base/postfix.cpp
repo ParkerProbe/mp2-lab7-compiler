@@ -73,7 +73,7 @@ std::vector<Token>  TPostfix::to_postfix()
 	return postfix;
 }
 
-double TPostfix::calculate(HashTableList<SymbolTableRecInt>* table_int, HashTableList<SymbolTableRecDouble>* table_double)
+double TPostfix::calculate(HashTableList<SymbolTableRec<int>>* table_int, HashTableList<SymbolTableRec<double>>* table_double)
 {
 	double a, b;
 	int whole1, whole2;

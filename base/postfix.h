@@ -36,5 +36,5 @@ public:
 	std::vector<Token> get_infix() { return infix; }
 	std::vector<Token> get_postfix() { return postfix; }
 	std::vector<Token> to_postfix();
-	double calculate(HashTableList<SymbolTableRecInt>* symbol_table_int, HashTableList<SymbolTableRecDouble>* symbol_table_double);
+	double calculate(HashTableList<SymbolTableRec<int>>* symbol_table_int, HashTableList<SymbolTableRec<double>>* symbol_table_double);
 };

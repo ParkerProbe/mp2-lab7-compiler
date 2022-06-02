@@ -89,7 +89,7 @@ public:
         return key;
     }
 
-    inline T* get_polynom() const
+    inline T* get_data() const
     {
         return body.data;
     }

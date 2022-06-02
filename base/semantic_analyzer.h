@@ -12,16 +12,25 @@ class SemanticAnalyzer
 private:
     TText<Token>* txt_link;
     ErrorHandler* err;
-    HashTableList<SymbolTableRecInt>* symbol_table_int;
-    HashTableList<SymbolTableRecDouble>* symbol_table_double;
 
+    HashTableList<SymbolTableRec<int>>* symbol_table_int;
+    HashTableList<SymbolTableRec<double>>* symbol_table_double;
+
+
+
+    void set_var_int(Token symbol, int num, bool is_set, bool is_const);
+    void set_var_double(Token symbol, double num, bool is_set,  bool is_const);
+    SymbolTableRec<int>* get_var_int(Token symbol);
+    SymbolTableRec<double>* get_var_double(Token symbol);
+    void set_var(Token var, Token value, bool is_set = true, bool is_const = false);
+    int check_var(Token var);
 
 public:
     SemanticAnalyzer
     (
         TText<Token>* txt_link_,
-        HashTableList<SymbolTableRecInt>* sti,
-        HashTableList<SymbolTableRecDouble>* std,
+        HashTableList<SymbolTableRec<int>>* sti,
+        HashTableList<SymbolTableRec<double>>* std,
         ErrorHandler* err_
     )
     : txt_link(txt_link_), symbol_table_int(sti),

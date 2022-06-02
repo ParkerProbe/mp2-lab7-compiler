@@ -159,12 +159,18 @@ void SemanticAnalyzer::Start()
             txt_link->go_next_node();
 
             if (txt_link->get_node().s_type() == Token::SEMICOLON) {
+                if (check_var(var) != -1) {
+                    err->push(var.get_line_num(), progError::k_ID_DOUBLE_DECLARATION, true);
+                }
                 //Const  not set
                 err->push(var.get_line_num(), progError::k_CONST_NOT_INIT, true);
                 continue;
             }
 
             // Value
+            if (check_var(var) != -1) {
+                err->push(var.get_line_num(), progError::k_ID_DOUBLE_DECLARATION, true);
+            }
             txt_link->go_next_node();
             set_var(var, txt_link->get_node(), true, true);
 
@@ -198,12 +204,19 @@ void SemanticAnalyzer::Start()
             txt_link->go_next_node();
 
             if (txt_link->get_node().s_type() == Token::SEMICOLON) {
+                if (check_var(var) != -1) {
+                    err->push(var.get_line_num(), progError::k_ID_DOUBLE_DECLARATION, true);
+                }
+
                 Token default_value;
                 set_var(var, default_value, false, false);
                 continue;
             }
 
             // Value
+            if (check_var(var) != -1) {
+                err->push(var.get_line_num(), progError::k_ID_DOUBLE_DECLARATION, true);
+            }
             txt_link->go_next_node();
             set_var(var, txt_link->get_node(), false, false);
 

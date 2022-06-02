@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
     compiler_parameters compl_conf; 
 
     try {
-
+        std::string path = ".\\.\\test_files\\test.pas";
         std::ifstream* source_code = nullptr;
 
         ErrorHandler* err = new ErrorHandler;
@@ -95,6 +95,8 @@ int main(int argc, char* argv[])
                 compl_conf.pr_help = true;
             }
         }
+        source_code = new std::ifstream(path);
+        interface.set_path(path);
         if (source_code == nullptr) {
             compl_conf.pr_path_dlg = true;
             interface.print_file_dialog(source_code);

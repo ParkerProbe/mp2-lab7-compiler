@@ -11,14 +11,14 @@ class Interface {
 
 private:
 
-    ErrorHandler *err;
+    ErrorHandler* err;
     compiler_parameters* prs;
     double compl_version;
     std::string path;
 
     void help()
     {
-        cout << "Team ADA Pascal compiler" << std::endl;
+        cout << "Team ADA Pascal-- compiler" << std::endl;
         cout << "Usage: pascal [-l] [-s] [--help] [-v] [-p] [path] file_name" << std::endl;
         cout << "  -l - lexical analysis only" << std::endl;
         cout << "  -s - syntax analysis only" << std::endl;
@@ -42,17 +42,11 @@ public:
         if(prs->pr_version) {
             cout << "Compiler version: " << compl_version << std::endl;
         }
-        
-        // if (err.error_cnt()) {
-        //     cout << path <<  std::endl;
-        //     err.print_errors();
-        // }
-
         if(prs->pr_help) {
             help();
         }
 
-
+        err->print_errors();
     }
 
 

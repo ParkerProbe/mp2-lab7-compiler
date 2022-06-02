@@ -31,7 +31,6 @@ class LexicalAnalyzer
     //void get_sub_type(string word);
 
 public:
-    //runs del_garb then creates tokens
     //can find lexical errors in program
     LexicalAnalyzer
     (

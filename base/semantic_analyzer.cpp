@@ -100,7 +100,7 @@ int SemanticAnalyzer::check_var(Token var)
         }
     }
 
-    err->push(var.get_line_num(), progError::k_VAR_NO_DECLARATED, true);
+    err->push(var.get_line_num(), progError::k_ID_NO_DECLARATED, true);
     return not_found;
 }
 

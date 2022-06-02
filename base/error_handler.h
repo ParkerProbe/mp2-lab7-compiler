@@ -2,11 +2,12 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <vector>
 using std::cout;
 
 /// TO DO:
 
-#define k_ERROR_HANDLER_MAX 10
+#define k_ERROR_HANDLER_MAX 15
 enum progError
 {
     k_UNEXPECTED_TERMINATION_OF_STRING, // A NEW LINE BEFORE SECOND '
@@ -19,6 +20,13 @@ enum progError
     k_NO_PROGRAM_KEY_WORD, //THERE IS NO WORD PROGRAM AT THE BEGINNING
     k_NO_PROGRAM_NAME, // THERE IS NO NAME OF PROGRAM IN FIRST LINE
     k_UNDEFINED_LEXEME, // MOST ERRORS IN LEXICAL ANALYZER
+    k_ID_NO_DECLARATED,
+    k_CONST_NOT_INIT,
+    k_CHANGED_CONST_VALUE,
+    k_INCORRECT_OPERATION,
+    k_INCORRECT_WRITE_CALL,
+
+
     k_UNDEFINED_ERROR // DO NOT USE IT! 
 
 };
@@ -39,19 +47,19 @@ struct ErrorParam
 class ErrorHandler
 {
 private:
-    ErrorParam* errors;
-    size_t size;
-    size_t buff;
+    //ErrorParam* errors;
+    std::vector<ErrorParam> errors;
    // size_t cur_pos;
     const std::string comment[k_ERROR_HANDLER_MAX] = {
         "Unexpected termination of string", 
         "Unexpected termination of operator", "Endless one-line comment", 
         "Incorrect tabulation", "Incorrect level of nesting", 
-        "Too many arguments", "No program key word","No program name", "First part of pair is missed", 
+        "Too many arguments", "No program key word","No program name", 
+        "First part of pair is missed", "Identifier is not declared", 
+        "Const did not initialized", "Const value was changed",
+        "Incorrect operation", "Incorrect write call",
         "Undefined error" };
 
-   /* ErrorHandler& operator=(const ErrorHandler& eh) = delete;
-    ErrorHandler(const ErrorHandler& eh) = delete;*/
 
     void print_head();
     void print_cur_error(size_t cur_pos);
@@ -60,9 +68,9 @@ private:
 public:
     //prints every cur error + head
     void print_errors();
-    ErrorHandler() :size(0), buff(4)//, cur_pos(0)
+    ErrorHandler()
     {
-        errors = new ErrorParam[buff];
+        errors.reserve(4);
     }
 
 
@@ -71,7 +79,7 @@ public:
     void push(ErrorParam err);
 
     //only for tests
-    const ErrorParam& operator[](size_t ind)
+    ErrorParam operator[](size_t ind) const
     {
         return errors[ind];
     }
@@ -113,7 +121,7 @@ public:
     //    print_head();
     //    print_error();
     //}
-    friend std::ostream& operator<<(std::ostream& os, const ErrorHandler& eh);
+    //friend std::ostream& operator<<(std::ostream& os, const ErrorHandler& eh);
 };
 
 //std::ostream& operator<<(std::ostream& os, const ErrorHandler& eh)

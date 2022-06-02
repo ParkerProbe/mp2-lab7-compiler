@@ -63,7 +63,6 @@ public:
     };
 private:
     StringCoord position_in_string;
-    //LexemeType type;
     LexemeSubType subtype;
     std::string text;   
     // Prohibition
@@ -79,12 +78,11 @@ public:
     {}
     ~Token() = default;
 
-    //inline LexemeType g_type() const;
-    inline LexemeSubType s_type() const;
-    inline std::string get_text() const;
+    Token::LexemeSubType s_type() const;
+    std::string get_text() const;
     //inline void* get_value(); // May be will help anyone
-    inline int get_nesting() const;
-    inline int get_line_num() const;
+    int get_nesting() const;
+    int get_line_num() const;
 
     bool operator==(const std::string lex_text);//text from other lexeme
     bool operator!=(const std::string lex_text);//text from other lexeme

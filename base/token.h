@@ -45,7 +45,7 @@ public:
         DOUBLE_TYPE /* double */, USER_KEY_WORD /* everything else */,
         INTEGER_LITERAL /* int value */, DOUBLE_LITERAL /* double value*/,
         STRING_LITERAL /* string value*/, PROGRAM_NAME /* program's name */,
-        END_OF_FILE /*this lexeme is only at the end of program*/,
+        END_OF_FILE /*when lexeme is 'end.' */,
         DEFAULT_TYPE /*this sh*t shows that token is empty*/
     };
 

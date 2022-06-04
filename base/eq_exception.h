@@ -7,7 +7,7 @@
 
 enum error_codes
 {
-    k_NO_ERROR,
+    k_NO_ERROR_CODE, // I recommend you not to use it
     k_NEGATIVE_VALUE,
     k_OVERFLOW,
     k_OUT_OF_MEMORY,
@@ -37,7 +37,7 @@ public:
         : error(error_)
     {}
     EqException()
-        : error(k_NO_ERROR)
+        : error(k_NO_ERROR_CODE)
     {}
     ~EqException() = default;
 

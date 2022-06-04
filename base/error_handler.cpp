@@ -48,30 +48,31 @@ void ErrorHandler::print_errors()
 void ErrorHandler::push(size_t line_num, progError error_num, bool is_critical)
 {
     ErrorParam extra(line_num, error_num, is_critical);
-    push(extra);
+    //push(extra);
+    errors.push_back(extra);
 }
-void ErrorHandler::push(ErrorParam err)
-{
-    errors.push_back(err);
-    //if (size + 1 > buff) {
-    //    ErrorParam* tmp = new ErrorParam[size];
-    //    for (int i = 0; i < size; i++)
-    //        tmp[i] = errors[i];
-    //    tmp[size] = err;
-    //    delete[] errors;
-    //    buff = buff << 1;//multyplying buffer by two
-    //    errors = new ErrorParam[buff];
-    //    size++;
-    //    for (int i = 0; i < size; i++) {
-    //        errors[i] = tmp[i];
-    //    }
-    //    delete[]tmp;
-    //}
-    //else {
-    //    errors[size] = err;
-    //    size++;
-    //}
-}
+//void ErrorHandler::push(ErrorParam err)
+//{
+//    errors.push_back(err);
+//    //if (size + 1 > buff) {
+//    //    ErrorParam* tmp = new ErrorParam[size];
+//    //    for (int i = 0; i < size; i++)
+//    //        tmp[i] = errors[i];
+//    //    tmp[size] = err;
+//    //    delete[] errors;
+//    //    buff = buff << 1;//multyplying buffer by two
+//    //    errors = new ErrorParam[buff];
+//    //    size++;
+//    //    for (int i = 0; i < size; i++) {
+//    //        errors[i] = tmp[i];
+//    //    }
+//    //    delete[]tmp;
+//    //}
+//    //else {
+//    //    errors[size] = err;
+//    //    size++;
+//    //}
+//}
 
 int ErrorHandler::condition()
 {

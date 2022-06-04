@@ -7,7 +7,7 @@ using std::cout;
 
 /// TO DO:
 
-#define k_ERROR_HANDLER_MAX 16
+
 enum progError
 {
     k_UNEXPECTED_TERMINATION_OF_STRING, // A NEW LINE BEFORE SECOND '
@@ -47,6 +47,7 @@ struct ErrorParam
 class ErrorHandler
 {
 private:
+    static const int k_ERROR_HANDLER_MAX = 16;
     //ErrorParam* errors;
     std::vector<ErrorParam> errors;
    // size_t cur_pos;
@@ -78,86 +79,10 @@ public:
 
     int condition();
     void push(size_t line_num, progError error_num, bool is_critical);
-    void push(ErrorParam err);
 
     //only for tests
     ErrorParam operator[](size_t ind) const
     {
         return errors[ind];
     }
-
-
-    //void print_error(size_t ind, std::ostream& os)
-    //{
-    //    std::ostringstream ot;
-    //    const char vert = 179, horiz = 196;
-    //    const char left_up = 192, up = 193, rigth_up = 217;
-    //    const char left_down = 218, down = 194, rigth_down = 191;
-    //    //console length = 120
-    //    os << left_down;
-    //    for (int i = 1; i < 17; i++)
-    //        os << horiz;
-    //    os << down;
-    //    for (int i = 18; i < 119; i++)
-    //        os << horiz;
-    //    os << rigth_down;
-    //    os << '\n';
-    //    os << vert;
-    //    os << errors[ind].error_num;
-    //    ot << errors[ind].error_num;
-    //    for (int i = ot.str().size(); i < 16; i++)
-    //        os << ot.str();
-    //    os << vert;
-    //    for
-    //}
-    //void print_errors()
-    //{
-    //    std::ostringstream os;
-    //    for (int i = 0; i < size; i++) {
-    //        os << errors[i].error_num;
-    //        for(int i=0;i<)
-    //    }
-    //}
-    //void print()
-    //{
-    //    print_head();
-    //    print_error();
-    //}
-    //friend std::ostream& operator<<(std::ostream& os, const ErrorHandler& eh);
 };
-
-//std::ostream& operator<<(std::ostream& os, const ErrorHandler& eh)
-//{
-//    const char vert = 179, horiz = 196;
-//    const char left_up = 192, up = 193, rigth_up = 217;
-//    const char left_down = 218, down = 194, rigth_down = 191;
-//    //console length = 120
-//    os << left_down;
-//    for (int i = 1; i < 17; i++)
-//        os << horiz;
-//    os << down;
-//    for (int i = 18; i < 119; i++)
-//        os << horiz;
-//    os << rigth_down;
-//    os << '\n';
-//    os << vert;
-//    os << ts->key;
-//    for (int i = ts->key.size(); i < 16; i++)
-//        os << ' ';
-//    os << vert;
-//    for (int i = 0; i < ts->body.poly_string.size() && i < 101; i++)
-//        os << ts->body.poly_string[i];
-//    for (int i = 0; i < 101 - ts->body.poly_string.size(); i++)
-//        os << ' ';
-//    os << vert;
-//    os << '\n';
-//    os << left_up;
-//    for (int i = 1; i < 17; i++)
-//        os << horiz;
-//    os << up;
-//    for (int i = 18; i < 119; i++)
-//        os << horiz;
-//    os << rigth_up;
-//    os << '\n';
-//    return os;
-//}

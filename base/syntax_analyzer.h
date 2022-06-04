@@ -24,7 +24,7 @@ public:
         : txt_link(txt_link_), tokens(tokens_), err(err_)
     {}
 
-    void Start() 
+    void Start()
     {
         int countbrake1 = 0;
         int countbrake2 = 0;
@@ -33,7 +33,7 @@ public:
         int countif = 0;
         int countthen = 0;
         std::vector<Token>::iterator iter = (*tokens).begin();
-        while ((iter != (*tokens).end()) && ((*iter).s_type()!= Token::LexemeSubType::END_OF_FILE))
+        while ((iter != (*tokens).end()) && ((*iter).s_type() != Token::LexemeSubType::END_OF_FILE))
         {
             int space, spacecurr;
             if (txt_link->get_node() == NULL)
@@ -83,10 +83,10 @@ public:
             {
                 txt_link->ins_down_node(*iter);
                 txt_link->go_down_node();
-            }            
+            }
             ++iter;
         }
-        if (countbrace1!=countbrace2||countbrake1!=countbrake2||countif!=countthen)
+        if (countbrace1 != countbrace2 || countbrake1 != countbrake2 || countif != countthen)
             err->push(0, progError::k_FIRST_PART_OF_PAIR_IS_MISSED, true);
     }
 };

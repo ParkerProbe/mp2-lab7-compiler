@@ -72,7 +72,7 @@ public:
     Token(StringCoord coord, /*LexemeType lex_type,*/ LexemeSubType lex_sub_type,
         std::string _text) :
         position_in_string(coord), /*type(lex_type),*/ subtype(lex_sub_type), 
-        text(text)
+        text(_text)
     {}
     Token():position_in_string(0,-1),subtype(Token::LexemeSubType::DEFAULT_TYPE),text("")
     {}

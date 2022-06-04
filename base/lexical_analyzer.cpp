@@ -63,6 +63,7 @@ void LexicalAnalyzer::create_tokens()
         }
         else
             if (cur_line[i] == ';')
+            {
                 if (!word.empty()) {
                     coord.set(line_counter, gap_counter);
                     if (word_counter) {
@@ -78,11 +79,14 @@ void LexicalAnalyzer::create_tokens()
                             eh->push(line_counter, progError::k_NO_PROGRAM_KEY_WORD, true);
                         }
                     }
-                    break;
                 }
+                tokens->push_back(Token(coord, Token::LexemeSubType::SEMICOLON, string(";")));
+                break;
+            }
     }
     if (word_counter < 1)
         eh->push(line_counter, progError::k_NO_PROGRAM_NAME, true);
+    line_counter++;
     while (*source_code) {
         std::getline(*source_code, cur_line, '\n');
         word.clear();
@@ -143,12 +147,12 @@ void LexicalAnalyzer::create_tokens()
                     it = examples.find(word);
                     if (it == examples.end()) {
                         sub = Token::LexemeSubType::USER_KEY_WORD;
-                        tokens->push_back(Token(line_counter, sub, word));
-                        word.clear();
                     }
                     else {
                         sub = it->second;
                     }
+                    tokens->push_back(Token(line_counter, sub, word));
+                    word.clear();
                 }
                 if (cur_line[i] == '+' || cur_line[i] == '-') {
                     if (cur_line[i] == '+') {
@@ -196,9 +200,11 @@ void LexicalAnalyzer::create_tokens()
                     if (cur_line[i] == '.') {
                         sub = Token::LexemeSubType::DOUBLE_LITERAL;
                         word.push_back(cur_line[i]);
+                        i++;
                         while (cur_line[i] <= '9' && cur_line[i] >= '0')
                         {
                             word.push_back(cur_line[i]);
+                            i++;
                         }
                         i--;
                         tokens->push_back(Token(coord, sub, word));
@@ -328,15 +334,40 @@ void LexicalAnalyzer::create_tokens()
             }
             case '.': {
                 word.push_back(cur_line[i]);
-                if (word == "end") {
+                if (word == "end.") {
                     tokens->push_back(Token(coord, Token::LexemeSubType::END_OF_FILE, word));
+                    return;
                 }
-                break;
+            }
+            case ',': {
+                if(!word.empty()) {
+                    it = examples.find(word);
+                    if (it == examples.end()) {
+                        sub = Token::LexemeSubType::USER_KEY_WORD;
+                    }
+                    else {
+                        sub = it->second;
+                    }
+                    tokens->push_back(Token(line_counter, sub, word));
+                    word.clear();
+                }
+                tokens->push_back(Token(coord, Token::LexemeSubType::COMMA, string(",")));
             }
             default: {
                 word.push_back(tolower(cur_line[i]));
             }
             }
+        }
+        if (!word.empty()) {
+            it = examples.find(word);
+            if (it == examples.end()) {
+                sub = Token::LexemeSubType::USER_KEY_WORD;
+            }
+            else {
+                sub = it->second;
+            }
+            tokens->push_back(Token(line_counter, sub, word));
+            word.clear();
         }
     next_line:        line_counter++;
     }

@@ -77,9 +77,6 @@
     <ClInclude Include="table_string.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="syntax_analyzer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="code_runner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -93,6 +90,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="syntax_analyzer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

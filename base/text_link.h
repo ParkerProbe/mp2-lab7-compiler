@@ -71,7 +71,7 @@ template <class T>
 bool TText<T>::go_down_node()//
 {
     if (pCurrent != NULL)
-        if (pCurrent->pDown = NULL)
+        if (pCurrent->pDown != NULL)
         {
             Path.add(pCurrent);
             pCurrent = pCurrent->pDown;

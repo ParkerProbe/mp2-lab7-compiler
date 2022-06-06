@@ -3,6 +3,7 @@
 #include "string"
 #include <fstream>
 #include <string>
+#include "error_handler.h"
 
 using std::string;
 

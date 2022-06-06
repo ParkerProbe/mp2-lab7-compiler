@@ -1,5 +1,6 @@
 #include "error_handler.h"
 
+
 int ErrorHandler::get_symbol_quan(size_t num)
 {
     int quan = 0;

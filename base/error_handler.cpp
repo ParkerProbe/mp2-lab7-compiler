@@ -11,32 +11,32 @@ int ErrorHandler::get_symbol_quan(size_t num)
 }
 void ErrorHandler::print_head()
 {
-    cout << " CODE ";
-    cout << " LINE ";
-    cout << " ERROR MESSAGE\n";
+    std::cout << " CODE ";
+    std::cout << " LINE ";
+    std::cout << " ERROR MESSAGE\n";
 }
 void ErrorHandler::print_cur_error(size_t cur_pos)
 {
-    cout << ' ';
-    cout << errors[cur_pos].error_num;
+    std::cout << ' ';
+    std::cout << errors[cur_pos].error_num;
     int gap_counter = 6;// string "CODE "
     gap_counter -= get_symbol_quan(errors[cur_pos].error_num);
     for (; gap_counter > 0; gap_counter--) {
-        cout << ' ';
+        std::cout << ' ';
     }
-    cout << errors[cur_pos].line_num;
+    std::cout << errors[cur_pos].line_num;
     gap_counter = 6;// string "LINE "
     gap_counter -= get_symbol_quan(errors[cur_pos].line_num);
     for (; gap_counter > 0; gap_counter--) {
-        cout << ' ';
+        std::cout << ' ';
     }
     if (errors[cur_pos].is_critical) {
-        cout << "ERROR: ";
+        std::cout << "ERROR: ";
     }
     else {
-        cout << "WARNING: ";
+        std::cout << "WARNING: ";
     }
-    cout << comment[errors[cur_pos].error_num] << '\n';
+    std::cout << comment[errors[cur_pos].error_num] << '\n';
 }
 void ErrorHandler::print_errors()
 {
@@ -47,9 +47,8 @@ void ErrorHandler::print_errors()
 }
 void ErrorHandler::push(size_t line_num, progError error_num, bool is_critical)
 {
-    ErrorParam extra(line_num, error_num, is_critical);
-    //push(extra);
-    errors.push_back(extra);
+    //ErrorParam extra(line_num, error_num, is_critical);
+    errors.push_back(ErrorParam(line_num, error_num, is_critical));
 }
 //void ErrorHandler::push(ErrorParam err)
 //{

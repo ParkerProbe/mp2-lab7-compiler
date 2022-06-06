@@ -1,9 +1,6 @@
 #pragma once
 #include <iostream>
-#include <fstream>
-#include <sstream>
 #include <vector>
-using std::cout;
 
 /// TO DO:
 
@@ -48,7 +45,7 @@ class ErrorHandler
 {
 private:
     static const int k_ERROR_HANDLER_MAX = 16;
-    //ErrorParam* errors;
+    //ErrorParam
     std::vector<ErrorParam> errors;
    // size_t cur_pos;
     const std::string comment[k_ERROR_HANDLER_MAX] = {

@@ -36,7 +36,11 @@ public:
         while ((iter != (*tokens).end()) && ((*iter).s_type() != Token::LexemeSubType::END_OF_FILE))
         {
             int space, spacecurr;
-            if (txt_link->get_node() == NULL)
+            if (txt_link == nullptr) {
+                return;
+            }
+            Token tmp;
+            if (txt_link->get_node() == tmp)
             {
                 txt_link->set_first_node(*iter);
                 ++iter;

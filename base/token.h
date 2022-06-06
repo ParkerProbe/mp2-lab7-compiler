@@ -86,4 +86,7 @@ public:
 
     bool operator==(const std::string lex_text);//text from other lexeme
     bool operator!=(const std::string lex_text);//text from other lexeme
+    bool operator==(const Token& token) {
+        return token.text == text;
+    }
 };

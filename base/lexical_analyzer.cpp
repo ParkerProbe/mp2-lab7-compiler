@@ -340,7 +340,7 @@ void LexicalAnalyzer::create_tokens()
                 }
             }
             case ',': {
-                if(!word.empty()) {
+                if (!word.empty()) {
                     it = examples.find(word);
                     if (it == examples.end()) {
                         sub = Token::LexemeSubType::USER_KEY_WORD;

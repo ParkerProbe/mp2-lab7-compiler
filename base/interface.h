@@ -6,7 +6,7 @@
 
 #include "compiler_config.h"
 #include "error_handler.h"
-
+using std::cout;
 class Interface {
 
 private:

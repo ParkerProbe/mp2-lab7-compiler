@@ -24,6 +24,7 @@ protected:
     TTextNode<T>* pCurrent;//current node
     Stack <TTextNode<T>*> Path;//trajectory stack
 public:
+    TText():pFirst(nullptr),pCurrent(nullptr),Path(){}
     bool set_first_node(T tmp);
     bool go_first_node();// to the first node
     bool go_down_node();// to the next node Down
@@ -92,7 +93,7 @@ bool TText<T>::go_prev_node()//
 template <class T>
 T TText<T>::get_node()//
 {
-    if (pCurrent == NULL)
+    if (pCurrent == nullptr)
     {
         Token t;
         return t;

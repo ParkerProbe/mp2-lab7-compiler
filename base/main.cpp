@@ -124,11 +124,11 @@ int main(int argc, char* argv[])
         
 
          SyntaxAnalyzer* syn_analyzer = new SyntaxAnalyzer
-         (
+         {
              txt_link,
              lexems,
              err
-         );
+         };
          syn_analyzer->Start();
 
          // Critical error in analyze

@@ -17,8 +17,8 @@
 #include "symbol_table_rec.h"
 #include "semantic_analyzer.h"
 #include "lexical_analyzer.h"
-#include "syntax_analyzer.h"
 #include "code_runner.h"
+#include "syntax_analyzer.h"
 
 
 

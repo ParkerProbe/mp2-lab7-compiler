@@ -87,6 +87,7 @@ void LexicalAnalyzer::create_tokens()
     if (word_counter < 1)
         eh->push(line_counter, progError::k_NO_PROGRAM_NAME, true);
     line_counter++;
+    bool is_semicolon;
     while (*source_code) {
         std::getline(*source_code, cur_line, '\n');
         word.clear();
@@ -98,6 +99,7 @@ void LexicalAnalyzer::create_tokens()
         if (gap_counter % Token::k_MIN_TAB) {
             eh->push(line_counter, progError::k_INCORRECT_TABULATION, true);
         }
+        is_semicolon = false;
         for (; i < cur_line.size(); i++) {
             switch (cur_line[i]) {
             case ';': {
@@ -112,6 +114,7 @@ void LexicalAnalyzer::create_tokens()
                     tokens->push_back(Token(coord, sub, word));
                     word.clear();
                 }
+                is_semicolon = true;
                 sub = Token::LexemeSubType::SEMICOLON;
                 tokens->push_back(Token(coord, sub, string(";")));
                 goto next_line;
@@ -316,16 +319,12 @@ void LexicalAnalyzer::create_tokens()
                     tokens->push_back(Token(coord, sub, word));
                     word.clear();
                 }
-                word.push_back(cur_line[i]);
                 i++;
                 while (cur_line[i] != '\'' && i != cur_line.size()) {
                     word.push_back(cur_line[i]);
                     i++;
                 }
-                if (i < cur_line.size()) {
-                    word.push_back(cur_line[i]);
-                }
-                else {
+                if (i == cur_line.size()) {
                     eh->push(line_counter, progError::k_UNEXPECTED_TERMINATION_OF_STRING, true);
                 }
                 sub = Token::LexemeSubType::STRING_LITERAL;
@@ -372,6 +371,11 @@ void LexicalAnalyzer::create_tokens()
             tokens->push_back(Token(coord, sub, word));
             word.clear();
         }
-    next_line:        line_counter++;
+    next_line: if (!is_semicolon) {
+        if (sub != Token::LexemeSubType::VAR_DEFINITION_KEYWORD && sub != Token::LexemeSubType::CONST_DEFINITION_KEYWORD && sub != Token::LexemeSubType::BEGIN_KEYWORD && sub != Token::LexemeSubType::END_KEYWORD && sub != Token::THEN_KEYWORD&&sub!=Token::ELSE_KEYWORD) {
+            eh->push(line_counter, progError::k_UNEXPECTED_TERMINATION_OF_OPERATOR, true);
+        }
+        line_counter++;
+    }
     }
 }

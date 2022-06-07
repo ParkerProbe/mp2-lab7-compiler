@@ -1,5 +1,7 @@
+Program test1_6;
+var
+  x: integer = 2;
+  y: integer = 3;
 begin
-  var x := 2;
-  var y := 3;
-  writeln('Результат сложения равен =, x + y); { Не хватает закрывающего апострофа }
+  write('Summa =, x + y); { Не хватает закрывающего апострофа }
 end.

@@ -1,4 +1,6 @@
+Program test1_2;
+var 
+  S: integer { нет ; }
 begin
-  var S: integer 
-  S := 1;       { нет ; }
+  S := 1;       
 end.

@@ -1,4 +1,6 @@
+PrOGrAM test1_3
+var 
+  S: integer = 1;
 begin
-  var S := 1 
-  S := S + 1 { нет ; на пред. }  
+  S := S + 1 { нет ;}  
 end.

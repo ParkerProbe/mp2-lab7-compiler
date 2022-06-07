@@ -1,4 +1,4 @@
-program Example
+program Example;
 const
   pi:double = 3.14567;
 var

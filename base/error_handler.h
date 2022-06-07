@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+
 #include "error_param.h"
 
 class ErrorHandler
@@ -9,6 +10,8 @@ class ErrorHandler
 private:
     //static const int k_ERROR_HANDLER_MAX = 16;
     std::vector<ErrorParam> errors;
+    std::vector<std::pair<int, std::string>> lines_with_errors;
+    std::ifstream* source_code;
     const std::string comment[16] = {
         "Unexpected termination of string", 
         "Unexpected termination of operator", "Endless one-line comment", 
@@ -74,7 +77,7 @@ public:
             print_cur_error(i);
         }
     }
-    ErrorHandler():errors(0)
+    ErrorHandler(std::ifstream* code):errors(0),lines_with_errors(0),source_code(code)
     {}
 
 
@@ -90,6 +93,11 @@ public:
     void push(int line_num, progError error_num, bool is_critical) 
     {
         errors.push_back(ErrorParam(line_num, error_num, is_critical));
+        std::string tmp;
+        source_code->
+        for (int i = 0; i < line_num; i++) {
+            
+        }
     }
 
     //only for tests

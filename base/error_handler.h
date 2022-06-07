@@ -1,7 +1,14 @@
 #pragma once
 #include <iostream>
-#include <vector>
 #include <algorithm>
+#include <vector>
+#include <string>
+#include <new>
+#include <sys/types.h>
+#include <stdio.h>
+#include <string.h>
+#include<fstream>
+
 
 #include "error_param.h"
 
@@ -11,7 +18,6 @@ private:
     //static const int k_ERROR_HANDLER_MAX = 16;
     std::vector<ErrorParam> errors;
     std::vector<std::pair<int, std::string>> lines_with_errors;
-    std::ifstream* source_code;
     const std::string comment[16] = {
         "Unexpected termination of string", 
         "Unexpected termination of operator", "Endless one-line comment", 
@@ -65,11 +71,20 @@ private:
     }
 
 public:
+    ErrorHandler() :errors(0), lines_with_errors(0)
+    {}
+
+
     //prints every cur error + head
-    void print_errors()
+    void print_errors(std::ifstream* source_code)
     {
+        std::vector<std::string> lines;
         print_head();
         std::sort(errors.begin(), errors.end());
+        source_code->clear();
+        source_code->seekg(0);
+
+
         /// <summary>
         /// /////////////////////////////////////////////////
         /// </summary>
@@ -77,8 +92,6 @@ public:
             print_cur_error(i);
         }
     }
-    ErrorHandler(std::ifstream* code):errors(0),lines_with_errors(0),source_code(code)
-    {}
 
 
     int condition() 
@@ -93,11 +106,6 @@ public:
     void push(int line_num, progError error_num, bool is_critical) 
     {
         errors.push_back(ErrorParam(line_num, error_num, is_critical));
-        std::string tmp;
-        source_code->
-        for (int i = 0; i < line_num; i++) {
-            
-        }
     }
 
     //only for tests

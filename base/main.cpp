@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
         std::string path = ".\\.\\test_files\\test.pas";
         std::ifstream* source_code = nullptr;
 
-        ErrorHandler* err = new ErrorHandler;
+        ErrorHandler* err = new ErrorHandler();
         Interface interface(err, &compl_conf, COMPILER_VERSION);
 
         TText<Token>* txt_link = new TText<Token>;
@@ -107,7 +107,7 @@ int main(int argc, char* argv[])
 
         // Critical error in analyze
         if (err->condition() == 2) {
-            interface.printer();
+            interface.printer(source_code);
             source_code->close();
             return Compiler_codes::k_LEXICAL_ANALYSIS_ERROR;
         }
@@ -124,7 +124,7 @@ int main(int argc, char* argv[])
 
          // Critical error in analyze
          if (err->condition() == 2) {
-             interface.printer();
+             interface.printer(source_code);
              source_code->close();
              return Compiler_codes::k_SYNTAX_ANALYSIS_ERROR;
          }
@@ -141,7 +141,7 @@ int main(int argc, char* argv[])
 
          // Critical error in analyze
          if (err->condition() == 2) {
-             interface.printer();
+             interface.printer(source_code);
              source_code->close();
              return Compiler_codes::k_SYMANTIC_ANALYSIS_ERROR;
          }

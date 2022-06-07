@@ -37,7 +37,7 @@ public:
     ) : err(_err), prs(_prs), compl_version(compl_version_)
     {}
 
-    void printer()
+    void printer(std::ifstream* source_code)
     {
         if(prs->pr_version) {
             cout << "Compiler version: " << compl_version << std::endl;
@@ -48,7 +48,7 @@ public:
 
         if (err->condition() != 0) {
             cout << "Compilation process terminated" << std::endl;
-            err->print_errors();
+            err->print_errors(source_code);
         }
     }
 

@@ -18,8 +18,7 @@
 
 int StartCompiler(std::string path)
 {
-    std::string path = ".\\.\\test_files\\test.pas";
-    std::ifstream* source_code = nullptr;
+    std::ifstream* source_code = new std::ifstream(path);
 
     ErrorHandler* err = new ErrorHandler();
     TText<Token>* txt_link = new TText<Token>;

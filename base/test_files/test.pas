@@ -18,7 +18,7 @@ begin { Commentary}
   read(num3);
   if num1 mod 2 = 0 then
   begin
-    if c1 = 20 then
+    if c2 = -2 then
     begin
       num3 := (num1-c2*5 div num1)/(c1*2);
       write('Result = ', num1);

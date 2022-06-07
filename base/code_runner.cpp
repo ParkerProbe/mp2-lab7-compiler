@@ -248,7 +248,6 @@ mc:
         if (txt_link->get_node().s_type() == Token::READ_FUNC) {
             // (
             txt_link->go_next_node();
-// Argument count
             txt_link->go_next_node();
 
             if (txt_link->get_node().s_type() == Token::USER_KEY_WORD) {

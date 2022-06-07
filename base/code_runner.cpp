@@ -35,15 +35,15 @@ void CodeRunner::get_var(Token var, SymbolTableRec<int>* var_int, SymbolTableRec
 
 void CodeRunner::set_var_int(Token symbol, int num, bool is_set, bool is_const)
 {
-    SymbolTableRec<int> tmp(SymbolTableRec<int>(symbol.get_text(), num, is_const));
-    tmp.is_set = true;
-    symbol_table_int->Insert(symbol.get_text(), tmp);
-    if (symbol_table_int->Find(symbol.get_text())->is_const != true) {
-        symbol_table_int->Find(symbol.get_text())->num = num;
-    }
-    else {
-        err->push(symbol.get_line_num(), progError::k_CHANGED_CONST_VALUE, true);
-    }
+SymbolTableRec<int> tmp(SymbolTableRec<int>(symbol.get_text(), num, is_const));
+tmp.is_set = true;
+symbol_table_int->Insert(symbol.get_text(), tmp);
+if (symbol_table_int->Find(symbol.get_text())->is_const != true) {
+    symbol_table_int->Find(symbol.get_text())->num = num;
+}
+else {
+    err->push(symbol.get_line_num(), progError::k_CHANGED_CONST_VALUE, true);
+}
 }
 
 void CodeRunner::set_var_double(Token symbol, double num, bool is_set, bool is_const)
@@ -107,14 +107,7 @@ void CodeRunner::Start()
         txt_link->go_next_node();
     }
 
-    // Begin
-    txt_link->go_next_node();
-
-    // Main program
     txt_link->go_down_node();
-
-
-
 
 mc:
     do {
@@ -142,6 +135,9 @@ mc:
                 std::vector<Token> to_postfix;
                 do {
                     txt_link->go_next_node();
+                    if (txt_link->get_node().s_type() == Token::SEMICOLON) {
+                        break;
+                    }
                     if
                     (
                         (txt_link->get_node().s_type() == Token::ASSIGN_OPERATOR) ||
@@ -152,9 +148,9 @@ mc:
                         return;
                     }
                     to_postfix.push_back(txt_link->get_node());
-                    continue;
                 } while (txt_link->get_node().s_type() != Token::SEMICOLON);
                 op.set_infix(to_postfix);
+                op.to_postfix();
                 set_var(var, op.calculate(symbol_table_int, symbol_table_double));
             }
             else {
@@ -327,7 +323,7 @@ mc:
             // Check if without begin
             if (if_condition) {
                 if (txt_link->go_down_node() != false) {
-                    continue;
+                    goto mc;
                 }
                 else {
                     // begin
@@ -335,7 +331,7 @@ mc:
 
                     // begin body
                     if (txt_link->go_down_node()) {
-                        continue;
+                        goto mc;
                     }
                 }
             }
@@ -366,7 +362,7 @@ mc:
         if (txt_link->get_node().s_type() == Token::ELSE_KEYWORD) {
             // Check else without begin
             if (txt_link->go_down_node() != false) {
-                continue;
+                    goto mc;
             }
             else {
                 // begin
@@ -374,7 +370,7 @@ mc:
 
                 // begin body
                 if (txt_link->go_down_node()) {
-                    continue;
+                    goto mc;
                 }
             }
         }
@@ -382,6 +378,39 @@ mc:
 
 
     } while (txt_link->go_next_node());
+
+    // End of program
+    if (txt_link->get_node().s_type() == Token::END_OF_FILE) {
+        return;
+    }
+    int inner_nesting;
+    // End of level
+eol:
+    inner_nesting = txt_link->get_node().get_nesting();
+    while (txt_link->get_node().get_nesting() != inner_nesting - 1)
+    {
+        txt_link->go_prev_node();
+    }
+
+    if (txt_link->get_node().s_type() == Token::THEN_KEYWORD) {
+        if (txt_link->go_next_node()) {}
+        else {
+            goto eol;
+        }
+    }
+    // begin || else || next command (if without else)
+    if (!txt_link->go_next_node()) {
+        goto eol;
+    }
+
+    // end
+    if (txt_link->get_node().s_type() == Token::END_KEYWORD) {
+        // next of end
+        txt_link->go_next_node();
+    }
+
+    // Main cycle
+    goto mc;
 
 
 }

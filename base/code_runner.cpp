@@ -187,7 +187,7 @@ mc:
                     }
                     text = txt_link->get_node().get_text();
                 }
-                if (txt_link->get_node().s_type() == Token::VAR_DEFINITION_KEYWORD) {
+                if (txt_link->get_node().s_type() == Token::USER_KEY_WORD) {
                     if (!order_to_out) {
                         order_to_out = 2;
                     }

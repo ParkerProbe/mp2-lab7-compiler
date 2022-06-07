@@ -95,6 +95,12 @@
     <ClInclude Include="syntax_analyzer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="error_param.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="prog_error.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="test_files\test.pas">

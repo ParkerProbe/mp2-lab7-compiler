@@ -328,6 +328,7 @@ void LexicalAnalyzer::create_tokens()
                 else {
                     eh->push(line_counter, progError::k_UNEXPECTED_TERMINATION_OF_STRING, true);
                 }
+                sub = Token::LexemeSubType::STRING_LITERAL;
                 tokens->push_back(Token(coord, sub, word));
                 word.clear();
                 break;
@@ -338,6 +339,7 @@ void LexicalAnalyzer::create_tokens()
                     tokens->push_back(Token(coord, Token::LexemeSubType::END_OF_FILE, word));
                     return;
                 }
+                break;
             }
             case ',': {
                 if (!word.empty()) {
@@ -352,6 +354,7 @@ void LexicalAnalyzer::create_tokens()
                     word.clear();
                 }
                 tokens->push_back(Token(coord, Token::LexemeSubType::COMMA, string(",")));
+                break;
             }
             default: {
                 word.push_back(tolower(cur_line[i]));

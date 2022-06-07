@@ -1,12 +1,9 @@
 #pragma once
 
-#include "string"
 #include <fstream>
 #include <string>
-#include "error_handler.h"
 
 using std::string;
-
 
 
 /// May be too much functions to be realized
@@ -85,9 +82,12 @@ public:
     int get_nesting() const;
     int get_line_num() const;
 
-    bool operator==(const std::string lex_text);//text from other lexeme
-    bool operator!=(const std::string lex_text);//text from other lexeme
+    //bool operator==(const std::string lex_text);//text from other lexeme
+    //bool operator!=(const std::string lex_text);//text from other lexeme
     bool operator==(const Token& token) {
-        return token.text == text;
+        return text == token.text;
+    }
+    bool operator!=(const Token& token) {
+        return text != token.text;
     }
 };

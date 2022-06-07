@@ -1,6 +1,4 @@
 #include "error_handler.h"
-
-
 int ErrorHandler::get_symbol_quan(size_t num)
 {
     int quan = 0;
@@ -26,7 +24,7 @@ void ErrorHandler::print_cur_error(size_t cur_pos)
         std::cout << ' ';
     }
     std::cout << errors[cur_pos].line_num;
-    gap_counter = 6;// string "LINE "
+    gap_counter = 5;// string "LINE "
     gap_counter -= get_symbol_quan(errors[cur_pos].line_num);
     for (; gap_counter > 0; gap_counter--) {
         std::cout << ' ';
@@ -39,47 +37,24 @@ void ErrorHandler::print_cur_error(size_t cur_pos)
     }
     std::cout << comment[errors[cur_pos].error_num] << '\n';
 }
-void ErrorHandler::print_errors()
-{
-    print_head();
-    for (size_t i = 0; i < errors.size(); i++) {
-        print_cur_error(i);
-    }
-}
-void ErrorHandler::push(size_t line_num, progError error_num, bool is_critical)
-{
-    //ErrorParam extra(line_num, error_num, is_critical);
-    errors.push_back(ErrorParam(line_num, error_num, is_critical));
-}
-//void ErrorHandler::push(ErrorParam err)
+//void ErrorHandler::print_errors()
 //{
-//    errors.push_back(err);
-//    //if (size + 1 > buff) {
-//    //    ErrorParam* tmp = new ErrorParam[size];
-//    //    for (int i = 0; i < size; i++)
-//    //        tmp[i] = errors[i];
-//    //    tmp[size] = err;
-//    //    delete[] errors;
-//    //    buff = buff << 1;//multyplying buffer by two
-//    //    errors = new ErrorParam[buff];
-//    //    size++;
-//    //    for (int i = 0; i < size; i++) {
-//    //        errors[i] = tmp[i];
-//    //    }
-//    //    delete[]tmp;
-//    //}
-//    //else {
-//    //    errors[size] = err;
-//    //    size++;
-//    //}
+//    print_head();
+//    for (size_t i = 0; i < errors.size(); i++) {
+//        print_cur_error(i);
+//    }
+//}
+//void ErrorHandler::push(int line_num, progError error_num, bool is_critical)
+//{
+//    errors.push_back(ErrorParam(line_num, error_num, is_critical));
 //}
 
-int ErrorHandler::condition()
-{
-    if (errors.size() == 0)
-        return 0;
-    for (int i = 0; i < errors.size(); i++)
-        if (errors[i].is_critical)
-            return 2;
-    return 1;
-}
+//int ErrorHandler::condition()
+//{
+//    if (errors.size() == 0)
+//        return 0;
+//    for (int i = 0; i < errors.size(); i++)
+//        if (errors[i].is_critical)
+//            return 2;
+//    return 1;
+//}

@@ -15,14 +15,14 @@ Token::LexemeSubType Token::s_type() const
 {
     return subtype;
 }
-bool Token::operator==(const std::string lex_text)
-{
-    return text == lex_text;
-}
-bool Token::operator!=(const std::string lex_text)
-{
-    return text != lex_text;
-}
+//bool Token::operator==(const std::string lex_text)
+//{
+//    return text == lex_text;
+//}
+//bool Token::operator!=(const std::string lex_text)
+//{
+//    return text != lex_text;
+//}
 int Token::get_line_num() const
 {
     return position_in_string.col;

@@ -46,7 +46,10 @@ public:
             help();
         }
 
-        // err->print_errors();
+        if (err->condition() != 0) {
+            cout << "Compilation process terminated" << std::endl;
+            // err->print_errors();
+        }
     }
 
 

@@ -327,8 +327,12 @@ mc:
                 }
             }
             else {
-                // Double true convert
-                if_condition = true;
+                if (left_value <= 0) {
+                    if_condition = false;
+                }
+                else {
+                    if_condition = true;
+                }
             }
 
             // Check if without begin

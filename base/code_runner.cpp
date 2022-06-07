@@ -368,6 +368,7 @@ mc:
                         txt_link->go_next_node();
                         txt_link->go_next_node();
                     }
+                    goto mc;
                 }
             }
             

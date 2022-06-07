@@ -171,8 +171,13 @@ mc:
             std::string text;
 
             int order_to_out = 0;
+            // 1 - string
+            // 2 - var
+            // 3 - num
             var_int = nullptr;
             var_double = nullptr;
+            
+
 
             while (txt_link->get_node().s_type() != Token::RSBRACE) {
                 txt_link->go_next_node();
@@ -188,7 +193,22 @@ mc:
                     }
                     get_var(txt_link->get_node(), &var_int, &var_double);
                 }
-// NUMBER
+
+                if (txt_link->get_node().s_type() == Token::DOUBLE_LITERAL) {
+                    if (!order_to_out) {
+                        order_to_out = 2;
+                    }
+                    get_var(txt_link->get_node(), &var_int, &var_double);
+                }
+                if (txt_link->get_node().s_type() == Token::INTEGER_LITERAL) {
+                    if (!order_to_out) {
+                        order_to_out = 2;
+                    }
+                    get_var(txt_link->get_node(), &var_int, &var_double);
+                }
+
+
+
                 // Operation in write
                 if (is_operation(txt_link->get_node())) {
                     err->push(txt_link->get_node().get_line_num(), progError::k_INCORRECT_WRITE_CALL, true);

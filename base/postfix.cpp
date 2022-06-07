@@ -230,7 +230,7 @@ double TPostfix::calculate(UnsortListTable<std::string, SymbolTableRec<int>>* sy
 			}
 			if ((*iter).s_type() == Token::LexemeSubType::INTEGER_LITERAL || (*iter).s_type() == Token::LexemeSubType::DOUBLE_LITERAL)
 			{
-				a = stoi((*iter).get_text());
+				a = stod((*iter).get_text());
 				sd.add((double)a);
 				++iter;
 			}

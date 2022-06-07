@@ -81,6 +81,9 @@ int StartCompiler(std::string path)
         source_code->close();
         return 6;
     }
+    
+    source_code->close();
+    return 0;
 }
 
 

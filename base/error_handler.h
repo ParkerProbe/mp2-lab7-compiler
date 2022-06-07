@@ -17,7 +17,6 @@ class ErrorHandler
 private:
     //static const int k_ERROR_HANDLER_MAX = 16;
     std::vector<ErrorParam> errors;
-    std::vector<std::pair<int, std::string>> lines_with_errors;
     const std::string comment[16] = {
         "Unexpected termination of string", 
         "Unexpected termination of operator", "Endless one-line comment", 
@@ -37,7 +36,7 @@ private:
         std::cout << " LINE ";
         std::cout << " ERROR MESSAGE\n";
     }
-    void print_cur_error(int cur_pos)
+    void print_cur_error(int cur_pos,std::string cur_line)
     {
         std::cout << ' ';
         std::cout << errors[cur_pos].error_num;
@@ -59,6 +58,7 @@ private:
             std::cout << "WARNING: ";
         }
         std::cout << comment[errors[cur_pos].error_num] << '\n';
+        std::cout << "LINE: \"" << cur_line << "\"" << '\n';
     }
     int get_symbol_quan(int cur_pos) 
     {
@@ -71,25 +71,26 @@ private:
     }
 
 public:
-    ErrorHandler() :errors(0), lines_with_errors(0)
+    ErrorHandler() :errors(0)
     {}
 
 
     //prints every cur error + head
     void print_errors(std::ifstream* source_code)
     {
-        std::vector<std::string> lines;
+        std::string cur_line;
         print_head();
         std::sort(errors.begin(), errors.end());
         source_code->clear();
         source_code->seekg(0);
-
-
-        /// <summary>
-        /// /////////////////////////////////////////////////
-        /// </summary>
+        int j = 1;
         for (int i = 0; i < errors.size(); i++) {
-            print_cur_error(i);
+            for (; j < errors[i].line_num; j++)
+                std::getline(*source_code, cur_line, '\n');
+            for (; errors[i].line_num == j; i++) {
+                print_cur_error(i,cur_line);
+            }
+            i--;
         }
     }
 

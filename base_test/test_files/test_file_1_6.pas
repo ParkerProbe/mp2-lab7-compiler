@@ -1,7 +1,4 @@
-Program test1_6;
-var
-  x: integer = 2;
-  y: integer = 3;
+Program test1_5;
 begin
-  write('Summa =, x + y); { Не хватает закрывающего апострофа }
+  var S := 1.3; { Нет объявления типа }
 end.

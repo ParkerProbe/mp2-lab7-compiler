@@ -196,15 +196,15 @@ mc:
 
                 if (txt_link->get_node().s_type() == Token::DOUBLE_LITERAL) {
                     if (!order_to_out) {
-                        order_to_out = 2;
+                        order_to_out = 3;
                     }
-                    get_var(txt_link->get_node(), &var_int, &var_double);
+                    var_double->num = stod(txt_link->get_node().get_text());
                 }
                 if (txt_link->get_node().s_type() == Token::INTEGER_LITERAL) {
                     if (!order_to_out) {
-                        order_to_out = 2;
+                        order_to_out = 3;
                     }
-                    get_var(txt_link->get_node(), &var_int, &var_double);
+                    var_int->num = stoi(txt_link->get_node().get_text());
                 }
 
 
@@ -228,7 +228,7 @@ mc:
                     std::cout << text << std::endl;
                 }
             }
-            if (order_to_out == 2) {
+            if ((order_to_out == 2) || (order_to_out == 3 )) {
                 if (var_int != nullptr) {
                     std::cout <<  var_int->num << text << std::endl;
                 }

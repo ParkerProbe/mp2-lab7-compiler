@@ -2,7 +2,8 @@
 #include <string>
 #include <new>
 #include <sys/types.h>
-
+#include <stdio.h>
+#include <string.h>
 
 
 #include "compiler_config.h"
@@ -16,6 +17,8 @@
 #include "lexical_analyzer.h"
 #include "code_runner.h"
 #include "syntax_analyzer.h"
+#include "unsort_list_table.h"
+
 
 
 
@@ -36,15 +39,6 @@ namespace Compiler_codes {
     };
 }
 
-void PrintOut(ErrorHandler* err)
-{
-    // Critical
-
-
-}
-
-
-
 int main(int argc, char* argv[])
 {
     compiler_parameters compl_conf; 
@@ -59,8 +53,8 @@ int main(int argc, char* argv[])
         TText<Token>* txt_link = new TText<Token>;
         vector<Token>* lexems = new vector<Token>;
 
-        HashTableList<SymbolTableRec<int>>* symbol_table_int = nullptr;
-        HashTableList<SymbolTableRec<double>>* symbol_table_double = nullptr;
+        UnsortListTable<std::string, SymbolTableRec<int>>* symbol_table_int = new UnsortListTable<std::string, SymbolTableRec<int>>;
+        UnsortListTable<std::string, SymbolTableRec<double>>* symbol_table_double = new UnsortListTable<std::string, SymbolTableRec<double>>;
 
         /*
 
@@ -135,32 +129,31 @@ int main(int argc, char* argv[])
              return Compiler_codes::k_SYNTAX_ANALYSIS_ERROR;
          }
         // if (compl_conf.syntax_only) {}
-
-
-        SemanticAnalyzer* sym_analyzer = new SemanticAnalyzer
-        (
-            txt_link,
-            symbol_table_int,
-            symbol_table_double,
-            err
-        );
-        sym_analyzer->Start();
-
-        // Critical error in analyze
-        if (err->condition() == 2) {
-            interface.printer();
-            source_code->close();
-            return Compiler_codes::k_SYMANTIC_ANALYSIS_ERROR;
-        }
-
-         CodeRunner* runner = new CodeRunner
+ 
+         SemanticAnalyzer* sym_analyzer = new SemanticAnalyzer
          (
              txt_link,
              symbol_table_int,
              symbol_table_double,
              err
          );
-         runner->Start();
+         sym_analyzer->Start();
+
+         // Critical error in analyze
+         if (err->condition() == 2) {
+             interface.printer();
+             source_code->close();
+             return Compiler_codes::k_SYMANTIC_ANALYSIS_ERROR;
+         }
+
+ /*        CodeRunner* runner = new CodeRunner
+         (
+             txt_link,
+             symbol_table_int,
+             symbol_table_double,
+             err
+         );
+         runner->Start();*/
 
         source_code->close();
 

@@ -4,7 +4,7 @@
 #include "token.h"
 #include "error_handler.h"
 #include "symbol_table_rec.h"
-#include "hash_table_list.h"
+#include "unsort_list_table.h"
 
 class SemanticAnalyzer
 {
@@ -13,8 +13,8 @@ private:
     TText<Token>* txt_link;
     ErrorHandler* err;
 
-    HashTableList<SymbolTableRec<int>>* symbol_table_int;
-    HashTableList<SymbolTableRec<double>>* symbol_table_double;
+    UnsortListTable<std::string, SymbolTableRec<int>>* symbol_table_int;
+    UnsortListTable<std::string, SymbolTableRec<double>>* symbol_table_double;
 
 
 
@@ -29,8 +29,8 @@ public:
     SemanticAnalyzer
     (
         TText<Token>* txt_link_,
-        HashTableList<SymbolTableRec<int>>* sti,
-        HashTableList<SymbolTableRec<double>>* std,
+        UnsortListTable<std::string, SymbolTableRec<int>>* sti,
+        UnsortListTable<std::string, SymbolTableRec<double>>* std,
         ErrorHandler* err_
     )
     : txt_link(txt_link_), symbol_table_int(sti),

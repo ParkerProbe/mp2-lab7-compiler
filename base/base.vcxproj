@@ -96,11 +96,10 @@
     <ClInclude Include="code_runner.h" />
     <ClInclude Include="compiler_config.h" />
     <ClInclude Include="eq_exception.h" />
-    <ClInclude Include="hash_table_list.h" />
     <ClInclude Include="error_param.h" />
     <ClInclude Include="interface.h" />
     <ClInclude Include="lexical_analyzer.h" />
-    <ClInclude Include="list.h" />
+    <ClInclude Include="list_2.h" />
     <ClInclude Include="postfix.h" />
     <ClInclude Include="prog_error.h" />
     <ClInclude Include="semantic_analyzer.h" />
@@ -111,6 +110,7 @@
     <ClInclude Include="table_string.h" />
     <ClInclude Include="text_link.h" />
     <ClInclude Include="token.h" />
+    <ClInclude Include="unsort_list_table.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="test_files\test.pas" />

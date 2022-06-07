@@ -6,7 +6,7 @@
 #include "token.h"
 #include "list.h"
 #include "symbol_table_rec.h"
-#include "hash_table_list.h"
+#include "unsort_list_table.h"
 using namespace std;
 
 class TPostfix
@@ -36,5 +36,5 @@ public:
 	std::vector<Token> get_infix() { return infix; }
 	std::vector<Token> get_postfix() { return postfix; }
 	std::vector<Token> to_postfix();
-	double calculate(HashTableList<SymbolTableRec<int>>* symbol_table_int, HashTableList<SymbolTableRec<double>>* symbol_table_double);
+	double calculate(UnsortListTable<std::string, SymbolTableRec<int>>* symbol_table_int, UnsortListTable<std::string, SymbolTableRec<double>>* symbol_table_double);
 };

@@ -2,6 +2,7 @@
 
 #include <ostream>
 #include <string>
+#include "eq_exception.h"
 
 using std::string;
 
@@ -99,7 +100,8 @@ public:
         os << key << " " << body.poly_string << std::endl;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const TableString* ts);
+    template <class Y>
+    friend std::ostream& operator<<(std::ostream& os, const TableString<Y>* ts);
 
     friend class Table<T>;
     friend class HashTableList<T>;

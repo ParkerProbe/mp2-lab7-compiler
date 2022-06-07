@@ -1,8 +1,11 @@
+#include <iostream>
+#include <cmath>
+
+
 #include "postfix.h"
 #include "stack.h"
-#include <iostream>
 #include "token.h"
-
+#
 int TPostfix::prior(Token::LexemeSubType a)
 {
 	if (a == Token::LexemeSubType::MULTIPLY_OPERATOR || a == Token::LexemeSubType::DIVIDE_OPERATOR || a == Token::LexemeSubType::DIV_OPERATOR || a == Token::LexemeSubType::MOD_OPERATOR )
@@ -73,7 +76,7 @@ std::vector<Token>  TPostfix::to_postfix()
 	return postfix;
 }
 
-double TPostfix::calculate(HashTableList<SymbolTableRec<int>>* table_int, HashTableList<SymbolTableRec<double>>* table_double)
+double TPostfix::calculate(UnsortListTable<std::string, SymbolTableRec<int>>* symbol_table_int, UnsortListTable<std::string, SymbolTableRec<double>>* symbol_table_double)
 {
 	double a, b;
 	int whole1, whole2;
@@ -197,15 +200,15 @@ double TPostfix::calculate(HashTableList<SymbolTableRec<int>>* table_int, HashTa
 		}
 		else
 		{
-			if ((*table_int).find((*iter).get_text()) != nullptr)
+			if (symbol_table_int->Find((*iter).get_text()) != nullptr)
 			{
-				a = (*table_int).find((*iter).get_text())->data->num;
+				a = symbol_table_int->Find((*iter).get_text())->num;
 				sd.add((double)a);
 				continue;
 			}
-			if ((*table_double).find((*iter).get_text()) != nullptr)
+			if (symbol_table_double->Find((*iter).get_text()) != nullptr)
 			{
-				a = (*table_double).find((*iter).get_text())->data->num;
+				a = symbol_table_double->Find((*iter).get_text())->num;
 				sd.add((double)a);
 				continue;
 			}

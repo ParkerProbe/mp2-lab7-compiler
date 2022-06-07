@@ -46,7 +46,7 @@ public:
             help();
         }
 
-        err->print_errors();
+        // err->print_errors();
     }
 
 

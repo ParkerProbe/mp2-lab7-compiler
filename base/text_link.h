@@ -1,6 +1,8 @@
 #pragma once
 #include "stack.h"
 #include "list.h"
+#include "token.h"
+
 template <class T>
 class TText;
 template <class T>
@@ -161,7 +163,7 @@ template <class T>
 bool TText<T>::del_down_node()//
 {
     if (pCurrent == NULL)
-        return false
+        return false;
     else if (pCurrent->pDown != NULL)
     {
         TTextNode<T>* pd = pCurrent->pDown;
@@ -178,7 +180,7 @@ template <class T>
 bool TText<T>::del_down_section()
 {
     if (pCurrent == NULL)
-        return false
+        return false;
     else if (pCurrent->pDown != NULL)
     {
         TTextNode<T>* pd = pCurrent->pDown;
@@ -192,7 +194,7 @@ template <class T>
 bool TText<T>::del_next_node()//
 {
     if (pCurrent == NULL)
-        return false
+        return false;
     else if (pCurrent->pNext != NULL)
     {
         TTextNode<T>* pd = pCurrent->pNext;
@@ -209,7 +211,7 @@ template <class T>
 bool TText<T>::del_next_section()//
 {
     if (pCurrent == NULL)
-        return false
+        return false;
     else if (pCurrent->pNext != NULL)
     {
         TTextNode<T>* pd = pCurrent->pNext;

@@ -1,41 +1,38 @@
 #include "semantic_analyzer.h"
 
-
 // Add error type 
 // Separate analyzator errors
 
 void SemanticAnalyzer::set_var_int(Token symbol, int num, bool is_set, bool is_const)
 {
-    TableBody<SymbolTableRec<int>> tmp(SymbolTableRec<int>(symbol.get_text(), num, is_const));
-    tmp.data->is_set = true;
-    if (symbol_table_int->insert(symbol.get_text(), tmp) == false) {
-        if (symbol_table_int->find(symbol.get_text())->data->is_const != true) {
-            symbol_table_int->find(symbol.get_text())->data->num = num;
-        }
-        else {
-            err->push(symbol.get_line_num(), progError::k_CHANGED_CONST_VALUE, true);
-        }
+    SymbolTableRec<int> tmp(SymbolTableRec<int>(symbol.get_text(), num, is_const));
+    tmp.is_set = true;
+    symbol_table_int->Insert(symbol.get_text(), tmp);
+    if (symbol_table_int->Find(symbol.get_text())->is_const != true) {
+        symbol_table_int->Find(symbol.get_text())->num = num;
+    }
+    else {
+        err->push(symbol.get_line_num(), progError::k_CHANGED_CONST_VALUE, true);
     }
 }
 
 void SemanticAnalyzer::set_var_double(Token symbol, double num, bool is_set, bool is_const)
 {
-    TableBody<SymbolTableRec<double>> tmp(SymbolTableRec<double>(symbol.get_text(), num, is_const));
-    tmp.data->is_set = true;
-    if (symbol_table_double->insert(symbol.get_text(), tmp) == false) {
-        if (symbol_table_double->find(symbol.get_text())->data->is_const != true) {
-            symbol_table_double->find(symbol.get_text())->data->num = num;
-        }
-        else {
-            err->push(symbol.get_line_num(), progError::k_CHANGED_CONST_VALUE, true);
-        }
+    SymbolTableRec<double> tmp(SymbolTableRec<double>(symbol.get_text(), num, is_const));
+    tmp.is_set = true;
+    symbol_table_double->Insert(symbol.get_text(), tmp);
+    if (symbol_table_double->Find(symbol.get_text())->is_const != true) {
+        symbol_table_double->Find(symbol.get_text())->num = num;
+    }
+    else {
+        err->push(symbol.get_line_num(), progError::k_CHANGED_CONST_VALUE, true);
     }
 }
 
 SymbolTableRec<int>* SemanticAnalyzer::get_var_int(Token symbol)
 {
-    if (symbol_table_int->find(symbol.get_text()) != nullptr) {
-        return symbol_table_int->find(symbol.get_text())->data;
+    if (symbol_table_int->Find(symbol.get_text()) != nullptr) {
+        return symbol_table_int->Find(symbol.get_text());
 
     }
     else {
@@ -46,9 +43,9 @@ SymbolTableRec<int>* SemanticAnalyzer::get_var_int(Token symbol)
 
 SymbolTableRec<double>* SemanticAnalyzer::get_var_double(Token symbol)
 {
-    if (symbol_table_double->find(symbol.get_text()) != nullptr) {
+    if (symbol_table_double->Find(symbol.get_text()) != nullptr) {
         
-        return symbol_table_double->find(symbol.get_text())->data;
+        return symbol_table_double->Find(symbol.get_text());
     }
     else {
         return nullptr;
@@ -133,6 +130,9 @@ void SemanticAnalyzer::set_var(Token var, Token value, bool is_set, bool is_cons
 
 void SemanticAnalyzer::Start()
 {
+
+    txt_link->go_first_node();
+
     // program
     txt_link->go_next_node();
     // program name

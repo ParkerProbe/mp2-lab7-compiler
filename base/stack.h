@@ -8,8 +8,7 @@ class Stack
     int size;
     int top;
 public:
-    Stack(int _size = MaxStackSize);
-    Stack(const Stack<T>& s);
+    Stack();
     ~Stack();
     void add(T tmp);
 
@@ -20,19 +19,11 @@ public:
     void set_size(int s);
     int get_size();
 };
+
 template <class T>
-Stack<T>::Stack(const Stack<T>& s)
+Stack<T>::Stack()
 {
-    size = s.size;
-    pMem = new T[size];
-    top = s.top;
-    for (int i = 0; i <= top; i++)
-        pMem[i] = s.pMem[i];
-}
-template <class T>
-Stack<T>::Stack(int _size = MaxStackSize)
-{
-    size = _size;
+    size = MaxStackSize;
     top = -1;
     if ((size < 1) || (size > MaxStackSize))
         throw size;

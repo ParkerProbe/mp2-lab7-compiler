@@ -1,0 +1,2 @@
+C:/msys64/usr/bin/ar.exe qc libgtest.a "CMakeFiles/gtest.dir/gtest-all.cc.obj"
+C:/msys64/usr/bin/ranlib.exe libgtest.a

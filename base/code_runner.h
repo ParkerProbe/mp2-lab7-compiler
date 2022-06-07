@@ -27,7 +27,7 @@ private:
     void set_var_int(Token symbol, int num, bool is_set, bool is_const);
     void set_var_double(Token symbol, double num, bool is_set, bool is_const);
     void set_var(Token var, double value, bool is_set = true, bool is_const = false);
-    void get_var(Token var, SymbolTableRec<int>* var_int, SymbolTableRec<double>* var_double);
+    void get_var(Token var, SymbolTableRec<int>** var_int, SymbolTableRec<double>** var_double);
 
     bool is_operation(Token symbol);
 

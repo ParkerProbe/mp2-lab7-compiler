@@ -12,9 +12,9 @@ begin { Commentary}
   num4 := 2; 
   num1 := 5;
   num2 := 20;
-  write('Введите четное целое число');
+  write('Input even number');
   read(num1);
-  write('Введите вещественное число');
+  write('Input real number');
   read(num3);
   if num1 mod 2 = 0 then
   begin
@@ -39,7 +39,7 @@ begin { Commentary}
     else
       if c1 = 10 then
         if num2 = 30 then
-          write('4')
+          write('4');
   end
 end.
 {Program end}

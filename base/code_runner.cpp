@@ -26,10 +26,10 @@ SymbolTableRec<double>* CodeRunner::get_var_double(Token symbol)
 }
 
 
-void CodeRunner::get_var(Token var, SymbolTableRec<int>* var_int, SymbolTableRec<double>* var_double)
+void CodeRunner::get_var(Token var, SymbolTableRec<int>** var_int, SymbolTableRec<double>** var_double)
 {
-    var_int = get_var_int(var);
-    var_double = get_var_double(var);
+    *var_int = get_var_int(var);
+    *var_double = get_var_double(var);
     return;
 }
 
@@ -61,7 +61,7 @@ void CodeRunner::set_var_double(Token symbol, double num, bool is_set, bool is_c
 
 void CodeRunner::set_var(Token var, double value, bool is_set, bool is_const)
 {
-    get_var(var, var_int, var_double);
+    get_var(var, &var_int, &var_double);
     if (var_int != nullptr) {
         set_var_int(var, (int)value, is_set, is_const);
     }
@@ -170,7 +170,9 @@ mc:
             // Out parameters
             std::string text;
 
-            int order_to_out;
+            int order_to_out = 0;
+            var_int = nullptr;
+            var_double = nullptr;
 
             while (txt_link->get_node().s_type() != Token::RSBRACE) {
                 txt_link->go_next_node();
@@ -184,7 +186,7 @@ mc:
                     if (!order_to_out) {
                         order_to_out = 2;
                     }
-                    get_var(txt_link->get_node(), var_int, var_double);
+                    get_var(txt_link->get_node(), &var_int, &var_double);
                 }
                 // Operation in write
                 if (is_operation(txt_link->get_node())) {
@@ -227,9 +229,10 @@ mc:
             txt_link->go_next_node();
 // Argument count
             txt_link->go_next_node();
-            if (txt_link->get_node().s_type() == Token::VAR_DEFINITION_KEYWORD) {
+
+            if (txt_link->get_node().s_type() == Token::USER_KEY_WORD) {
                 // Read realization
-                get_var(txt_link->get_node(), var_int, var_double);
+                get_var(txt_link->get_node(), &var_int, &var_double);
                 if (var_int != nullptr) {
                     int num;
                     std::cin >> num;
@@ -260,27 +263,35 @@ mc:
             const int not_equal = 2;
             vector <Token> left_equal;
             vector <Token> right_equal;
+            txt_link->go_next_node();
 
-            do {
-                txt_link->go_next_node();
+            while(txt_link->get_node().s_type() != Token::THEN_KEYWORD)
+            {
+                if (txt_link->get_node().s_type() == Token::EQUALS_RELATION_OPERATOR)
+                    break;
+                if (txt_link->get_node().s_type() == Token::NOT_EQUALS_RELATIONAL_OPERATOR)
+                    break;
+
                 left_equal.push_back(txt_link->get_node());
-            } while
-                ((txt_link->get_node().s_type() != Token::EQUALS_RELATION_OPERATOR) ||
-                    (txt_link->get_node().s_type() != Token::NOT_EQUALS_RELATIONAL_OPERATOR) ||
-                    (txt_link->get_node().s_type() != Token::THEN_KEYWORD));
+                txt_link->go_next_node();
+            }
+                
 
-            if (txt_link->get_node().s_type() != Token::EQUALS_RELATION_OPERATOR)
+            if (txt_link->get_node().s_type() == Token::EQUALS_RELATION_OPERATOR)
             {
                 equal_type = equal;
+                txt_link->go_next_node();
             }
-            if (txt_link->get_node().s_type() != Token::NOT_EQUALS_RELATIONAL_OPERATOR)
+            if (txt_link->get_node().s_type() == Token::NOT_EQUALS_RELATIONAL_OPERATOR)
             {
                 equal_type = not_equal;
+                txt_link->go_next_node();
             }
 
-            if (!equal) {
+            if (equal_type) {
                 do {
                     right_equal.push_back(txt_link->get_node());
+                    txt_link->go_next_node();
                 } while (txt_link->get_node().s_type() != Token::THEN_KEYWORD);
             }
 
@@ -299,19 +310,19 @@ mc:
                 // =
                 if (equal_type == equal) {
                     if (right_value == left_value) {
-                        if_condition = false;
+                        if_condition = true;
                     }
                     else {
-                        if_condition = true;
+                        if_condition = false;
                     }
                 }
 
                 if (equal_type == not_equal) {
                     if (right_value != left_value) {
-                        if_condition = false;
+                        if_condition = true;
                     }
                     else {
-                        if_condition = true;
+                        if_condition = false;
                     }
                 }
             }

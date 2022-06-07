@@ -329,7 +329,7 @@ mc:
 
             // Check if without begin
             if (txt_link-> go_down_node() != false) {
-                continue;
+                goto mc;
             }
             else {
                 // begin
@@ -337,7 +337,7 @@ mc:
 
                 // begin body
                 if (txt_link->go_down_node()) {
-                    continue;
+                    goto mc;
                 }
             }
         }
@@ -347,7 +347,7 @@ mc:
         if (txt_link->get_node().s_type() == Token::ELSE_KEYWORD) {
             // Check else without begin
             if (txt_link->go_down_node() != false) {
-                continue;
+                goto mc;
             }
             else {
                 // begin
@@ -355,7 +355,7 @@ mc:
 
                 // begin body
                 if (txt_link->go_down_node()) {
-                    continue;
+                    goto mc;
                 }
             }
         }
@@ -368,16 +368,25 @@ mc:
     if (txt_link->get_node().s_type() == Token::END_OF_FILE) {
         return;
     }
-
+    int inner_nesting;
     // End of level
-    int inner_nesting = txt_link->get_node().get_nesting();
+eol:
+    inner_nesting = txt_link->get_node().get_nesting();
     while (txt_link->get_node().get_nesting() != inner_nesting - 1)
     {
         txt_link->go_prev_node();
     }
 
+    if (txt_link->get_node().s_type() == Token::THEN_KEYWORD) {
+        if (txt_link->go_next_node()) {}
+        else {
+            goto eol;
+        }
+    }
     // begin || else || next command (if without else)
-    txt_link->go_next_node();
+    if (!txt_link->go_next_node()) {
+        goto eol;
+    }
 
     // end
     if (txt_link->get_node().s_type() == Token::END_KEYWORD) {

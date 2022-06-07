@@ -31,6 +31,7 @@ std::vector<Token>  TPostfix::to_postfix()
 		if (prior(tmp) == 0)
 		{
 			postfix.push_back((*iter));
+			iter++;
 				continue;
 		}
 		if ((prior(tmp) == 2) || (prior(tmp) == 3) || (prior(tmp) == -1))

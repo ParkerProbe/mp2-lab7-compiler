@@ -4,8 +4,8 @@
 #include "text_link.h"
 #include "token.h"
 #include "error_handler.h"
-#include "symbol_table_rec.h"
-#include "hash_table_list.h"
+//#include "symbol_table_rec.h"
+//#include "hash_table_list.h"
 
 class SyntaxAnalyzer
 {
@@ -49,6 +49,9 @@ public:
                 countbrake1++;
                 break;
             case Token::LexemeSubType::END_KEYWORD:
+                countbrake2++;
+                break;
+            case Token::LexemeSubType::END_OF_FILE:
                 countbrake2++;
                 break;
             case Token::LexemeSubType::LSBRACE:

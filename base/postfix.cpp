@@ -21,6 +21,7 @@ int TPostfix::prior(Token::LexemeSubType a)
 
 std::vector<Token>  TPostfix::to_postfix()
 {
+	postfix.clear();
 	Token::LexemeSubType tmp;
 	sc.set_size(infix.size());
 	sd.set_size(infix.size());

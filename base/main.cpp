@@ -1,10 +1,7 @@
-#include <iostream>
-#include "vector"
-#include "string"
-#include <fstream>
+#include <vector>
+#include <string>
 #include <new>
 #include <sys/types.h>
-#include "string.h"
 
 
 

@@ -4,8 +4,8 @@
 #include "text_link.h"
 #include "token.h"
 #include "error_handler.h"
-#include "symbol_table_rec.h"
-#include "hash_table_list.h"
+//#include "symbol_table_rec.h"
+//#include "hash_table_list.h"
 
 class SyntaxAnalyzer
 {
@@ -33,14 +33,10 @@ public:
         int countif = 0;
         int countthen = 0;
         std::vector<Token>::iterator iter = (*tokens).begin();
-        while ((iter != (*tokens).end()) && ((*iter).s_type() != Token::LexemeSubType::END_OF_FILE))
+        while (iter != (*tokens).end())
         {
             int space, spacecurr;
-            if (txt_link == nullptr) {
-                return;
-            }
-            Token tmp;
-            if (txt_link->get_node() == tmp)
+            if (txt_link->is_empty() == true)
             {
                 txt_link->set_first_node(*iter);
                 ++iter;
@@ -52,7 +48,7 @@ public:
             case Token::LexemeSubType::BEGIN_KEYWORD:
                 countbrake1++;
                 break;
-            case Token::LexemeSubType::END_KEYWORD:
+            case Token::LexemeSubType::END_KEYWORD: case Token::LexemeSubType::END_OF_FILE:
                 countbrake2++;
                 break;
             case Token::LexemeSubType::LSBRACE:

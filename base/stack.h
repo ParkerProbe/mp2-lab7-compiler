@@ -1,5 +1,5 @@
 #pragma once
-const int MaxStackSize = 100;
+const int MaxStackSize = 2000;
 
 template <class T>
 class Stack
@@ -8,7 +8,7 @@ class Stack
     int size;
     int top;
 public:
-    Stack(int _size = 10);
+    Stack(int _size = MaxStackSize);
     Stack(const Stack<T>& s);
     ~Stack();
     void add(T tmp);
@@ -30,7 +30,7 @@ Stack<T>::Stack(const Stack<T>& s)
         pMem[i] = s.pMem[i];
 }
 template <class T>
-Stack<T>::Stack(int _size = 1)
+Stack<T>::Stack(int _size = MaxStackSize)
 {
     size = _size;
     top = -1;

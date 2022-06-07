@@ -109,11 +109,11 @@ void LexicalAnalyzer::create_tokens()
                     else {
                         sub = it->second;
                     }
-                    tokens->push_back(Token(line_counter, sub, word));
+                    tokens->push_back(Token(coord, sub, word));
                     word.clear();
                 }
                 sub = Token::LexemeSubType::SEMICOLON;
-                tokens->push_back(Token(line_counter, sub, string(";")));
+                tokens->push_back(Token(coord, sub, string(";")));
                 goto next_line;
             }
             case ' ': {
@@ -125,7 +125,7 @@ void LexicalAnalyzer::create_tokens()
                     else {
                         sub = it->second;
                     }
-                    tokens->push_back(Token(line_counter, sub, word));
+                    tokens->push_back(Token(coord, sub, word));
                     word.clear();
                 }
                 while (cur_line[i] == ' ' && i < cur_line.size()) {
@@ -151,7 +151,7 @@ void LexicalAnalyzer::create_tokens()
                     else {
                         sub = it->second;
                     }
-                    tokens->push_back(Token(line_counter, sub, word));
+                    tokens->push_back(Token(coord, sub, word));
                     word.clear();
                 }
                 if (cur_line[i] == '+' || cur_line[i] == '-') {
@@ -229,7 +229,7 @@ void LexicalAnalyzer::create_tokens()
                     else {
                         sub = it->second;
                     }
-                    tokens->push_back(Token(line_counter, sub, word));
+                    tokens->push_back(Token(coord, sub, word));
                     word.clear();
                 }
                 if (c == '=') {
@@ -254,7 +254,7 @@ void LexicalAnalyzer::create_tokens()
                     else {
                         sub = it->second;
                     }
-                    tokens->push_back(Token(line_counter, sub, word));
+                    tokens->push_back(Token(coord, sub, word));
                     word.clear();
                 }
                 char c = cur_line[i];
@@ -297,11 +297,11 @@ void LexicalAnalyzer::create_tokens()
                     else {
                         sub = it->second;
                     }
-                    tokens->push_back(Token(line_counter, sub, word));
+                    tokens->push_back(Token(coord, sub, word));
                     word.clear();
                 }
                 sub = Token::LexemeSubType::EQUALS_RELATION_OPERATOR;
-                tokens->push_back(Token(line_counter, sub, string("=")));
+                tokens->push_back(Token(coord, sub, string("=")));
                 break;
             }
             case '\'': {
@@ -313,7 +313,7 @@ void LexicalAnalyzer::create_tokens()
                     else {
                         sub = it->second;
                     }
-                    tokens->push_back(Token(line_counter, sub, word));
+                    tokens->push_back(Token(coord, sub, word));
                     word.clear();
                 }
                 word.push_back(cur_line[i]);
@@ -328,6 +328,7 @@ void LexicalAnalyzer::create_tokens()
                 else {
                     eh->push(line_counter, progError::k_UNEXPECTED_TERMINATION_OF_STRING, true);
                 }
+                sub = Token::LexemeSubType::STRING_LITERAL;
                 tokens->push_back(Token(coord, sub, word));
                 word.clear();
                 break;
@@ -338,6 +339,7 @@ void LexicalAnalyzer::create_tokens()
                     tokens->push_back(Token(coord, Token::LexemeSubType::END_OF_FILE, word));
                     return;
                 }
+                break;
             }
             case ',': {
                 if (!word.empty()) {
@@ -348,10 +350,11 @@ void LexicalAnalyzer::create_tokens()
                     else {
                         sub = it->second;
                     }
-                    tokens->push_back(Token(line_counter, sub, word));
+                    tokens->push_back(Token(coord, sub, word));
                     word.clear();
                 }
                 tokens->push_back(Token(coord, Token::LexemeSubType::COMMA, string(",")));
+                break;
             }
             default: {
                 word.push_back(tolower(cur_line[i]));
@@ -366,7 +369,7 @@ void LexicalAnalyzer::create_tokens()
             else {
                 sub = it->second;
             }
-            tokens->push_back(Token(line_counter, sub, word));
+            tokens->push_back(Token(coord, sub, word));
             word.clear();
         }
     next_line:        line_counter++;

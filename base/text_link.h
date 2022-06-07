@@ -40,7 +40,16 @@ public:
     bool del_down_section();//delete lower sublevel
     bool ins_next_section(T tmp);//insert new same sublevel
     bool del_next_section();//delete same sublevel
+
+    bool is_empty();
 };
+template <class T>
+bool TText<T>::is_empty()
+{
+    if (pFirst == nullptr)
+        return true;
+    return false;
+}
 template <class T>
 bool TText<T>::set_first_node(T tmp)
 {
@@ -62,7 +71,7 @@ template <class T>
 bool TText<T>::go_down_node()//
 {
     if (pCurrent != NULL)
-        if (pCurrent->pDown = NULL)
+        if (pCurrent->pDown != NULL)
         {
             Path.add(pCurrent);
             pCurrent = pCurrent->pDown;

@@ -26,6 +26,7 @@ public:
 
     void Start()
     {
+        int num1, num2, num3;
         int countbrake1 = 0;
         int countbrake2 = 0;
         int countbrace1 = 0;
@@ -47,18 +48,24 @@ public:
             {
             case Token::LexemeSubType::BEGIN_KEYWORD:
                 countbrake1++;
+                if (countbrake1 == 1)
+                    num1 = (*iter).get_line_num();
                 break;
             case Token::LexemeSubType::END_KEYWORD: case Token::LexemeSubType::END_OF_FILE:
                 countbrake2++;
                 break;
             case Token::LexemeSubType::LSBRACE:
                 countbrace1++;
+                if (countbrace1 == 1)
+                    num2 = (*iter).get_line_num();
                 break;
             case Token::LexemeSubType::RSBRACE:
                 countbrace2++;
                 break;
             case Token::LexemeSubType::IF_HEADING:
                 countif++;
+                if (countif == 1)
+                    num3 = (*iter).get_line_num();
                 break;
             case Token::LexemeSubType::THEN_KEYWORD:
                 countthen++;
@@ -86,7 +93,12 @@ public:
             }
             ++iter;
         }
-        if (countbrace1 != countbrace2 || countbrake1 != countbrake2 || countif != countthen)
-            err->push(0, progError::k_FIRST_PART_OF_PAIR_IS_MISSED, true);
+        if (countbrake1 != countbrake2)
+            err->push(num1, progError::k_FIRST_PART_OF_PAIR_IS_MISSED, true); 
+        if (countbrace1 != countbrace2)
+            err->push(num2, progError::k_FIRST_PART_OF_PAIR_IS_MISSED, true);
+        if (countif != countthen)
+            err->push(num3, progError::k_FIRST_PART_OF_PAIR_IS_MISSED, true);
+
     }
 };

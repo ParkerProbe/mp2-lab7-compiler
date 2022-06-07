@@ -91,6 +91,7 @@ double TPostfix::calculate(UnsortListTable<std::string, SymbolTableRec<int>>* sy
 		{
 			a = sd.get_top(); b = sd.get_top();
 			sd.add(a + b);
+			++iter;
 			continue;
 		}
 		if ((*iter).s_type() == Token::LexemeSubType::MINUS_OPERATOR)
@@ -103,12 +104,14 @@ double TPostfix::calculate(UnsortListTable<std::string, SymbolTableRec<int>>* sy
 				b = sd.get_top();
 				sd.add(b - a);
 			}
+			++iter;
 			continue;
 		}
 		if ((*iter).s_type() == Token::LexemeSubType::MULTIPLY_OPERATOR)
 		{
 			a = sd.get_top(); b = sd.get_top();
 			sd.add(a * b);
+			++iter;
 			continue;
 		}
 		if ((*iter).s_type() == Token::LexemeSubType::DIV_OPERATOR)
@@ -120,6 +123,7 @@ double TPostfix::calculate(UnsortListTable<std::string, SymbolTableRec<int>>* sy
 			fractional2 = (int)((b - (double)whole2) * pow(10, precision));
 			if (fractional1 == 0 && fractional2 == 0 && (whole2%whole1==0))
 			sd.add(double(whole2 / whole1));
+			++iter;
 			continue;
 		}
 		if ((*iter).s_type() == Token::LexemeSubType::MOD_OPERATOR)
@@ -131,12 +135,14 @@ double TPostfix::calculate(UnsortListTable<std::string, SymbolTableRec<int>>* sy
 			fractional2 = (int)((b - (double)whole2) * pow(10, precision));
 			if (fractional1==0 && fractional2 == 0)
 			sd.add(double((int)b % (int)a));
+			++iter;
 			continue;
 		}
 		if ((*iter).s_type() == Token::LexemeSubType::DIVIDE_OPERATOR)
 		{
 			a = sd.get_top(); b = sd.get_top();
 			sd.add(b / a);
+			++iter;
 			continue;
 		}
 		if ((*iter).s_type() == Token::LexemeSubType::EQUALS_RELATION_OPERATOR)
@@ -147,6 +153,7 @@ double TPostfix::calculate(UnsortListTable<std::string, SymbolTableRec<int>>* sy
 			if (sd.is_empty() == true && a == b)
 				return 1;
 			return 0;
+			++iter;
 			continue;
 		}
 		if ((*iter).s_type() == Token::LexemeSubType::NOT_EQUALS_RELATIONAL_OPERATOR)
@@ -157,6 +164,7 @@ double TPostfix::calculate(UnsortListTable<std::string, SymbolTableRec<int>>* sy
 			if (sd.is_empty() == true && a != b)
 				return 1;
 			return 0;
+			++iter;
 			continue;
 		}
 		if ((*iter).s_type() == Token::LexemeSubType::LESS_RELATIONAL_OPERATOR)
@@ -167,6 +175,7 @@ double TPostfix::calculate(UnsortListTable<std::string, SymbolTableRec<int>>* sy
 			if (sd.is_empty() == true && b < a)
 				return 1;
 			return 0;
+			++iter;
 			continue;
 		}
 		if ((*iter).s_type() == Token::LexemeSubType::LESS_OR_EQUALS_RELATIONAL_OPERATOR)
@@ -177,6 +186,7 @@ double TPostfix::calculate(UnsortListTable<std::string, SymbolTableRec<int>>* sy
 			if (sd.is_empty() == true && b <= a)
 				return 1;
 			return 0;
+			++iter;
 			continue;
 		}
 		if ((*iter).s_type() == Token::LexemeSubType::GREATER_RELATIONAL_OPERATOR)
@@ -187,6 +197,7 @@ double TPostfix::calculate(UnsortListTable<std::string, SymbolTableRec<int>>* sy
 			if (sd.is_empty() == true && b > a)
 				return 1;
 			return 0;
+			++iter;
 			continue;
 		}
 		if ((*iter).s_type() == Token::LexemeSubType::GREATER_OR_EQUALS_RELATIONAL_OPERATOR)
@@ -197,6 +208,7 @@ double TPostfix::calculate(UnsortListTable<std::string, SymbolTableRec<int>>* sy
 			if (sd.is_empty() == true && b >= a)
 				return 1;
 			return 0;
+			++iter;
 			continue;
 		}
 		else
@@ -205,18 +217,21 @@ double TPostfix::calculate(UnsortListTable<std::string, SymbolTableRec<int>>* sy
 			{
 				a = symbol_table_int->Find((*iter).get_text())->num;
 				sd.add((double)a);
+				++iter;
 				continue;
 			}
 			if (symbol_table_double->Find((*iter).get_text()) != nullptr)
 			{
 				a = symbol_table_double->Find((*iter).get_text())->num;
 				sd.add((double)a);
+				++iter;
 				continue;
 			}
 			if ((*iter).s_type() == Token::LexemeSubType::INTEGER_LITERAL || (*iter).s_type() == Token::LexemeSubType::DOUBLE_LITERAL)
 			{
 				a = atof((*iter).get_text().c_str());
 				sd.add((double)a);
+				++iter;
 			}
 		}
 	}

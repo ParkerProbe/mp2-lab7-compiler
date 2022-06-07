@@ -188,6 +188,7 @@ mc:
                     }
                     get_var(txt_link->get_node(), &var_int, &var_double);
                 }
+// NUMBER
                 // Operation in write
                 if (is_operation(txt_link->get_node())) {
                     err->push(txt_link->get_node().get_line_num(), progError::k_INCORRECT_WRITE_CALL, true);

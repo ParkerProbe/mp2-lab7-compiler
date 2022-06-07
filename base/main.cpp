@@ -139,12 +139,12 @@ int main(int argc, char* argv[])
          );
          sym_analyzer->Start();
 
-         //// Critical error in analyze
-         //if (err->condition() == 2) {
-         //    interface.printer();
-         //    source_code->close();
-         //    return Compiler_codes::k_SYMANTIC_ANALYSIS_ERROR;
-         //}
+         // Critical error in analyze
+         if (err->condition() == 2) {
+             interface.printer();
+             source_code->close();
+             return Compiler_codes::k_SYMANTIC_ANALYSIS_ERROR;
+         }
 
          CodeRunner* runner = new CodeRunner
          (

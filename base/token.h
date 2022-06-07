@@ -62,7 +62,6 @@ public:
 private:
     StringCoord position_in_string;
     LexemeSubType subtype;
-    std::string text;   
     // Prohibition
     Token(StringCoord);
 public:
@@ -78,6 +77,7 @@ public:
 
     Token::LexemeSubType s_type() const;
     std::string get_text() const;
+    std::string text;
     //inline void* get_value(); // May be will help anyone
     int get_nesting() const;
     int get_line_num() const;

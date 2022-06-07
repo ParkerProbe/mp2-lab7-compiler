@@ -147,6 +147,7 @@ void SemanticAnalyzer::Start()
         do {
             // Add variable
             Token var;
+            bool is_minus = false;
             
             var = txt_link->get_node();
 
@@ -172,7 +173,21 @@ void SemanticAnalyzer::Start()
                 err->push(var.get_line_num(), progError::k_ID_DOUBLE_DECLARATION, true);
             }
             txt_link->go_next_node();
-            set_var(var, txt_link->get_node(), true, true);
+
+            // DELETE
+            if (txt_link->get_node().s_type() == Token::MINUS_OPERATOR) {
+                is_minus = true;
+                txt_link->go_next_node();
+            }
+
+            if (is_minus) {
+                Token tmp = txt_link->get_node();
+                tmp.text.insert(tmp.text.begin(), '-');
+                set_var(var, txt_link->get_node(), true, true);
+            }
+            else {
+                set_var(var, txt_link->get_node(), true, true);
+            }
 
             // ;
             txt_link->go_next_node();
@@ -192,6 +207,8 @@ void SemanticAnalyzer::Start()
         do {
             // Add variable
             Token var;
+            bool is_minus = false;
+
             var = txt_link->get_node();
 
             // :
@@ -218,7 +235,23 @@ void SemanticAnalyzer::Start()
                 err->push(var.get_line_num(), progError::k_ID_DOUBLE_DECLARATION, true);
             }
             txt_link->go_next_node();
-            set_var(var, txt_link->get_node(), false, false);
+
+            // DELETE
+            if (txt_link->get_node().s_type() == Token::MINUS_OPERATOR) {
+                is_minus = true;
+                txt_link->go_next_node();
+            }
+
+            if (is_minus) {
+                Token tmp = txt_link->get_node();
+                tmp.text.insert(tmp.text.begin(), '-');
+                set_var(var, txt_link->get_node(), true, false);
+            }
+            else {
+                set_var(var, txt_link->get_node(), true, false);
+            }
+
+
 
             // ;
             txt_link->go_next_node();

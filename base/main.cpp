@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
     compiler_parameters compl_conf; 
 
     try {
-        std::string path = ".\\.\\test_files\\test.pas";
+        std::string path = ".\\.\\test_files\\test_2.pas";
         std::ifstream* source_code = nullptr;
 
         ErrorHandler* err = new ErrorHandler();

@@ -23,7 +23,7 @@ private:
     SymbolTableRec<int>* get_var_int(Token symbol);
     SymbolTableRec<double>* get_var_double(Token symbol);
     void set_var(Token var, Token value, bool is_set = true, bool is_const = false);
-    int check_var(Token var);
+    int check_var(Token var, bool is_define);
 
 public:
     SemanticAnalyzer

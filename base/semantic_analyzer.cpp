@@ -64,8 +64,9 @@ SymbolTableRec<double>* SemanticAnalyzer::get_var_double(Token symbol)
 }
 
 
-int SemanticAnalyzer::check_var(Token var)
+int SemanticAnalyzer::check_var(Token var, bool is_define = false)
 {
+    // is_define - true = it in const, var block
     // Return
     enum Var_Type
     {
@@ -107,7 +108,9 @@ int SemanticAnalyzer::check_var(Token var)
             return double_val;
         }
     }
-
+    if (!is_define) {
+        err->push(var.get_line_num(), progError::k_ID_NO_DECLARATED, true);
+    }
     return not_found;
 }
 
@@ -170,7 +173,7 @@ void SemanticAnalyzer::Start()
             txt_link->go_next_node();
 
             if (txt_link->get_node().s_type() == Token::SEMICOLON) {
-                if (check_var(var) != -1) {
+                if (check_var(var, true) != -1) {
                     err->push(var.get_line_num(), progError::k_ID_DOUBLE_DECLARATION, true);
                 }
                 //Const  not set
@@ -179,7 +182,7 @@ void SemanticAnalyzer::Start()
             }
 
             // Value
-            if (check_var(var) != -1) {
+            if (check_var(var, true) != -1) {
                 err->push(var.get_line_num(), progError::k_ID_DOUBLE_DECLARATION, true);
             }
             txt_link->go_next_node();
@@ -208,8 +211,10 @@ void SemanticAnalyzer::Start()
             txt_link->go_prev_node();
         }
     }
-    
-    txt_link->go_next_node();
+
+    if (txt_link->get_node().s_type() == Token::CONST_DEFINITION_KEYWORD) {
+        txt_link->go_next_node();
+    }
 
     // Var block
     if (txt_link->get_node().s_type() == Token::VAR_DEFINITION_KEYWORD) {
@@ -231,7 +236,7 @@ void SemanticAnalyzer::Start()
             txt_link->go_next_node();
 
             if (txt_link->get_node().s_type() == Token::SEMICOLON) {
-                if (check_var(var) != -1) {
+                if (check_var(var, true) != -1) {
                     err->push(var.get_line_num(), progError::k_ID_DOUBLE_DECLARATION, true);
                 }
 
@@ -273,8 +278,10 @@ void SemanticAnalyzer::Start()
         }
     }
 
-    // Begin
-    txt_link->go_next_node();
+
+    if (txt_link->get_node().s_type() == Token::VAR_DEFINITION_KEYWORD) {
+        txt_link->go_next_node();
+    }
 
     // Main program
     txt_link->go_down_node();
@@ -347,7 +354,7 @@ mc:
             txt_link->go_next_node();
 
             txt_link->go_next_node();
-            if (txt_link->get_node().s_type() == Token::VAR_DEFINITION_KEYWORD) {
+            if (txt_link->get_node().s_type() == Token::USER_KEY_WORD) {
                 check_var(txt_link->get_node());
             }
             

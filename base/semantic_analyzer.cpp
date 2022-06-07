@@ -6,26 +6,37 @@
 void SemanticAnalyzer::set_var_int(Token symbol, int num, bool is_set, bool is_const)
 {
     SymbolTableRec<int> tmp(SymbolTableRec<int>(symbol.get_text(), num, is_const));
-    tmp.is_set = true;
-    symbol_table_int->Insert(symbol.get_text(), tmp);
-    if (symbol_table_int->Find(symbol.get_text())->is_const != true) {
-        symbol_table_int->Find(symbol.get_text())->num = num;
+    SymbolTableRec<int>* tmp_var = symbol_table_int->Find(symbol.get_text());
+
+    if (tmp_var != nullptr) {
+        if (tmp_var->is_const == true) {
+            err->push(symbol.get_line_num(), progError::k_CHANGED_CONST_VALUE, true);
+        }
+        else {
+            tmp_var->num = num;
+        }
     }
     else {
-        err->push(symbol.get_line_num(), progError::k_CHANGED_CONST_VALUE, true);
+        symbol_table_int->Insert(symbol.get_text(), tmp);
     }
 }
 
 void SemanticAnalyzer::set_var_double(Token symbol, double num, bool is_set, bool is_const)
 {
     SymbolTableRec<double> tmp(SymbolTableRec<double>(symbol.get_text(), num, is_const));
-    tmp.is_set = true;
-    symbol_table_double->Insert(symbol.get_text(), tmp);
-    if (symbol_table_double->Find(symbol.get_text())->is_const != true) {
-        symbol_table_double->Find(symbol.get_text())->num = num;
+    SymbolTableRec<double>* tmp_var = symbol_table_double->Find(symbol.get_text());
+
+    if (tmp_var != nullptr) {
+        if (tmp_var->is_const == true) {
+            err->push(symbol.get_line_num(), progError::k_CHANGED_CONST_VALUE, true);
+        }
+        else {
+            tmp_var->num = num;
+        }
     }
     else {
-        err->push(symbol.get_line_num(), progError::k_CHANGED_CONST_VALUE, true);
+        symbol_table_double->Insert(symbol.get_text(), tmp);
+
     }
 }
 
@@ -97,7 +108,6 @@ int SemanticAnalyzer::check_var(Token var)
         }
     }
 
-    err->push(var.get_line_num(), progError::k_ID_NO_DECLARATED, true);
     return not_found;
 }
 
@@ -183,7 +193,7 @@ void SemanticAnalyzer::Start()
             if (is_minus) {
                 Token tmp = txt_link->get_node();
                 tmp.text.insert(tmp.text.begin(), '-');
-                set_var(var, txt_link->get_node(), true, true);
+                set_var(var, tmp, true, true);
             }
             else {
                 set_var(var, txt_link->get_node(), true, true);

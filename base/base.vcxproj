@@ -114,6 +114,9 @@
   <ItemGroup>
     <Text Include="test_files\test.pas" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="test_files\test_2.pas" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -24,9 +24,6 @@
     <ClCompile Include="error_handler.h">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="error_handler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="table_string.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

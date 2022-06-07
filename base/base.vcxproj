@@ -83,7 +83,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="code_runner.cpp" />
-    <ClCompile Include="error_handler.cpp" />
     <ClCompile Include="error_handler.h" />
     <ClCompile Include="lexical_analyzer.cpp" />
     <ClCompile Include="main.cpp" />

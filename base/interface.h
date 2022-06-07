@@ -48,7 +48,7 @@ public:
 
         if (err->condition() != 0) {
             cout << "Compilation process terminated" << std::endl;
-            // err->print_errors();
+            err->print_errors();
         }
     }
 

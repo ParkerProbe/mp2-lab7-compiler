@@ -12,4 +12,8 @@ struct ErrorParam
         progError::k_UNDEFINED_ERROR, bool _is_critical = false) : line_num(_line_num),
         error_num(_error_num), is_critical(_is_critical)
     {}
+    bool operator<(const ErrorParam& ep)
+    {
+        return line_num < ep.line_num;
+    }
 };

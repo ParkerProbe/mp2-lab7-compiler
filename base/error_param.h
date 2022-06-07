@@ -16,4 +16,8 @@ struct ErrorParam
     {
         return line_num < ep.line_num;
     }
+    bool operator==(const ErrorParam& ep)
+    {
+        return (line_num == ep.line_num && error_num == ep.error_num && is_critical == ep.is_critical);
+    }
 };

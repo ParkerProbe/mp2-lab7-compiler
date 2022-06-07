@@ -83,17 +83,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\base\error_handler.cpp" />
     <ClCompile Include="..\base\hash_table_list.cpp" />
     <ClCompile Include="..\base\lexical_analyzer.cpp" />
-    <ClCompile Include="..\base\main.cpp" />
     <ClCompile Include="..\base\postfix.cpp" />
+    <ClCompile Include="..\base\semantic_analyzer.cpp" />
     <ClCompile Include="..\base\table_string.cpp" />
     <ClCompile Include="..\base\token.cpp" />
     <ClCompile Include="test_compiler.cpp" />
     <ClCompile Include="test_eq_exception.cpp" />
     <ClCompile Include="test_error_handler.cpp" />
-    <ClCompile Include="test_hash_table_list.cpp" />
     <ClCompile Include="test_list.cpp" />
     <ClCompile Include="test_main.cpp" />
     <ClCompile Include="test_postfix.cpp" />

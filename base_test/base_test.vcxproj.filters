@@ -30,9 +30,6 @@
     <ClCompile Include="test_error_handler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test_hash_table_list.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="test_list.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -45,16 +42,10 @@
     <ClCompile Include="test_textlink.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\base\error_handler.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\base\hash_table_list.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="..\base\lexical_analyzer.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\base\main.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="..\base\postfix.cpp">
@@ -64,6 +55,9 @@
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="..\base\token.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\base\semantic_analyzer.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -74,6 +74,7 @@ bool CodeRunner::is_operation(Token symbol)
 
 void CodeRunner::Start()
 {
+    Stack<bool> s_condition;
     bool if_condition;
 
     txt_link->go_first_node();
@@ -343,6 +344,7 @@ mc:
                 }
             }
 
+            s_condition.add(if_condition);
             // Check if without begin
             if (if_condition) {
                 if (txt_link->go_down_node() != false) {
@@ -369,13 +371,6 @@ mc:
 
                 }
                 if (txt_link->get_node().s_type() == Token::ELSE_KEYWORD) {
-                    // begin || next command
-                    txt_link->go_next_node();
-                    if (txt_link->get_node().s_type() == Token::BEGIN_KEYWORD) {
-                        // END
-                        txt_link->go_next_node();
-                        txt_link->go_next_node();
-                    }
                     goto mc;
                 }
             }
@@ -384,6 +379,8 @@ mc:
 
         // ELSE
         if (txt_link->get_node().s_type() == Token::ELSE_KEYWORD) {
+            if_condition = s_condition.info_top();
+            s_condition.get_top();
             if (!if_condition) {
                 if (txt_link->go_down_node() != false) {
                     goto mc;
@@ -401,7 +398,23 @@ mc:
 
 
             }
+            else {
+                
+                if (txt_link->go_next_node()) {
+                    if (txt_link->get_node().s_type() == Token::BEGIN_KEYWORD) {
+                        txt_link->go_next_node();
+                        txt_link->go_next_node();
+                    }
+                    else {
+                        goto mc;
+                    }
+                }
+                else {
+                    break;
+                }
+                
 
+            }
             // Check else without begin
             
 

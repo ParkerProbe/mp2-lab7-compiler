@@ -21,7 +21,7 @@ begin { Commentary}
     if c2 = -2 then
     begin
       num3 := (num1-c2*5 div num1)/(c1*2);
-      write('Result = ', num1);
+      write('Result = ', num3);
     end
     else
       write();

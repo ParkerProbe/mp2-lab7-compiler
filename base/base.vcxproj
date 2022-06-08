@@ -83,7 +83,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="code_runner.cpp" />
-    <ClCompile Include="error_handler.h" />
     <ClCompile Include="lexical_analyzer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="postfix.cpp" />
@@ -95,6 +94,7 @@
     <ClInclude Include="code_runner.h" />
     <ClInclude Include="compiler_config.h" />
     <ClInclude Include="eq_exception.h" />
+    <ClInclude Include="error_handler.h" />
     <ClInclude Include="error_param.h" />
     <ClInclude Include="interface.h" />
     <ClInclude Include="lexical_analyzer.h" />

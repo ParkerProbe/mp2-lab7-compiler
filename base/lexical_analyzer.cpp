@@ -375,7 +375,7 @@ void LexicalAnalyzer::create_tokens()
         if (sub != Token::LexemeSubType::VAR_DEFINITION_KEYWORD && sub != Token::LexemeSubType::CONST_DEFINITION_KEYWORD && sub != Token::LexemeSubType::BEGIN_KEYWORD && sub != Token::LexemeSubType::END_KEYWORD && sub != Token::THEN_KEYWORD&&sub!=Token::ELSE_KEYWORD) {
             eh->push(line_counter, progError::k_UNEXPECTED_TERMINATION_OF_OPERATOR, true);
         }
-        line_counter++;
     }
+    line_counter++;
     }
 }

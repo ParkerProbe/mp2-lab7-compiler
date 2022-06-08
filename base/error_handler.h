@@ -18,25 +18,25 @@ private:
     //static const int k_ERROR_HANDLER_MAX = 16;
     std::vector<ErrorParam> errors;
     const std::string comment[16] = {
-        "Unexpected termination of string", 
-        "Unexpected termination of operator", "Endless one-line comment", 
-        "Incorrect tabulation", "Incorrect level of nesting", 
-        "Too many arguments","First part of pair is missed", 
+        "Unexpected termination of string",
+        "Unexpected termination of operator", "Endless one-line comment",
+        "Incorrect tabulation", "Incorrect level of nesting",
+        "Too many arguments","First part of pair is missed",
         "No program key word", "No program name", "Double value is cut",
-        "Identifier is not declared", "Const did not initialized", 
-        "Const value was changed", "Incorrect operation", 
+        "Identifier is not declared", "Const did not initialized",
+        "Const value was changed", "Incorrect operation",
         "Incorrect write call", "Double declaration of identifier"
-        "Undefined error" 
+        "Undefined error"
     };
 
 
-    void print_head() 
+    void print_head()
     {
         std::cout << " CODE ";
         std::cout << " LINE ";
         std::cout << " ERROR MESSAGE\n";
     }
-    void print_cur_error(int cur_pos,std::string cur_line)
+    void print_cur_error(int cur_pos, std::string cur_line)
     {
         std::cout << ' ';
         std::cout << errors[cur_pos].error_num;
@@ -60,7 +60,7 @@ private:
         std::cout << comment[errors[cur_pos].error_num] << '\n';
         std::cout << "LINE: \"" << cur_line << "\"" << '\n';
     }
-    int get_symbol_quan(int cur_pos) 
+    int get_symbol_quan(int cur_pos)
     {
         int quan = 0;
         while (cur_pos > 0) {
@@ -83,19 +83,18 @@ public:
         std::sort(errors.begin(), errors.end());
         source_code->clear();
         source_code->seekg(0);
-        int j = 1;
+        int j = 0;
         for (int i = 0; i < errors.size(); i++) {
             for (; j < errors[i].line_num; j++)
                 std::getline(*source_code, cur_line, '\n');
-            for (; errors[i].line_num == j; i++) {
-                print_cur_error(i,cur_line);
+            for (; i < errors.size()&&errors[i].line_num == j; i++) {
+                print_cur_error(i, cur_line);
             }
-            i--;
         }
     }
 
 
-    int condition() 
+    int condition()
     {
         if (errors.size() == 0)
             return 0;
@@ -104,7 +103,7 @@ public:
                 return 2;
         return 1;
     }
-    void push(int line_num, progError error_num, bool is_critical) 
+    void push(int line_num, progError error_num, bool is_critical)
     {
         errors.push_back(ErrorParam(line_num, error_num, is_critical));
     }
@@ -114,7 +113,7 @@ public:
     {
         return errors[ind];
     }
-    
+
     bool comp(ErrorParam a, ErrorParam b)
     {
         return a.line_num > b.line_num;

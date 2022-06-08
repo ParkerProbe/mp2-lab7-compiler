@@ -89,35 +89,35 @@ int StartCompiler(std::string path)
 
 TEST(Compiler, var_no_defined)
 {
-	EXPECT_EQ(StartCompiler("test_files\\test_file_1_1.pas"), 4);
+	EXPECT_EQ(StartCompiler("test_files\\test_file_1_1.pas"), 6);
 }
 
 TEST(Compiler, no_semicolon_1)
 {
-	EXPECT_EQ(StartCompiler("test_files\\test_file_1_1.pas"), 4);
+	EXPECT_EQ(StartCompiler("test_files\\test_file_1_1.pas"), 2);
 }
 
 TEST(Compiler, no_semicolon_2)
 {
-	EXPECT_EQ(StartCompiler("test_files\\test_file_1_3.pas"), 4);
+	EXPECT_EQ(StartCompiler("test_files\\test_file_1_3.pas"), 2);
 }
 
-TEST(Compiler, conv_real_to_int)
+TEST(Compiler, lack_of_program_key_word)
 {
-	EXPECT_EQ(StartCompiler("test_files\\test_file_1_4.pas"), 6);
+	EXPECT_EQ(StartCompiler("test_files\\test_file_1_4.pas"), 2);
 }
 
-TEST(Compiler, no_type_dicl)
+TEST(Compiler, lack_of_program_name)
 {
-	EXPECT_EQ(StartCompiler("test_files\\test_file_1_5.pas"), 6);
+	EXPECT_EQ(StartCompiler("test_files\\test_file_1_5.pas"), 2);
 }
 
-TEST(Compiler, writeln_no_apostrophe)
+TEST(Compiler, no_type_definition )
 {
 	EXPECT_EQ(StartCompiler("test_files\\test_file_1_6.pas"), 6);
 }
 
-TEST(Compiler, writeln_wrong_use)
+TEST(Compiler, writeln_no_apostrophe)
 {
 	EXPECT_EQ(StartCompiler("test_files\\test_file_1_7.pas"), 6);
 }

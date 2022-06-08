@@ -21,9 +21,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="error_handler.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="table_string.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -96,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="list_2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="error_handler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

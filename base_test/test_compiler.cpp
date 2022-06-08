@@ -87,39 +87,41 @@ int StartCompiler(std::string path)
 
 
 
-TEST(Compiler, var_no_defined)
-{
-	EXPECT_EQ(StartCompiler("test_files\\test_file_1_1.pas"), 6);
-}
-
-TEST(Compiler, no_semicolon_1)
-{
-	EXPECT_EQ(StartCompiler("test_files\\test_file_1_1.pas"), 2);
-}
-
+/////////////////////////
+// Lexical
+/////////////////////////
 TEST(Compiler, no_semicolon_2)
 {
-	EXPECT_EQ(StartCompiler("test_files\\test_file_1_3.pas"), 2);
+    EXPECT_EQ(StartCompiler("test_files\\test_file_1_3.pas"), 2);
 }
 
 TEST(Compiler, lack_of_program_key_word)
 {
-	EXPECT_EQ(StartCompiler("test_files\\test_file_1_4.pas"), 2);
+    EXPECT_EQ(StartCompiler("test_files\\test_file_1_4.pas"), 2);
 }
 
-TEST(Compiler, lack_of_program_name)
+
+/////////////////////////
+// Syntax
+/////////////////////////
+
+
+TEST(Compiler, if_begin_end_1)
 {
-	EXPECT_EQ(StartCompiler("test_files\\test_file_1_5.pas"), 2);
+    EXPECT_EQ(StartCompiler("test_files\\test_file_1_12.pas"), 4);
 }
 
-TEST(Compiler, no_type_definition )
-{
-	EXPECT_EQ(StartCompiler("test_files\\test_file_1_6.pas"), 6);
-}
 
-TEST(Compiler, writeln_no_apostrophe)
+/////////////////////////
+// Sematic 
+/////////////////////////
+TEST(Compiler, var_no_defined)
 {
-	EXPECT_EQ(StartCompiler("test_files\\test_file_1_7.pas"), 6);
+    EXPECT_EQ(StartCompiler("test_files\\test_file_1_1.pas"), 6);
+}
+TEST(Compiler, no_type_definition)
+{
+    EXPECT_EQ(StartCompiler("test_files\\test_file_1_6.pas"), 6);
 }
 
 TEST(Compiler, var_no_type)
@@ -132,24 +134,31 @@ TEST(Compiler, var_no_init)
 	EXPECT_EQ(StartCompiler("test_files\\test_file_1_9.pas"), 6);
 }
 
-
-TEST(Compiler, sqrt_from_negative)
+TEST(Compiler, changing_const)
 {
-	EXPECT_EQ(StartCompiler("test_files\\test_file_1_11.pas"), 6);
-}
-
-TEST(Compiler, if_begin_end_1)
-{
-	EXPECT_EQ(StartCompiler("test_files\\test_file_1_12.pas"), 4);
-}
-
-TEST(Compiler, if_begin_end_2)
-{
-	EXPECT_EQ(StartCompiler("test_files\\test_file_1_13.pas"), 4);
+    EXPECT_EQ(StartCompiler("test_files\\test_file_1_14.pas"), 6);
 }
 
 
-TEST(Compiler, real_comparison)
-{
-	EXPECT_EQ(StartCompiler("test_files\\test_file_1_15.pas"), 4);
-}
+//TEST(Compiler, if_begin_end_2)
+//{
+//    EXPECT_EQ(StartCompiler("test_files\\test_file_1_13.pas"), 4);
+//}
+
+//TEST(Compiler, no_semicolon_1)
+//{
+//	EXPECT_EQ(StartCompiler("test_files\\test_file_1_1.pas"), 2);
+//}
+
+
+//TEST(Compiler, writeln_no_apostrophe)
+//{
+//	EXPECT_EQ(StartCompiler("test_files\\test_file_1_7.pas"), 6);
+//}
+
+
+
+//TEST(Compiler, sqrt_from_negative)
+//{
+//	EXPECT_EQ(StartCompiler("test_files\\test_file_1_11.pas"), 6);
+//}

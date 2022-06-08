@@ -97,6 +97,7 @@
     <ClCompile Include="test_postfix.cpp" />
     <ClCompile Include="test_stack.cpp" />
     <ClCompile Include="test_textlink.cpp" />
+    <ClCompile Include="test_unsortListTable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="test_files\test1.pas" />

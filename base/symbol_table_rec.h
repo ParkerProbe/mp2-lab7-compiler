@@ -12,8 +12,8 @@ struct SymbolTableRec
    bool is_const;
    bool is_set;
 
-    SymbolTableRec(std::string symbol_, int num_, bool is_const_ = false, bool is_set = true)
-        :   symbol(symbol_), num(num_), is_const(is_const_)
+    SymbolTableRec(std::string symbol_, T num_, bool is_const_, bool is_set_)
+        :   symbol(symbol_), num(num_), is_const(is_const_), is_set(is_set_)
     {}  
 
     SymbolTableRec& operator=(SymbolTableRec& other) = default;

@@ -61,7 +61,6 @@ public:
     };
 private:
     StringCoord position_in_string;
-    LexemeSubType subtype;
     // Prohibition
     Token(StringCoord);
 public:
@@ -76,6 +75,7 @@ public:
     ~Token() = default;
 
     Token::LexemeSubType s_type() const;
+    LexemeSubType subtype;
     std::string get_text() const;
     std::string text;
     //inline void* get_value(); // May be will help anyone

@@ -35,28 +35,14 @@ void CodeRunner::get_var(Token var, SymbolTableRec<int>** var_int, SymbolTableRe
 
 void CodeRunner::set_var_int(Token symbol, int num, bool is_set, bool is_const)
 {
-SymbolTableRec<int> tmp(SymbolTableRec<int>(symbol.get_text(), num, is_const));
-tmp.is_set = true;
-symbol_table_int->Insert(symbol.get_text(), tmp);
-if (symbol_table_int->Find(symbol.get_text())->is_const != true) {
-    symbol_table_int->Find(symbol.get_text())->num = num;
-}
-else {
-    err->push(symbol.get_line_num(), progError::k_CHANGED_CONST_VALUE, true);
-}
+    SymbolTableRec<int> tmp(SymbolTableRec<int>(symbol.get_text(), num, is_const, is_set));
+    symbol_table_int->Insert(symbol.get_text(), tmp);
 }
 
 void CodeRunner::set_var_double(Token symbol, double num, bool is_set, bool is_const)
 {
-    SymbolTableRec<double> tmp(SymbolTableRec<double>(symbol.get_text(), num, is_const));
-    tmp.is_set = true;
+    SymbolTableRec<double> tmp(SymbolTableRec<double>(symbol.get_text(), num, is_const, is_set));
     symbol_table_double->Insert(symbol.get_text(), tmp);
-    if (symbol_table_double->Find(symbol.get_text())->is_const != true) {
-        symbol_table_double->Find(symbol.get_text())->num = num;
-    }
-    else {
-        err->push(symbol.get_line_num(), progError::k_CHANGED_CONST_VALUE, true);
-    }
 }
 
 void CodeRunner::set_var(Token var, double value, bool is_set, bool is_const)

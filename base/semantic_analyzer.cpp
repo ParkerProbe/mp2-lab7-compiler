@@ -5,7 +5,7 @@
 
 void SemanticAnalyzer::set_var_int(Token symbol, int num, bool is_set, bool is_const)
 {
-    SymbolTableRec<int> tmp(SymbolTableRec<int>(symbol.get_text(), num, is_const));
+    SymbolTableRec<int> tmp(SymbolTableRec<int>(symbol.get_text(), num, is_const, is_set));
     SymbolTableRec<int>* tmp_var = symbol_table_int->Find(symbol.get_text());
 
     if (tmp_var != nullptr) {
@@ -23,7 +23,7 @@ void SemanticAnalyzer::set_var_int(Token symbol, int num, bool is_set, bool is_c
 
 void SemanticAnalyzer::set_var_double(Token symbol, double num, bool is_set, bool is_const)
 {
-    SymbolTableRec<double> tmp(SymbolTableRec<double>(symbol.get_text(), num, is_const));
+    SymbolTableRec<double> tmp(SymbolTableRec<double>(symbol.get_text(), num, is_const, is_set));
     SymbolTableRec<double>* tmp_var = symbol_table_double->Find(symbol.get_text());
 
     if (tmp_var != nullptr) {
@@ -35,6 +35,7 @@ void SemanticAnalyzer::set_var_double(Token symbol, double num, bool is_set, boo
         }
     }
     else {
+
         symbol_table_double->Insert(symbol.get_text(), tmp);
 
     }
@@ -117,7 +118,11 @@ int SemanticAnalyzer::check_var(Token var, bool is_define = false)
 
 void SemanticAnalyzer::set_var(Token var, Token value, bool is_set, bool is_const)
 {
+
+
         if (value.s_type() == Token::DOUBLE_LITERAL) {
+
+
             try {
                 double num = stod(value.get_text());
                 set_var_double(var, num, is_set, is_const);
@@ -129,6 +134,8 @@ void SemanticAnalyzer::set_var(Token var, Token value, bool is_set, bool is_cons
         }
 
         if (value.s_type() == Token::INTEGER_LITERAL) {
+
+
             try {
                 int num = stoi(value.get_text());
                 set_var_int(var, num, is_set, is_const);
@@ -168,6 +175,10 @@ void SemanticAnalyzer::Start()
             txt_link->go_next_node();
             // Var type
             txt_link->go_next_node();
+            if ((txt_link->get_node().s_type() == Token::DOUBLE_TYPE) || (txt_link->get_node().s_type() == Token::INTEGER_TYPE)) { ; }
+            else {
+                err->push(var.get_line_num(), progError::k_TYPE_NO_DECLARATED, true);
+            }
 
             // ; or =
             txt_link->go_next_node();
@@ -222,6 +233,7 @@ void SemanticAnalyzer::Start()
         do {
             // Add variable
             Token var;
+            Token var_type;
             bool is_minus = false;
 
             var = txt_link->get_node();
@@ -231,6 +243,11 @@ void SemanticAnalyzer::Start()
 
             // Var type
             txt_link->go_next_node();
+            var_type = txt_link->get_node();
+            if ((txt_link->get_node().s_type() == Token::DOUBLE_TYPE) || (txt_link->get_node().s_type() == Token::INTEGER_TYPE)) { ; }
+            else {
+                err->push(var.get_line_num(), progError::k_TYPE_NO_DECLARATED, true);
+            }
 
             // ; or =
             txt_link->go_next_node();
@@ -240,13 +257,24 @@ void SemanticAnalyzer::Start()
                     err->push(var.get_line_num(), progError::k_ID_DOUBLE_DECLARATION, true);
                 }
 
-                Token default_value;
-                set_var(var, default_value, false, false);
+                if (var_type.s_type() == Token::DOUBLE_TYPE) {
+                    Token tmp = Token();
+                    tmp.subtype = Token::DOUBLE_LITERAL;
+                    tmp.text = "0.0";
+                    set_var(var, tmp, false, false);
+
+                }
+                else {
+                    Token tmp = Token();
+                    tmp.subtype = Token::INTEGER_LITERAL;
+                    tmp.text = "0";
+                    set_var(var, tmp, false, false);
+                }
                 continue;
             }
 
             // Value
-            if (check_var(var) != -1) {
+            if (check_var(var, true) != -1) {
                 err->push(var.get_line_num(), progError::k_ID_DOUBLE_DECLARATION, true);
             }
             txt_link->go_next_node();
@@ -260,7 +288,7 @@ void SemanticAnalyzer::Start()
             if (is_minus) {
                 Token tmp = txt_link->get_node();
                 tmp.text.insert(tmp.text.begin(), '-');
-                set_var(var, txt_link->get_node(), true, false);
+                set_var(var, tmp, true, false);
             }
             else {
                 set_var(var, txt_link->get_node(), true, false);

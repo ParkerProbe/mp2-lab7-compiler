@@ -17,7 +17,7 @@ class ErrorHandler
 private:
     //static const int k_ERROR_HANDLER_MAX = 16;
     std::vector<ErrorParam> errors;
-    const std::string comment[16] = {
+    const std::string comment[17] = {
         "Unexpected termination of string",
         "Unexpected termination of operator", "Endless one-line comment",
         "Incorrect tabulation", "Incorrect level of nesting",
@@ -26,7 +26,7 @@ private:
         "Identifier is not declared", "Const did not initialized",
         "Const value was changed", "Incorrect operation",
         "Incorrect write call", "Double declaration of identifier"
-        "Undefined error"
+        "Undefined error", "Type was not declared"
     };
 
 

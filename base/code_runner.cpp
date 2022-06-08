@@ -74,6 +74,8 @@ bool CodeRunner::is_operation(Token symbol)
 
 void CodeRunner::Start()
 {
+    bool if_condition;
+
     txt_link->go_first_node();
 
     // program
@@ -302,7 +304,7 @@ mc:
             }
 
             // Calculate if condition
-            bool if_condition;
+            // bool if_condition;
             double left_value;
             op.set_infix(left_equal);
             op.to_postfix();
@@ -382,19 +384,27 @@ mc:
 
         // ELSE
         if (txt_link->get_node().s_type() == Token::ELSE_KEYWORD) {
-            // Check else without begin
-            if (txt_link->go_down_node() != false) {
+            if (!if_condition) {
+                if (txt_link->go_down_node() != false) {
                     goto mc;
-            }
-            else {
-                // begin
-                txt_link->go_next_node();
 
-                // begin body
-                if (txt_link->go_down_node()) {
-                    goto mc;
                 }
+                else {
+                    // begin
+                    txt_link->go_next_node();
+
+                    // begin body
+                    if (txt_link->go_down_node()) {
+                        goto mc;
+                    }
+                }
+
+
             }
+
+            // Check else without begin
+            
+
         }
 
 

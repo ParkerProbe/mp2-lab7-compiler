@@ -108,5 +108,8 @@
     <None Include="test_files\test_2.pas">
       <Filter>test_files</Filter>
     </None>
+    <None Include="test_files\test_3.pas">
+      <Filter>test_files</Filter>
+    </None>
   </ItemGroup>
 </Project>

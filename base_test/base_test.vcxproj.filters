@@ -89,9 +89,6 @@
     <None Include="test_file_1_8.pas">
       <Filter>test_files</Filter>
     </None>
-    <None Include="test_files\test_file_1_7pas">
-      <Filter>test_files</Filter>
-    </None>
     <None Include="test_files\test_file_1_6.pas">
       <Filter>test_files</Filter>
     </None>
@@ -102,6 +99,9 @@
       <Filter>test_files</Filter>
     </None>
     <None Include="test_file_1_10.pas">
+      <Filter>test_files</Filter>
+    </None>
+    <None Include="test_file_1_7.pas">
       <Filter>test_files</Filter>
     </None>
   </ItemGroup>

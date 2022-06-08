@@ -90,6 +90,12 @@ int StartCompiler(std::string path)
 /////////////////////////
 // Lexical
 /////////////////////////
+
+TEST(Compiler, no_semicolon_1)
+{
+    EXPECT_EQ(StartCompiler("test_files\\test_file_1_2.pas"), 2);
+}
+
 TEST(Compiler, no_semicolon_2)
 {
     EXPECT_EQ(StartCompiler("test_files\\test_file_1_3.pas"), 2);
@@ -100,11 +106,20 @@ TEST(Compiler, lack_of_program_key_word)
     EXPECT_EQ(StartCompiler("test_files\\test_file_1_4.pas"), 2);
 }
 
+TEST(Compiler, program_name_is_missing)
+{
+    EXPECT_EQ(StartCompiler("test_files\\test_file_1_5.pas"), 2);
+}
+
+TEST(Compiler, endless_string_literal)
+{
+    EXPECT_EQ(StartCompiler("test_files\\test_file_1_7.pas"), 2);
+}
+
 
 /////////////////////////
 // Syntax
 /////////////////////////
-
 
 TEST(Compiler, if_begin_end_1)
 {
@@ -115,10 +130,12 @@ TEST(Compiler, if_begin_end_1)
 /////////////////////////
 // Sematic 
 /////////////////////////
+
 TEST(Compiler, var_no_defined)
 {
     EXPECT_EQ(StartCompiler("test_files\\test_file_1_1.pas"), 6);
 }
+
 TEST(Compiler, no_type_definition)
 {
     EXPECT_EQ(StartCompiler("test_files\\test_file_1_6.pas"), 6);
@@ -140,6 +157,16 @@ TEST(Compiler, changing_const)
 }
 
 
+
+
+
+
+
+
+
+
+
+
 //TEST(Compiler, if_begin_end_2)
 //{
 //    EXPECT_EQ(StartCompiler("test_files\\test_file_1_13.pas"), 4);
@@ -156,6 +183,10 @@ TEST(Compiler, changing_const)
 //	EXPECT_EQ(StartCompiler("test_files\\test_file_1_7.pas"), 6);
 //}
 
+//TEST(Compiler, double_definition)
+//{
+//    EXPECT_EQ(StartCompiler("test_files\\test_file_1_10.pas"), 6);
+//}
 
 
 //TEST(Compiler, sqrt_from_negative)

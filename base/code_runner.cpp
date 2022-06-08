@@ -380,7 +380,6 @@ mc:
         // ELSE
         if (txt_link->get_node().s_type() == Token::ELSE_KEYWORD) {
             if_condition = s_condition.info_top();
-            s_condition.get_top();
             if (!if_condition) {
                 if (txt_link->go_down_node() != false) {
                     goto mc;
@@ -438,6 +437,7 @@ eol:
     }
 
     if (txt_link->get_node().s_type() == Token::THEN_KEYWORD) {
+        s_condition.get_top();
         if (txt_link->go_next_node()) {}
         else {
             goto eol;
